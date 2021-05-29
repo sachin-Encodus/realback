@@ -1,0 +1,190 @@
+
+
+
+
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900&display=swap');
+
+
+
+
+
+        .about {
+
+            align-self: center;
+            justify-self: center;
+            margin-left: -1%;
+            margin-top: 25%;
+
+
+        }
+
+
+
+     
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card {
+            border: none;
+            margin-bottom: 20px;
+            padding: 40px 30px;
+            background: #ebf5fc;
+            border-radius: 40px;
+            box-shadow: -6px -6px 20px rgba(255, 255, 255, 1), 6px 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .me {
+            padding: 40px 30px;
+            border: none;
+            background: #ebf5fc;
+            border-radius: 40px;
+            box-shadow: -6px -6px 20px rgba(255, 255, 255, 1), 6px 6px 20px rgba(0, 0, 0, 0.1);
+
+
+        }
+
+        .me:hover {
+            box-shadow: inset -6px -6px 20px rgba(255, 255, 255, 0.5), inset 6px 6px 20px rgba(0, 0, 0, 0.05);
+        }
+
+
+        .card:hover {
+            box-shadow: inset -6px -6px 20px rgba(255, 255, 255, 0.5), inset 6px 6px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .card .imgBx {
+            position: relative;
+            text-align: center;
+        }
+
+        .card .imgBx img {
+            max-width: 120px;
+        }
+
+        .card .contentBx {
+            position: relative;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .card .contentBx h2 {
+            color: #32a3b1;
+            font-weight: 700;
+            font-size: 1.4em;
+            letter-spacing: 2px;
+        }
+
+        .card .contentBx p {
+            color: #32a3b1;
+        }
+
+        .card .contentBx a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 15px;
+            border-radius: 40px;
+            color: #32a3b1;
+            font-size: 16px;
+            text-decoration: none;
+            box-shadow: -4px -4px 15px rgba(255, 255, 255, 1), 4px 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card .contentBx a:hover {
+            box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.5), inset 4px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card a:hover span {
+            display: block;
+            transform: scale(0.98);
+        }
+
+        .card:hover .imgBx,
+
+        .card:hover .contentBx {
+            transform: scale(0.98);
+        }
+
+
+
+
+
+
+
+
+        body,
+        html {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+         
+            text-rendering: optimizelegibility;
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+        }
+
+        .wrapper {
+            transform-origin: center bottom 0px;
+            transition: all 0.5s ease 0s;
+            box-shadow: 0px 22px 54px rgba(0, 0, 0, 0.5);
+            background: #ebf5fc;
+
+            padding: 50px 50px 100px 50px;
+        }
+
+        body.tight .wrapper {
+            transform: translateY(-60px) scale(0.9);
+            cursor: pointer;
+            border-radius: 30px;
+        }
+
+
+
+        i {
+            font-size: 20%;
+            margin-top: 10%;
+            color: #32a3b1;
+        }
+
+
+        h2 {
+            font-size: 20px;
+            color: #47474d;
+        }
+
+        .intro {
+            height: auto;
+            min-height: 100vh;
+            text-align: center;
+            background-color: teal;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        .btn {
+
+            position: relative;
+            top: 1px;
+            float: right;
+            margin-right: 40px;
+            border-radius: 50px;
+            box-shadow: -6px -6px 20px rgba(255, 255, 255, 1), 6px 6px 20px rgba(0, 0, 0, 0.2);
+
+        }
