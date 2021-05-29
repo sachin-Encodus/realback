@@ -18,8 +18,16 @@ const express = require('express');
 // const app  = express();  
 
 const { OAuth2Client } = require('google-auth-library');
-const {EMAIL,  KEY_ID,  KEY_SECRET, CLIENT_URL, PASS,  JWT_ACCOUNT_ACTIVATION, JWT_RESET_PASSWORD, SECRET_KEY} = require('../config/keys')
-console.log("======>>>>>>>>>>.", EMAIL , PASS);
+const {EMAIL, 
+       KEY_ID,
+       KEY_SECRET,
+       CLIENT_URL,
+       PASS,
+       JWT_ACCOUNT_ACTIVATION,
+       JWT_RESET_PASSWORD,
+       SECRET_KEY
+      } = require('../config/keys')
+
 var instance = new Razorpay({
   key_id:  KEY_ID,
   key_secret:   KEY_SECRET
@@ -1460,7 +1468,7 @@ exports.payment = (req, res) => {
 exports.paymentCallback = (req, res) => {
   const form = Formidable();
   form.parse(req, (err, fields, files) => {
-    console.log(fields)
+    console.log("FIELDS =======>>>>>>>>>>>",fields)
     if (fields) {
       console.log("FIELDS", fields);
       const hash = crypto
@@ -1507,7 +1515,7 @@ exports.getPayment = (req, res) => {
       });
     }
     request(
-      `https://${KEY_ID}:${SECREAT_KEY}@api.razorpay.com/v1/payments/${req.params.paymentId}`,
+      `https://${KEY_ID}:${KEY_SECRET}@api.razorpay.com/v1/payments/${req.params.paymentId}`,
       function (error, response, body) {
         if (body) {
           const result = JSON.parse(body);
