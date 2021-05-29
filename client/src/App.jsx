@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 import Login from './screens/Login.jsx';
 import Register from './screens/Register.jsx';
 import Activate from './screens/Activate.jsx';
@@ -57,6 +58,11 @@ function App() {
          <Redirect to='/' />
     </Switch>
     </BrowserRouter>
+        <MessengerCustomerChat
+    pageId="113164043777947"
+    appId="976657536472023"
+    
+  />
     </>
   );
 }
