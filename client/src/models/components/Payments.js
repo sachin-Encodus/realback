@@ -31,7 +31,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (amount > 0 && orderId != "") {
+    if (amount > 0 && orderId !== "") {
       showRazoryPay();
     }
   }, [amount]);
@@ -79,7 +79,7 @@ export default App;
 // accountactivateusingtoverifyemail
 
 // JWT_ACCOUNT_ACTIVATION
-// accountactivateusingtoverifygemail
+// accountactivateusingtoverifygemails
 
 // JWT_RESET_PASSWORD
 // accountactivateusingtoverifygemailsachin

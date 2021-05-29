@@ -18,7 +18,7 @@ const express = require('express');
 // const app  = express();  
 
 const { OAuth2Client } = require('google-auth-library');
-const {EMAIL,  KEY_ID,  KEY_SECRET, CLIENT_URL, PASS,  JWT_ACC_ACTIVATE, JWT_ACCOUNT_ACTIVATION, JWT_RESET_PASSWORD, SECRET_KEY} = require('../config/keys')
+const {EMAIL,  KEY_ID,  KEY_SECRET, CLIENT_URL, PASS,  JWT_ACCOUNT_ACTIVATION, JWT_RESET_PASSWORD, SECRET_KEY} = require('../config/keys')
 console.log("======>>>>>>>>>>.", EMAIL , PASS);
 var instance = new Razorpay({
   key_id:  KEY_ID,

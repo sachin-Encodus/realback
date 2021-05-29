@@ -7,4 +7,6 @@ module.exports={
     CLIENT_URL:process.env.CLIENT_URL,
     EMAIL:process.env.EMAIL,
     PASS:process.env.PASS,
+    KEY_ID:process.env.KEY_ID,
+     KEY_SECRET:process.env.KEY_SECRET
 }
