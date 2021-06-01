@@ -125,6 +125,7 @@ import '../order.css';
      <li className="nav-item "><NavLink className="nav-link js-scroll-trigger  "  to="/service">Services</NavLink></li>
      <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/about">About</NavLink></li>
       <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/cart">Orders</NavLink></li>
+       <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/dashboard">dashboard</NavLink></li>
      {
 
 login ===  '' ?  <li className="nav-item"><NavLink onClick={Hello} className="nav-link js-scroll-trigger" to="/login">Login</NavLink></li>  :[ <li className="nav-item"><NavLink 

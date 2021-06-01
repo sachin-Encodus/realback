@@ -48,7 +48,7 @@ useEffect(() => {
         <br/>
         <div className="row ">
 
-            <div className="cards"     data-aos="zoom-in" >
+            <div className="cards"      >
                 <Link to="/mobile">
                     <div className="card-item">
                         <div className="card-image-1">
@@ -62,7 +62,7 @@ useEffect(() => {
                     </div>
                 </Link>
             </div>
-            <div className="cards"     data-aos="zoom-in" >
+            <div className="cards"      >
                 <div className="card-item">
                     <Link to="/laptop">
                     <div className="card-image-2">
@@ -74,7 +74,7 @@ useEffect(() => {
                     </div>
                 </div>
             </div>
-            <div className="cards"     data-aos="zoom-in"   >
+            <div className="cards"        >
                 <div className="card-item">
                     <Link to="/ipad">
                     <div className="card-image-3">
@@ -86,7 +86,7 @@ useEffect(() => {
                     </div>
                 </div>
             </div>
-            <div  className="cards"     data-aos="zoom-in" >
+            <div  className="cards"      >
                 <div className="card-item">
                     <Link to="/watch">
                     <div className="card-image-4">
@@ -98,7 +98,7 @@ useEffect(() => {
                     </div>
                 </div>
             </div>
-            <div className="cards"     data-aos="zoom-in" >
+            <div className="cards"      >
                 <div className="card-item">
                     <Link to="/airpod">
                     <div className="card-image-5">
@@ -110,7 +110,7 @@ useEffect(() => {
                     </div>
                 </div>
             </div>
-            <div className="cards"     data-aos="zoom-in" >
+            <div className="cards"      >
                 <div className="card-item">
                     <Link to="/led">
                     <div className="card-image-6">
@@ -122,7 +122,7 @@ useEffect(() => {
                     </div>
                 </div>
             </div>
-            <div className="cards"     data-aos="zoom-in" >
+            <div className="cards"      >
                 <div className="card-item">
                     <Link to="/">
                     <div className="card-image-7">
@@ -135,7 +135,7 @@ useEffect(() => {
                     </div>
                 </div>
             </div>
-            <div className="cards"     data-aos="zoom-in" >
+            <div className="cards"      >
                 <div className="card-item">
                     <Link to="/drone">
                     <div className="card-image-8">
@@ -176,7 +176,7 @@ useEffect(() => {
         <div className="row">   
             <div className="col-md-6">
 
-                <img src={process.env.PUBLIC_URL+"images/PngItem_1342317.png"} alt="" data-aos="slide-right" className="img-fluid  "/>
+                <img src={process.env.PUBLIC_URL+"images/PngItem_1342317.png"} alt=""  className="img-fluid  "/>
             </div>
             <div className="col-md-6 text-center ">
                 <div style={{padding: '40px', position: 'relative'  ,top: '250px'}}>
@@ -206,7 +206,7 @@ useEffect(() => {
 
             </div>
             <div className="col-md-6">
-                <img src={process.env.PUBLIC_URL+"images/i.jpg"} alt="" data-aos="slide-up" className="img-fluid  "/>
+                <img src={process.env.PUBLIC_URL+"images/i.jpg"} alt=""  className="img-fluid  "/>
             </div>
         </div>
 

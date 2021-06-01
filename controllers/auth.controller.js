@@ -1492,6 +1492,7 @@ exports.paymentCallback = (req, res) => {
               error: "Not able to save in Db",
             });
           } else {
+            console.log("=========>>>>>>>>>",order);
             res.redirect(
               `${CLIENT_URL}/payment/status/${fields.razorpay_payment_id}`
             );

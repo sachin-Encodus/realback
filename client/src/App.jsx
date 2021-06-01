@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import MessengerCustomerChat from 'react-messenger-customer-chat';
+
 import Login from './screens/Login.jsx';
 import Register from './screens/Register.jsx';
 import Activate from './screens/Activate.jsx';
@@ -24,6 +24,8 @@ import Private from './screens/Private.jsx';
 import Cart from './models/components/Cart'
 import Payments from './models/components/Payments'
 import PaymentStatus from './comps/PaymentStatus';
+import HomePage from './Dashboard/pages/HomePage'
+
 function App() {
 
 
@@ -33,9 +35,11 @@ function App() {
 
   return (
     <>
+  
     <BrowserRouter>
      <Switch>
          <Route path='/' exact render={props => <Home {...props} />} />
+         <Route path='/dashboard/'  render={props => <HomePage {...props} />} />
          <Route path='/login' exact render={props => <Login {...props} />} />
          <Route path='/admin' exact render={props => <Admin {...props} />} />
          <Route path='/user' exact render={props => <Private {...props} />} />
@@ -51,18 +55,18 @@ function App() {
          <Route path='/led' exact render={props => <Led {...props} />} />
          <Route path='/airpod' exact render={props => <Airpods {...props} />} />
          <Route path='/register' exact render={props => <Register {...props} />} />
-           <Route path='/paymentme' exact render={props => <Payments {...props} />} />
+         <Route path='/paymentme' exact render={props => <Payments {...props} />} />
          <Route path="/payment/status/:paymentId" exact render={props => < PaymentStatus {...props} />} />
-          <Route path='/service' exact render={props => <Service {...props} />} />
+         <Route path='/service' exact render={props => <Service {...props} />} />
          <Route path='/activate/:token' exact render={props => <Activate {...props} />} />
          <Redirect to='/' />
     </Switch>
     </BrowserRouter>
-        <MessengerCustomerChat
+        {/* <MessengerCustomerChat
     pageId="113164043777947"
     appId="976657536472023"
     
-  />
+  /> */}
     </>
   );
 }
