@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Menu from './Menu';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import Service from './Service';
 
 const Home = () =>{
 
@@ -53,7 +54,9 @@ return (
  <header class="masthead">
     <img src="images/gpod.png" alt="" class="img-fluid gpod"/>
         <div class="masthead-heading">
+          Realback for your device solution
       <div class="masthead-subheading">
+        Get repair your all electronics devices by realback 
     </div>
         </div>
     </header>
@@ -88,23 +91,14 @@ return (
   </div>
 </section> */}
 
-<section>
+<section  style={{backgroundColor:'#FFFFFF'}} >
 
 
-  <div className="container-fluid  text-center">
-               
-
-      
-   
-<h1 className="text-center"  >The React Framework
-for Production</h1>
-   
-         
-  </div>
+<Service/>
 </section>
 
 
-
+{/* 
 <section>
 
 
@@ -122,7 +116,7 @@ for Production</h1>
    </figure>     
           </div>
   </div>
-</section>
+</section> */}
 
 <section>
 

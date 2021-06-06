@@ -11144,6 +11144,7 @@ strong
             padding: 40px 30px;
             background: #ebf5fc;
             border-radius: 8px;
+            
            
         }
 
@@ -11459,10 +11460,11 @@ strong
         .cards .card-item {
             display: flex;
             flex-direction: column;
+            
             background-color: #fff;
             width: 100%;
-            border-radius: 6px;
-            box-shadow: 0 20px 40px -14px rgb(44, 137, 180);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px -14px rgb(17, 17, 17);
             overflow: hidden;
             transition: transform 0.5s;
             -webkit-transition: transform 0.5s;
@@ -11494,9 +11496,9 @@ strong
         }
 
         .cards .card-image-1 {
-            height: 200px;
+            height: 240px;
             overflow: hidden;
-            background: url('../src/images/R45.jpg');
+          
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -11505,10 +11507,10 @@ strong
         }
 
         .cards .card-image-2 {
-            height: 200px;
+          width: 100%;
             overflow: hidden;
-            background: url('/src/images/laptop1.jpg');
-            background-size: cover;
+         
+            background-size:cover;
             background-position: center;
             background-repeat: no-repeat;
             border-radius: 6px 6px 0px 0px;
@@ -11516,20 +11518,17 @@ strong
         }
 
         .cards .card-image-3 {
-            height: 200px;
-            overflow: hidden;
-            background: url('/src/images/ipadpro.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            border-radius: 6px 6px 0px 0px;
+           justify-content: center;
+           align-items: center;
+           width: 100%;
+           
 
         }
 
         .cards .card-image-4 {
-            height: 200px;
+            height: 240px;
             overflow: hidden;
-            background: url('/src/images/oppo.jpg');
+            background: url('/src/images/watchs.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -11538,9 +11537,9 @@ strong
         }
 
         .cards .card-image-5 {
-            height: 200px;
+            height: 240px;
             overflow: hidden;
-            background: url('/src/images/air.jpg');
+            background: url('/src/images/airpods.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -11549,9 +11548,9 @@ strong
         }
 
         .cards .card-image-6 {
-            height: 200px;
+            height: 240px;
             overflow: hidden;
-            background: url('/src/images/tv.png');
+            background: url('/src/images/Tvs.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -11563,7 +11562,7 @@ strong
 
 
         .cards .card-image-7 {
-            height: 200px;
+            height: 240px;
             overflow: hidden;
             background: url('/src/images/ipad5.jpg');
             background-size: cover;
@@ -11574,9 +11573,9 @@ strong
         }
 
         .cards .card-image-8 {
-            height: 200px;
+            height: 240px;
             overflow: hidden;
-            background: url('/src/images/gopro.jpg');
+            background: url('/src/images/max3.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -11767,5 +11766,221 @@ top: 0;
 
 
 
+@import url('https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i');
+body{
+  font-family: 'Muli', sans-serif;
+  background:#ddd;
+}
+.shell{
+  padding:80px 0;
+}
+.wsk-cp-product{
+  /* background:#fff; */
+    display: flex;
+            flex-direction: column;
+            
+            background-color: #fff;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px -14px rgb(17, 17, 17);
+        
+ 
+ 
+  
+  position:relative;
+  margin:20px auto;
+}
+.wsk-cp-img{
+  position:absolute;
+  top:20px;
+  left:50%;
+  transform:translate(-50%);
+  -webkit-transform:translate(-50%);
+  -ms-transform:translate(-50%);
+  -moz-transform:translate(-50%);
+  -o-transform:translate(-50%);
+  -khtml-transform:translate(-50%);
+  width: 100%;
+padding:20px;
+  transition: all 0.3s ease-in-out;
+}
+.wsk-cp-img img{
+  width:100%;
+  transition: all 0.3s ease-in-out;
+  border-radius:6px;
+}
+.wsk-cp-product:hover .wsk-cp-img{
+  top:-40px;
+}
+.wsk-cp-product:hover .wsk-cp-img img{
+  /* box-shadow: 0 19px 38px rgba(224, 5, 5, 0.3), 0 15px 12px rgba(233, 106, 106, 0.22); */
+}
+.wsk-cp-text{
+  padding-top:120%;
+}
+.wsk-cp-text .category{
+  text-align:center;
+  font-size:12px;
+  font-weight:bold;
+  padding:5px;
+  margin-bottom:40px;
+  
+  position:relative;
+  transition: all 0.2s ease-in-out;
+}
+.wsk-cp-text .category > *{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  -o-transform: translate(-50%,-50%);
+  -khtml-transform: translate(-50%,-50%);
+    
+}
+.wsk-cp-text .category > span{
+  padding: 12px 30px;
+ 
+  background: #090a0a;
+  color:#fff;
+  box-shadow:  0px 15px 20px rgba(63, 63, 63, 0.4);
+  border-radius:27px;
+  transition: all 0.05s ease-in-out;
+  
+}
+.wsk-cp-product:active .wsk-cp-text .category > span{
+box-shadow:inset 0px 15px 20px rgba(63, 63, 63, 0.4);
+ background: #090a0a;
+}
 
+.wsk-cp-product:focus .wsk-cp-text .category > span{
+box-shadow:  0px 15px 20px rgba(63, 63, 63, 0.4);
+ background: #090a0a;
+  
+}
+.wsk-cp-product:hover .wsk-cp-text .category{
+  margin-top: 0px;
+}
+.wsk-cp-text .title-product{
+  text-align:center;
+}
+.wsk-cp-text .title-product h3{
+  font-size:20px;
+  font-weight:bold;
+  margin:15px auto;
+  overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  width:100%;
+}
+.wsk-cp-text .description-prod p{
+  padding: 20;
+  margin:20;
+}
+.description-prod{
+  padding: 0px 15px 0px 15px;
+  margin-bottom: 20;
+}
+/* Truncate */
+.wsk-cp-text .description-prod {
+  text-align:center;
+  width: 100%;
+  height:100%;
+  overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 
+}
+.card-footer{
+  padding: 25px 0 5px;
+  border-top: 1px solid #ddd;
+}
+.card-footer:after, .card-footer:before{
+  content:'';
+  display:table;
+}
+.card-footer:after{
+  clear:both;
+}
+
+.card-footer .wcf-left{
+  float:left;
+  
+}
+
+.card-footer .wcf-right{
+  float:right;
+}
+
+.price{
+  font-size:18px;
+  font-weight:bold;
+}
+
+a.buy-btn{
+  display:block;
+  color:#212121;
+  text-align:center;
+  font-size: 18px;
+  width:35px;
+  height:35px;
+  line-height:35px;
+  border-radius:50%;
+  border:1px solid #212121;
+  transition: all 0.2s ease-in-out;
+}
+a.buy-btn:hover , a.buy-btn:active, a.buy-btn:focus{
+  border-color: #FF9800;
+  background: #FF9800;
+  color: #fff;
+  text-decoration:none;
+}
+.wsk-btn{
+  display:inline-block;
+  color:#212121;
+  text-align:center;
+  font-size: 18px;
+  transition: all 0.2s ease-in-out;
+  border-color: #FF9800;
+  background: #FF9800;
+  padding:12px 30px;
+  border-radius:27px;
+  margin: 0 5px;
+}
+.wsk-btn:hover, .wsk-btn:focus, .wsk-btn:active{
+  text-decoration:none;
+  color:#fff;
+}  
+.red{
+  color:#F44336;
+  font-size:22px;
+  display:inline-block;
+  margin: 0 5px;
+}
+@media screen and (max-width: 991px) {
+  .wsk-cp-product{
+    margin:40px auto;
+  }
+  /* .wsk-cp-product .wsk-cp-img{
+  top:-40px;
+} */
+.wsk-cp-product .wsk-cp-img img{
+  /* box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); */
+}
+  /* .wsk-cp-product .wsk-cp-text .category > span{
+  border-color:#ddd;
+  box-shadow: none;
+  padding: 11px 28px;
+} */
+.wsk-cp-product .wsk-cp-text .category{
+  margin-top: 0px;
+}
+a.buy-btn{
+  border-color: #FF9800;
+  background: #FF9800;
+  color: #fff;
+}
+}

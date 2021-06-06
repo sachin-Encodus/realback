@@ -1,5 +1,6 @@
 
-import React from "react";
+import React ,{useEffect, useState} from "react";
+import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp, faArrowDown, faArrowUp, faEdit, faEllipsisH, faExternalLinkAlt, faEye, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, Pagination, ButtonGroup } from '@themesberg/react-bootstrap';
@@ -24,20 +25,20 @@ const ValueChange = ({ value, suffix }) => {
   );
 };
 
-export const PageVisitsTable = () => {
+export const PageVisitsTable = (props) => {
+  const {Userinfo} = props;
+
   const TableRow = (props) => {
-    const { pageName, views, returnValue, bounceRate } = props;
-    const bounceIcon = bounceRate < 0 ? faArrowDown : faArrowUp;
-    const bounceTxtColor = bounceRate < 0 ? "text-danger" : "text-success";
+    const { _id, name, email, role } = props;
+   
 
     return (
       <tr>
-        <th scope="row">{pageName}</th>
-        <td>{views}</td>
-        <td>${returnValue}</td>
+        <th scope="row">{_id}</th>
+        <td>{name}</td>
+        <td>{email}</td>
         <td>
-          <FontAwesomeIcon icon={bounceIcon} className={`${bounceTxtColor} me-3`} />
-          {Math.abs(bounceRate)}%
+         {role}
         </td>
       </tr>
     );
@@ -48,7 +49,7 @@ export const PageVisitsTable = () => {
       <Card.Header>
         <Row className="align-items-center">
           <Col>
-            <h5>Page visits</h5>
+            <h5>User Details</h5>
           </Col>
           <Col className="text-end">
             <Button variant="secondary" size="sm">See all</Button>
@@ -58,14 +59,14 @@ export const PageVisitsTable = () => {
       <Table responsive className="align-items-center table-flush">
         <thead className="thead-light">
           <tr>
-            <th scope="col">Page name</th>
-            <th scope="col">Page Views</th>
-            <th scope="col">Page Value</th>
-            <th scope="col">Bounce rate</th>
+            <th scope="col">UserID</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
           </tr>
         </thead>
         <tbody>
-          {pageVisits.map(pv => <TableRow key={`page-visit-${pv.id}`} {...pv} />)}
+          { Userinfo.map(pv => <TableRow key={`page-visit-${pv._id}`} {...pv} />)}
         </tbody>
       </Table>
     </Card>
@@ -187,47 +188,52 @@ export const RankingTable = () => {
   );
 };
 
-export const TransactionsTable = () => {
+export const TransactionsTable = (props) => {
+
+   const {Data} = props;
+
+  
   const totalTransactions = transactions.length;
 
   const TableRow = (props) => {
-    const { invoiceNumber, subscription, price, issueDate, dueDate, status } = props;
-    const statusVariant = status === "Paid" ? "success"
-      : status === "Due" ? "warning"
-        : status === "Canceled" ? "danger" : "primary";
+    const { email, _id, totalPrice, date, orderOtp, mode , city } = props;
+    const statusVariant = mode === "COD" ? "danger" :  "success" 
+   
 
     return (
       <tr>
         <td>
           <Card.Link as={Link} to={Routes.Invoice.path} className="fw-normal">
-            {invoiceNumber}
+            {email}
           </Card.Link>
         </td>
         <td>
           <span className="fw-normal">
-            {subscription}
+            {_id}
           </span>
         </td>
         <td>
           <span className="fw-normal">
-            {issueDate}
+            {date}
           </span>
         </td>
         <td>
           <span className="fw-normal">
-            {dueDate}
+            {orderOtp}
           </span>
         </td>
         <td>
           <span className="fw-normal">
-            ${parseFloat(price).toFixed(2)}
+            ${parseFloat(totalPrice).toFixed(2)}
           </span>
         </td>
+        
         <td>
           <span className={`fw-normal text-${statusVariant}`}>
-            {status}
+            {mode}
           </span>
         </td>
+        
         <td>
           <Dropdown as={ButtonGroup}>
             <Dropdown.Toggle as={Button} split variant="link" className="text-dark m-0 p-0">
@@ -248,6 +254,12 @@ export const TransactionsTable = () => {
             </Dropdown.Menu>
           </Dropdown>
         </td>
+         <td>
+          <span className="fw-normal">
+            {city}
+          </span>
+        </td>
+        
       </tr>
     );
   };
@@ -265,10 +277,12 @@ export const TransactionsTable = () => {
               <th className="border-bottom">Total</th>
               <th className="border-bottom">Status</th>
               <th className="border-bottom">Action</th>
+              <th className="border-bottom">Deive</th>
             </tr>
           </thead>
           <tbody>
-            {transactions.map(t => <TableRow key={`transaction-${t.invoiceNumber}`} {...t} />)}
+      { Data.map(t => <TableRow key={`transaction-${t._id}`} {...t} />)}
+            
           </tbody>
         </Table>
         <Card.Footer className="px-3 border-0 d-lg-flex align-items-center justify-content-between">

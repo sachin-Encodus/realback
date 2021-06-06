@@ -5,7 +5,7 @@ export default function Product(props) {
   return (
     <>
     
-    <div className="col-md-4  align-items-center justify-contect-center align-content-center">
+    <div className="col-md-3  align-items-center justify-contect-center align-content-center">
       <br/> <br/>
       <div className="card">
         <div  style={{display:'flex', justifyContent:'center', alignItems:'center'}}  >

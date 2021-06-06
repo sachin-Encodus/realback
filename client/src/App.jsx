@@ -25,6 +25,9 @@ import Cart from './models/components/Cart'
 import Payments from './models/components/Payments'
 import PaymentStatus from './comps/PaymentStatus';
 import HomePage from './Dashboard/pages/HomePage'
+import '../src/index.css'
+
+
 
 function App() {
 

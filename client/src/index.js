@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 // core styles
-
-import "./Dashboard/scss/volt.scss";
+import '../src/index.css'
+// import "./Dashboard/scss/volt.scss";
 
 // // vendor styles
 import "@fortawesome/fontawesome-free/css/all.css";

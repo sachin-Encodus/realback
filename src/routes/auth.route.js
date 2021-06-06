@@ -9,7 +9,9 @@ const { register, activate,signin, device,
         googleController,
         paymentCallback,
         getPayment,
-        getLogo
+        getLogo,
+        orderData,
+        userData
 
 } = require('../../controllers/auth.controller')
 
@@ -18,6 +20,8 @@ router.post('/register', register);
 router.post('/signin', signin);
 router.post('/device', device);
 router.get('/cart/:id', cart);
+router.get('/order', orderData);
+router.get('/user', userData);
 router.get('/payment' , payment)
 router.post("/payment/callback", paymentCallback);
 router.get("/payments/:paymentId", getPayment);

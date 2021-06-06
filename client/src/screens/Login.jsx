@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import authSvg2 from '../images/Global Workforce.jpeg'
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
-import {GoogleLogin}  from 'react-google-login'
+
 import { authenticate, isAuth } from '../helpers/auth'
 import {  NavLink, Redirect } from 'react-router-dom';
 import '../index.css'

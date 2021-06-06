@@ -1,11 +1,57 @@
-import React from "react";
+import React ,{useEffect, useState} from "react";
+import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faCog, faHome, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Form, Button, ButtonGroup, Breadcrumb, InputGroup, Dropdown } from '@themesberg/react-bootstrap';
 
-import { TransactionsTable } from "../components/Tables";
+import { TransactionsTable ,RankingTable ,PageVisitsTable } from "../components/Tables";
 
 export default () => {
+
+
+ const [userinfo, srtUserinfo] = useState([])
+ const [userdata, setUserdata] = useState([])
+ const [seacharry , setSeacharry ] = useState("")
+  const [filteredOrder, setFilteredOrder] = useState([]);
+console.log(">>>>>>>>>>>>>>>>data" , seacharry);
+
+ useEffect(() => {
+   console.log("calling.....");
+   axios.get("/api/order",)
+  .then(({data})=> setUserdata(data.user))
+  .catch(err =>{
+
+console.log(err);
+
+  })
+
+  Users()
+  
+ }, [])
+ 
+ 
+const Users = () =>{
+     axios.get("/api/user",)
+  .then(({data})=> srtUserinfo(data.user))
+  .catch(err =>{
+
+console.log(err);
+
+  })
+}
+
+console.log("uderinfo", userinfo);
+
+  useEffect(() => {
+    setFilteredOrder(
+      userdata.filter((order) =>
+        order.email.toLowerCase().includes(seacharry.toLowerCase())
+      )
+    );
+  }, [seacharry, userdata]);
+
+
+console.log("======>>>>>>>>>>>>>>>>seacharry" , seacharry);
   return (
     <>
       <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
@@ -31,9 +77,10 @@ export default () => {
           <Col xs={8} md={6} lg={3} xl={4}>
             <InputGroup>
               <InputGroup.Text>
-                <FontAwesomeIcon icon={faSearch} />
+               <FontAwesomeIcon  icon={faSearch} />
+             
               </InputGroup.Text>
-              <Form.Control type="text" placeholder="Search" />
+              <Form.Control type="text" placeholder="Search..."  onChange={(e)=> setSeacharry(e.target.value)} />
             </InputGroup>
           </Col>
           <Col xs={4} md={2} xl={1} className="ps-md-0 text-end">
@@ -56,7 +103,8 @@ export default () => {
         </Row>
       </div>
 
-      <TransactionsTable />
+      <TransactionsTable  Data={filteredOrder}   />
+      <PageVisitsTable  Userinfo={userinfo}  />
     </>
   );
 };

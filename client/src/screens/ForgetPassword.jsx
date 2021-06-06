@@ -39,7 +39,7 @@ s0.parentNode.insertBefore(s1,s0);
     if (email) {
       setFormData({ ...formData, textChange: 'Submitting' });
       axios
-        .put("http://localhost:5000/api/forgotpassword", {
+        .put("/api/forgotpassword", {
           email
         })
         .then(res => {

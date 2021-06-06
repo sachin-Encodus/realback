@@ -88,7 +88,7 @@ const list   =  userdata.map(item => {
            
             </div>
       <div className="col-md-6  "   >
-        <div style={{marginLeft:60}}>
+        <div >
 
  <h3 style={{fontFamily:'sans-serif'}}   >{item.company}  {item.model}</h3>
         

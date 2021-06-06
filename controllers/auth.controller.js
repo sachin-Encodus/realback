@@ -33,7 +33,7 @@ var instance = new Razorpay({
   key_secret:   KEY_SECRET
 })
 // app.use(cookieParser());
-
+// xmgrxqydtnrsfdet
 const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
 host:'smtp.gmail.com',
@@ -1299,15 +1299,10 @@ exports.googleController = (req, res) => {
 
 // };
 
+exports.userData =  async function( req , res){   
 
-
-
-// logout by clearCookie and jwt token 
-exports.cart =  async function( req , res){   
        try {
-          
-
-       await Device.find({email:req.params.id},(err, user) => {
+   await User.find({},(err, user) => {
         if (user) {
           return res.status(201).send({
             user
@@ -1319,6 +1314,54 @@ exports.cart =  async function( req , res){
         console.log(user);
       })
 
+
+       } catch (error) {
+            console.log("logout error");
+         res.status(500).json({message: "you have already logged out sir !"});
+       }
+
+};
+
+exports.orderData =  async function( req , res){   
+
+       try {
+   await Device.find({},(err, user) => {
+        if (user) {
+          return res.status(201).send({
+            user
+          });
+          
+        }else{
+          console.log(err);
+        }
+        console.log(user);
+      })
+
+
+       } catch (error) {
+            console.log("logout error");
+         res.status(500).json({message: "you have already logged out sir !"});
+       }
+
+};
+
+// logout by clearCookie and jwt token 
+exports.cart =  async function( req , res){   
+ 
+       try {
+          
+
+   await Device.find({email:req.params.id},(err, user) => {
+        if (user) {
+          return res.status(201).send({
+            user
+          });
+          
+        }else{
+          console.log(err);
+        }
+        console.log(user);
+      })
        } catch (error) {
             console.log("logout error");
          res.status(500).json({message: "you have already logged out sir !"});
