@@ -15,7 +15,7 @@ export default function Basket(props) {
 
 
 
-  const { cartItems, onAdd, onRemove , screen} = props;
+  const { cartItems, onAdd,hidedata, countCartItems, showdata, onRemove , screen} = props;
  const currentdate = new Date();
 
 const datetime = "Last Sync: " + currentdate.getDay() + "/" + currentdate.getMonth() 
@@ -50,15 +50,14 @@ console.log("date time",date);
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
   const discount = 5000;
   const totalPrice = itemsPrice + taxPrice + shippingPrice - discount;
- 
- const [formData, setFormData] = useState({
+ const [next , setNext] = useState(false)
+ const [formData, setFormData] =  useState({
     email: '',
     name:'',
     company: '',
      model: '',
       message: '',
       products:'',
-   
       mode:'',
        number: '',
       country: '',
@@ -71,12 +70,22 @@ console.log("date time",date);
 
 
 
+const decrease = () =>{
+  toast.dark("item removed")
+}
 
 
+// if(cartItems.length !== 0){
+//   const i = cartItems.length
 
-
-
-
+// if(i+1 > cartItems.length - 1){
+//   toast.dark("item added")
+// }else{
+//    console.log("decreasing");
+// }
+// }else{
+//   console.log("k");
+// }
 
        useEffect(() =>{
 
@@ -145,6 +154,17 @@ console.log("date time",date);
     
   };
 
+
+const getData = () => {
+  if(company && model) {
+showdata()
+  }else{
+    toast.dark('please fill')
+  }
+  
+}
+
+
 // sachin1245e@gmail.com
 
 
@@ -193,9 +213,10 @@ console.log("date time",date);
           Address: '',
               textChange: 'Submitted'
             });
-          console.log("===>>>>>>", res.data.deviceData); 
-       toast.success("successfully submitted" );
+         
          })
+        
+       toast.dark(`Order OTP has been sent to ${res.data.email}` );
         })
         .catch(err => {
           setFormData({
@@ -219,6 +240,7 @@ console.log("date time",date);
           toast.error(err.response.data.errors);
         });
     } else {
+     
       toast.error('Please fill all fields');
     }
   };
@@ -255,17 +277,43 @@ console.log("date time",date);
   
       <ToastContainer/>
       <div className="row  justify-content-center align-item-center  ">
-         <div className=" justify-content-center align-item-center">
-           
-     <form  onSubmit={onSubmits} style={{  display:  cartItems.length === 0 ? 'none' : 'block' }} className="contact-form   justify-content-center align-item-center">
-     <h1>Give your details </h1>
+        <div className="contact-form   justify-content-center align-item-center" >
+          <div style={{display: next === true ? 'none' : 'block'}}  >
+            <h1>{countCartItems}</h1>
+   <div   className="form-field  serachbar  col-xl-3">
+   
+              <input id="city" className="input-text  js-input" type='company' placeholder='company'
+                 onChange={handleChange('company')} value={company}        />        
+            </div>
+              <div className="form-field  serachbar col-xl-3">
+              <input id="pincode" className="input-text js-input" type='model' placeholder='model'
+                   onChange={handleChange('model')} value={model}        />      
+            </div>
+             <button className="btn"   onClick={() => getData()} >
+              
+              Payment Now
+              </button>
+        </div>
+         
+          </div>
 
-            <div className="form-field  justify-content-center align-item-center col-xl-3">
+                      
+         <div className=" justify-content-center align-item-center">
+
+
+
+
+
+
+     <form  onSubmit={onSubmits}  className="contact-form   justify-content-center align-item-center">
+     <h1>Give your details </h1>
+<div style={{  display:  next === true ? 'block' : 'none' }}  >
+            <div className="form-field serachbar justify-content-center align-item-center col-xl-3">
               <input id="city" className="input-text js-input" type='email' placeholder='email'
                    onChange={handleChange('email')} value={email}      disabled     />
 
             </div>
-              <div class="form-field col-xl-3">
+              <div class="form-field serachbar col-xl-3">
 
                             <input  onChange={handleChange('name')} class="input-text js-input" placeholder="Full Name" value={name} type="text" />
 
@@ -274,17 +322,17 @@ console.log("date time",date);
           
                    
              
-                           <div className="form-field col-xl-3">
-              <input id="city" className="input-text js-input" type='company' placeholder='company'
-                 onChange={handleChange('company')} value={company}        />        
-            </div>
-              <div className="form-field col-xl-3">
-              <input id="pincode" className="input-text js-input" type='model' placeholder='model'
-                   onChange={handleChange('model')} value={model}        />      
-            </div>
+             
              <div class="form-field col-xl-3">
                             <input onChange={handleChange('number')} class="input-text js-input"  value={number} placeholder="Mobile" type="num"
                                 maxlength="10"  />
+
+                        </div>
+                             <div class="form-field col-xl-3">
+                          
+                             <input onChange={handleChange('country')}class="input-text js-input" placeholder="Country" type="string"
+                                 value={country}  />
+                                 
 
                         </div>
           
@@ -295,13 +343,7 @@ console.log("date time",date);
 
               </div>
 
-                           <div class="form-field col-xl-3">
-                          
-                             <input onChange={handleChange('country')}class="input-text js-input" placeholder="Country" type="string"
-                                 value={country}  />
-                                 
-
-                        </div>
+                      
                         <div class="form-field col-xl-3">
                             <input onChange={handleChange('state')} class="input-text js-input" placeholder="State"         value={state} type="text" />
 
@@ -316,32 +358,47 @@ console.log("date time",date);
 
                         </div>
 
-                        <div class="form-field col-xl-12">
+                        <div class="form-field col-xl-6">
                             <input onChange={handleChange('Address')}   class="input-text js-input" placeholder="Address"    value={Address} type="text"
                                 />
 
                         </div>
-         
+                        {/* <Link className="btn"  style={{padding:10}}  onClick={() => {showdata(); setNext(true);}} >Next</Link> */}
+               <div >
+              
+             <Link to="/paymentme"><button className="btn"  style={{display:'block'}}  type="submit" onClick={() =>   setFormData({ 
+                 ...formData,
+                 mode:"COD"
+       })} >
 
+              {textChange}
+              </button></Link> 
+           
+                <button className="btn"   onClick={() =>  setFormData({ 
+                 ...formData,
+                 mode:"online "
+       })} >
+              
+              Payment Now
+              </button>
+
+            </div>
+</div>
 
 {/* https://signal-clone-f1ebb.web.app/ */}
 
 
 
     <aside className="container">
-     
-     
-      <br/>
-      <br/>
-      <div>
-        {cartItems.length === 0 && <div>No select item</div>}
+      <div style={{display: next === true ? 'none' : 'block'}}  >
+      
         {cartItems.map((item) => (
           <div key={item.id} className="row">
              <div className="col-md-4"><img src={item.image} className="image-cart d-flex"   alt=""/><p style={{fontSize:17 , color:"#171717"} }  >{item.name}</p></div>
             {/* <div className="col-2">{item.name}</div> */}
       
             <div className=" col-md-4" >
-              <a  onClick={() => onRemove(item)} style={{width:'30px', height:'40px' ,fontSize:"25px", borderRadius:'10px' , marginLeft:30,  padding: '0 0.4rem'}} className="btn">x</a>
+              <a  onClick={() => { decrease(); onRemove(item);}} style={{width:'30px', height:'40px' ,fontSize:"25px", borderRadius:'10px' , marginLeft:30,  padding: '0 0.4rem'}} className="btn">x</a>
 
                 
               {/* <a  onClick={() => onAdd(item)} style={{width:'30px', height:'40px' , fontSize:"25px", borderRadius:'10px' ,marginLeft:10,  padding:' 0 0.2rem'}} className="btn">+</a> */}
@@ -386,25 +443,10 @@ console.log("date time",date);
               </div>
             </div>
             <hr />
-            <div >
-              
-             <Link to="/paymentme"><button className="btn"  style={{display:'block'}}  type="submit" onClick={() =>   setFormData({ 
-                 ...formData,
-                 mode:"COD"
-       })} >
+        <Link onClick={() => {hidedata();  setNext(true)} }  ><button className="btn"  style={{display:'block'}}   >
 
-              {textChange}
-              </button></Link> 
-           
-                <button className="btn"   onClick={() =>  setFormData({ 
-                 ...formData,
-                 mode:"online "
-       })} >
-              
-              Payment Now
-              </button>
-
-            </div>
+              Next
+              </button></Link>
           </>
         )}
       </div>

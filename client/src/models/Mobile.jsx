@@ -9,7 +9,17 @@ function App() {
   const screen = "BP-may-home-page-banner-2.png"
   const device = "mobile"
   const [cartItems, setCartItems] = useState([]);
+    const [showdata, setShowdata] = useState(false);
+    const show = () =>{
+      setShowdata(true)
+    }
+      const hide = () =>{
+      setShowdata(false)
+    }
+    console.log('====================================',showdata);
+
   const onAdd = (product) => {
+
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist) {
       setCartItems(
@@ -43,10 +53,15 @@ function App() {
           cartItems={cartItems}
           onAdd={onAdd}
           onRemove={onRemove}
+          showdata={show}
+          hidedata={hide}
         ></Basket>
         <div className="container">
       <div className="row">
-        <Mobile mobile={mobile} onAdd={onAdd}></Mobile>
+       <Mobile mobile={mobile} showdata={showdata} onAdd={onAdd}></Mobile>
+
+        
+      
       
         
       </div>

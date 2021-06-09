@@ -5,7 +5,7 @@ import Product from './Product';
 
  function Main (props) {
 
-  const { mobile, onAdd} = props;
+  const { mobile, showdata, onAdd} = props;
   return (
     <>
     
@@ -16,7 +16,7 @@ import Product from './Product';
       <div className="row">
 
         {mobile.map((product) => (
-          <Product key={product.id} product={product} onAdd={onAdd}></Product>
+          <Product key={product.id} product={product} showdata={showdata} onAdd={onAdd}></Product>
         ))}
        
     

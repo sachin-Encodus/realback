@@ -1,6 +1,6 @@
 import React ,{useEffect}from 'react';
 
-
+import { Link } from 'react-router-dom';
 
 // import Watch from '../images/large.mp4'
 
@@ -10,7 +10,9 @@ import Menu from './Menu';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import Service from './Service';
-
+import App from '../images/macpro.png'
+import Electrical from '../images/ele.webp'
+// import Pod from '../images/.png'
 const Home = () =>{
 
 useEffect(() => {
@@ -46,12 +48,49 @@ return (
           </div>
   </div> */}
 
+<section style={{backgroundColor:'black'}}  >
 
 
+  <div className="container-fluid  text-center">
+               
+
+      
+    <div className="row text-center ">
+
+ 
+
+<div className="col-md-5">
+  
+<h1 style={{color:'#fff'}} className=" p-5 mt-5"  >Realback for your all devices solutions</h1>
+<div class="flex social-btns">
+  <Link  style={{padding:15}} class="app-btn blu flex vert  " to="/service">
+   
+    <span class="big-txt">Service</span>
+  </Link>
 
 
+	
 
- <header class="masthead">
+</div>
+	<p className=" p-5 mt-1"  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, nulla ab! Alias excepturi at optio sint! Ut est sit veniam molestias qui illum laborum nobis recusandae, expedita amet et voluptate!</p>
+
+</div>
+   
+ 
+<div className="col-md-7 p-5 justify-content-center ">
+   <figure data-aos="fade-in "  >
+
+<img   src={App} alt="" className="img-fluid"/>
+
+   </figure> 
+</div> 
+    
+          </div>
+  </div>
+
+</section>
+
+  {/* <header class="masthead">
     <img src="images/gpod.png" alt="" class="img-fluid gpod"/>
         <div class="masthead-heading">
           Realback for your device solution
@@ -59,7 +98,7 @@ return (
         Get repair your all electronics devices by realback 
     </div>
         </div>
-    </header>
+    </header>  */}
     {/* <section>
 <div className="container">
   <div className="row   justify-content-center   align-items-center">
@@ -91,11 +130,11 @@ return (
   </div>
 </section> */}
 
-<section  style={{backgroundColor:'#FFFFFF'}} >
+{/* <section  style={{backgroundColor:'#FFFFFF'}} >
 
 
 <Service/>
-</section>
+</section> */}
 
 
 {/* 
@@ -117,8 +156,13 @@ return (
           </div>
   </div>
 </section> */}
+   {/* <figure data-aos="fade-in"  >
 
-<section>
+<img   src={Pod} alt="" className="img-fluid"/>
+
+   </figure>  */}
+
+<section  style={{backgroundColor:'rgb(227 229 232)'}}  >
 
 
   <div className="container-fluid  text-center">
@@ -126,25 +170,38 @@ return (
 
       
     <div className="row text-center ">
-<div className="col-md-6">
- <figure data-aos="fade-in"  >
 
-<img   src={process.env.PUBLIC_URL+"images/front.jpeg"} alt="" className="img-fluid"/>
 
-   </figure> 
-</div>
-  <div className="col-md-6">
+<div className="col-md-7">
    <figure data-aos="fade-in"  >
 
-<img   src={process.env.PUBLIC_URL+"images/back.jpeg"} alt="" className="img-fluid"/>
+<img   src={Electrical} alt="" className="img-fluid"/>
 
    </figure> 
-</div>   
- <figure data-aos="fade-in"  >
+</div>  
 
-<img   src={process.env.PUBLIC_URL+"images/iphone.jpg"} alt="" className="img-fluid"/>
+<div className="col-md-5">
+  
+<h1 className=" p-5 mt-5"  >Download the Realback Android and ios app soon.</h1>
+<div class="flex social-btns">
+  <Link class="app-btn blu flex vert" to="http:apple.com">
+    <i class="fab fa-apple"></i>
+    <p>Available on the <br/> <span class="big-txt">App Store</span></p>
+  </Link>
 
-   </figure>     
+  <Link class="app-btn blu flex vert" to="http:google.com">
+    <i class="fab fa-google-play"></i>
+    <p>Get it on <br/> <span class="big-txt">Google Play</span></p>
+  </Link>
+	
+
+</div>
+	<p className=" p-5 mt-1"  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, nulla ab! Alias excepturi at optio sint! Ut est sit veniam molestias qui illum laborum nobis recusandae, expedita amet et voluptate!</p>
+
+</div>
+   
+ 
+    
           </div>
   </div>
 </section>
@@ -319,3 +376,16 @@ return (
 }
 
 export default Home;
+
+
+
+
+
+
+
+
+// background: rgba(255, 255, 255, 0.1);
+// box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+// border-top: 1px solid rgba(255, 255, 255, 0.5);
+// border-left: 1px solid rgba(255, 255, 255, 0.5);
+// backdrop-filter: blur(5px);

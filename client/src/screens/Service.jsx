@@ -1,4 +1,4 @@
-import React ,{useEffect}from 'react';
+import React ,{useEffect , useState}from 'react';
 import { Link ,Redirect } from 'react-router-dom';
 import Footer from './Footer';
 import { isAuth } from '../helpers/auth';
@@ -7,6 +7,40 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 
 import data from './Servicedata'
 const Service = () =>{
+    const [cities, setCities] = useState([]);
+  const [selectedCounty, setSelectedCountry] = useState("Selected country");
+  const [selectedCity, setSelectedCity] = useState("Selected city");
+
+  const countries = {
+    France: ["Paris", "Marseille", "Lille", "Lyon"],
+    Usa: ["New York", "San Francisco", "Austin", "Dallas"],
+    Brazil: ["São Paulo", "Rio de Janeiro", "Salvador"]
+  };
+
+
+
+  const countryList = Object.keys(countries).map(key => ({
+    name: key
+  }));
+
+  function handleCountrySelect(e) {
+    console.log("Selected country", e.target.value);
+    const countrySel = e.target.value;
+    const citiesSel = countrySel !== "" ? countries[countrySel] : "Selected country";
+    setSelectedCountry(countrySel);
+    setCities(citiesSel);
+    setSelectedCity("Selected city");
+  }
+
+  function handleCitySelect(e) {
+    console.log("Selected city", e.target.value);
+    const citiesSel = e.target.value;
+    setSelectedCity(citiesSel);
+  }
+
+
+
+
 const {mobile} = data;
 
 useEffect(() => {
@@ -22,12 +56,89 @@ useEffect(() => {
 
 
 
-
  return (
 
 <>
 {/* <Menu/> */}
  {!isAuth() ? <Redirect to='/login' /> : null}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/* 
+
+    <div className="App">
+      <h1>Example DropDown {selectedCounty} and {selectedCity}</h1>
+
+      <div className="Container">
+        <select
+          name="Countries"
+          onChange={e => handleCountrySelect(e)}
+          value={selectedCounty}
+        >
+          <option value="">Select the country</option>
+          {countryList.map((country, key) => (
+            <option key={key} value={country.name}>
+              {country.name}
+            </option>
+          ))}
+        </select>
+
+        <select
+          name="Cities"
+          onChange={e => handleCitySelect(e)}
+          value={selectedCity}
+        >
+          <option value="">Select the city</option>
+          {cities.map((city, key) => (
+            <option key={key} value={city}>
+              {city}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
+   */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  {/* <div  className="container-fluid">
      <div className="row">
     <div className="wrapper mt-5 d-flex justify-content-center align-items-center ">
@@ -174,9 +285,9 @@ useEffect(() => {
 
 
 
-<div class="container text-center">
+<div class="container mt-5 text-center">
 <h1>Product card</h1>
-  <span>Create With <i class="zmdi zmdi-favorite red"></i>  By: <strong>Sachin , Rohit</strong> From: <i><a href="http://blog.wingerdstok.com" class="wsk-btn">Realback</a></i></span>
+  <span>Create With ❤<i class="zmdi zmdi-favorite red"></i>By: <strong>Sachin , Rohit</strong> From:Realback </span>
 </div>
 
 

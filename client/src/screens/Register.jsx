@@ -10,23 +10,35 @@ const Register = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    mobile:'',
     password1: '',
     password2: '',
     textChange: 'Sign Up'
   });
 
-  const { name, email, password1, password2, textChange } = formData;
+
+
+
+  const { name, email, mobile, password1, password2, textChange } = formData;
+
+  const stringLength =  mobile.length;
+
+console.log("==========",stringLength);
+if(stringLength > 10){
+  toast.dark("invalid phone number"); 
+}
   const handleChange = text => e => {
     setFormData({ ...formData, [text]: e.target.value });
   };
   const handleSubmit = e => {
     e.preventDefault();
-    if (name && email && password1) {
+    if (name && email && mobile && password1) {
       if (password1 === password2) {
         setFormData({ ...formData, textChange: 'Submitting' });
         axios
           .post("http://localhost:5000/api/register", {
             name,
+            mobile,
             email,
             password: password1
           })
@@ -35,6 +47,7 @@ const Register = () => {
               ...formData,
               name: '',
               email: '',
+              mobile:'',
               password1: '',
               password2: '',
               textChange: 'Submitted'
@@ -54,6 +67,7 @@ const Register = () => {
               ...formData,
               name: '',
               email: '',
+              mobile:'',
               password1: '',
               password2: '',
               textChange: 'Sign Up'
@@ -101,6 +115,9 @@ const Register = () => {
                         <input
                             className='input-block'
                             type='email' placeholder='Email' onChange={handleChange('email')} value={email} />
+                             <input
+                            className='input-block'
+                            type='number' placeholder='mobile' onChange={handleChange('mobile')} value={mobile} />
                         <input
                             className='input-block'
                             type='password' placeholder='Password' onChange={handleChange('password1')}

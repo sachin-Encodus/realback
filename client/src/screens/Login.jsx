@@ -77,7 +77,7 @@ const Login = ({ history }) => {
               : history.push('/');
  
             // toast.success(`Hey ${res.data.token}, Welcome back!`);
-        toast.success(res.data.myname);
+        toast.dark(res.data.myname);
     
         })
       })
@@ -89,11 +89,11 @@ const Login = ({ history }) => {
             textChange: 'Sign In'
           });
           console.log(err.response);
-          toast.error(err.response.data.errors);
+          toast.dark(err.response.data.errors);
         
         });
     } else {
-      toast.error('Please fill all blocks');
+      toast.dark('Please fill all blocks');
     }
   };
   return (

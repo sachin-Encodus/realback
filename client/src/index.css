@@ -10180,7 +10180,7 @@ header.masthead {
   padding-top:0;
   padding-bottom: 0;
   color: #fff;
-  background-image: url("../src/images/bw.jpg"); height: 730px;
+  background-image: url("https://cdn.shopify.com/s/files/1/1520/4366/files/satechi_2020_05_29_img4_desktop_rev1_cc81ff88-7d42-43d2-9143-a82267b8d64a.jpg?v=1595604389"); height: 730px;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -11142,8 +11142,10 @@ strong
             border: none;
             margin-bottom: 20px;
             padding: 40px 30px;
-            background: #ebf5fc;
-            border-radius: 8px;
+           background-color: #fff;
+            width: 100%;
+            border-radius: 40px;
+                    box-shadow: -6px -6px 20px rgba(255, 255, 255, 1), 6px 6px 20px rgba(0, 0, 0, 0.1);
             
            
         }
@@ -11158,7 +11160,7 @@ strong
 
         }
 
-        .me:hover {
+        .card:hover {
             box-shadow: inset -6px -6px 20px rgba(255, 255, 255, 0.5), inset 6px 6px 20px rgba(0, 0, 0, 0.05);
         }
 
@@ -11810,7 +11812,9 @@ padding:20px;
   border-radius:6px;
 }
 .wsk-cp-product:hover .wsk-cp-img{
-  top:-40px;
+  width: 110%;
+  top:-30px;
+  z-index: 9;
 }
 .wsk-cp-product:hover .wsk-cp-img img{
   /* box-shadow: 0 19px 38px rgba(224, 5, 5, 0.3), 0 15px 12px rgba(233, 106, 106, 0.22); */
@@ -11983,4 +11987,54 @@ a.buy-btn{
   background: #FF9800;
   color: #fff;
 }
+}
+
+
+
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-btn {
+  width: 45%;
+  max-width: 160px;
+
+    background: #090a0a;
+  color:#fff;
+  box-shadow:  0px 15px 20px rgba(63, 63, 63, 0.4);
+  margin: 20px 10px;
+  text-align: left;
+  border-radius: 10px;
+  text-decoration: none;
+  font-family: "Lucida Grande", sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+.app-btn.blu {
+  background-color: #101010;
+  transition: background-color 0.25s linear;
+}
+.app-btn.blu:hover {
+  background-color: #000000;
+}
+.app-btn i {
+  width: 20%;
+  text-align: center;
+  font-size: 28px;
+  margin-right: 7px;
+}
+.app-btn .big-txt {
+  font-size: 17px;
+  text-transform: capitalize;
+}
+
+
+.serachbar{
+   
+   
+      
+            
 }
