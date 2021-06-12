@@ -9,6 +9,15 @@ function App() {
   const screen = "ipad.png"
   const device = "Ipad"
   const [cartItems, setCartItems] = useState([]);
+   const [showdata, setShowdata] = useState(false);
+    const show = () =>{
+      setShowdata(true)
+    }
+      const hide = () =>{
+      setShowdata(false)
+    }
+    console.log('====================================',showdata);
+
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist) {
@@ -43,9 +52,11 @@ function App() {
           cartItems={cartItems}
           onAdd={onAdd}
           onRemove={onRemove}
+           showdata={show}
+          hidedata={hide}
         ></Basket>
       <div className="row">
-        <Ipad ipad={ipad} onAdd={onAdd}></Ipad>
+        <Ipad ipad={ipad} showdata={showdata} onAdd={onAdd}></Ipad>
       
         
       </div>

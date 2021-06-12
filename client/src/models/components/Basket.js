@@ -159,7 +159,7 @@ const getData = () => {
   if(company && model) {
 showdata()
   }else{
-    toast.dark('please fill')
+    toast.dark('please fill company and model no.')
   }
   
 }
@@ -278,22 +278,29 @@ showdata()
       <ToastContainer/>
       <div className="row  justify-content-center align-item-center  ">
         <div className="contact-form   justify-content-center align-item-center" >
+          
           <div style={{display: next === true ? 'none' : 'block'}}  >
             <h1>{countCartItems}</h1>
-   <div   className="form-field  serachbar  col-xl-3">
+   <div   className="form-field    col-xl-3">
    
               <input id="city" className="input-text  js-input" type='company' placeholder='company'
                  onChange={handleChange('company')} value={company}        />        
             </div>
-              <div className="form-field  serachbar col-xl-3">
+              <div className="form-field   col-xl-3">
               <input id="pincode" className="input-text js-input" type='model' placeholder='model'
                    onChange={handleChange('model')} value={model}        />      
             </div>
              <button className="btn"   onClick={() => getData()} >
               
-              Payment Now
+              Next
               </button>
+
+              
         </div>
+         <button className="btn" style={{backgroundColor:'#000'}}  onClick={() => setNext(false)} >
+              
+               back
+              </button>
          
           </div>
 
@@ -306,14 +313,15 @@ showdata()
 
 
      <form  onSubmit={onSubmits}  className="contact-form   justify-content-center align-item-center">
-     <h1>Give your details </h1>
+    
 <div style={{  display:  next === true ? 'block' : 'none' }}  >
-            <div className="form-field serachbar justify-content-center align-item-center col-xl-3">
+   <h1>Give your details </h1>
+            <div className="form-field  justify-content-center align-item-center col-xl-3">
               <input id="city" className="input-text js-input" type='email' placeholder='email'
                    onChange={handleChange('email')} value={email}      disabled     />
 
             </div>
-              <div class="form-field serachbar col-xl-3">
+              <div class="form-field  col-xl-3">
 
                             <input  onChange={handleChange('name')} class="input-text js-input" placeholder="Full Name" value={name} type="text" />
 
@@ -389,68 +397,86 @@ showdata()
 
 
 
-    <aside className="container">
-      <div style={{display: next === true ? 'none' : 'block'}}  >
-      
+    <div className="container">
+      <div className="row"   style={{display: next === true ? 'none' : 'flex'}} >
+
+     
+      <div className="col-md-6"   >
         {cartItems.map((item) => (
-          <div key={item.id} className="row">
-             <div className="col-md-4"><img src={item.image} className="image-cart d-flex"   alt=""/><p style={{fontSize:17 , color:"#171717"} }  >{item.name}</p></div>
+          <div key={item.id}    style={{justifyContent:'space-between', display:'flex' ,
+          backgroundColor:'#f5f5f7' ,fontFamily:'sans-serif',  padding:20, marginTop:10, borderRadius:10}}  >
+             <div className=""><img src={item.image} className="image-cart d-flex"   alt=""/><p style={{fontSize:17 , color:"#171717"} }  >{item.name}</p></div>
             {/* <div className="col-2">{item.name}</div> */}
       
-            <div className=" col-md-4" >
-              <a  onClick={() => { decrease(); onRemove(item);}} style={{width:'30px', height:'40px' ,fontSize:"25px", borderRadius:'10px' , marginLeft:30,  padding: '0 0.4rem'}} className="btn">x</a>
+            <div className="  "  >
+              <a  onClick={() => { decrease(); onRemove(item);}} style={{width:'30px', height:'40px' ,fontSize:"25px", borderRadius:'10px' , marginLeft:30,  padding: '0 0.4rem' ,backgroundColor:'#fff'}} className="btn">x</a>
 
                 
               {/* <a  onClick={() => onAdd(item)} style={{width:'30px', height:'40px' , fontSize:"25px", borderRadius:'10px' ,marginLeft:10,  padding:' 0 0.2rem'}} className="btn">+</a> */}
             </div>
 
-            <div className="col-md-4 text-right-1">
+            <div className=" ">
                {item.price.toFixed(2)} 
             </div>
           </div>
         ))}
-
+</div>
         {cartItems.length !== 0 && (
           <>
-            <hr></hr>
-            <div className="row">
-              <div className="col-2">Items Price</div>
-              <div className="col-1 text-right">{itemsPrice.toFixed(2)}</div>
-            </div>
-            <div className="row">
-              <div className="col-2">Tax Price</div>
-              <div className="col-1 text-right">{taxPrice.toFixed(2)}</div>
-            </div>
-            <div className="row">
-              <div className="col-2">Shipping Price</div>
-              <div className="col-1 text-right">
-                {shippingPrice.toFixed(2)}
-              </div>
-            </div>
+        
+            <div className="col-md-6  p-3"  >
+             
+                
+            
+          <div  style={{justifyContent:'space-between', display:'flex', marginBottom:5 }}  >
+ <div className="">Items Price</div>
+              <div className="">{itemsPrice.toFixed(2)}</div>
+          </div>
+             
+          
+           <div  style={{justifyContent:'space-between', display:'flex' , marginBottom:5}}  >
+              <div>Tax Price</div>
+              <div>{taxPrice.toFixed(2)}</div>
+          </div>
+          
 
-  <div className="row">
-              <div className="col-2">discount</div>
-              <div className="col-1 text-right">
+            <div  style={{justifyContent:'space-between', display:'flex' , marginBottom:5}}  >
+              <div>Shipping Price</div>
+              <div >
+                {shippingPrice.toFixed(2)}
+            
+            </div>
+</div>
+ 
+
+   <div  style={{justifyContent:'space-between', display:'flex', marginBottom:5 }}  >
+              <div >discount</div>
+              <div >
                 {discount.toFixed(2)}
               </div>
-            </div>
-            <div className="row">
-              <div className="col-2  mt-2">
+       </div>
+
+
+  <div  style={{justifyContent:'space-between', display:'flex' , marginBottom:5}}  >
+              <div >
                 Total Price
               </div>
-              <div  className="col-1 text-right  mt-2">
+              <div  >
                 {totalPrice.toFixed(2)}
               </div>
-            </div>
+           </div>
             <hr />
         <Link onClick={() => {hidedata();  setNext(true)} }  ><button className="btn"  style={{display:'block'}}   >
 
               Next
               </button></Link>
+
+              </div>
           </>
         )}
-      </div>
-    </aside>
+     
+    </div>
+    </div>
     </form>
 </div>
 </div>

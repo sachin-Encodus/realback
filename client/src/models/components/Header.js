@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../cart.css'
+
 import {Link} from 'react-router-dom';
  import { IoBagCheck } from "react-icons/io5";
 export default function Header(props) {
@@ -10,7 +10,7 @@ const { device} = props
 
     <>
     <br/><br/><br/><br/>
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
       <div className="col-md-6 text-center">
       

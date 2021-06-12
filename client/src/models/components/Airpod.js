@@ -5,7 +5,7 @@ import Product from './Product';
 
  function Main (props) {
 
-  const { airpod, onAdd} = props;
+  const { airpod, showdata, onAdd} = props;
   return (
     <>
     
@@ -14,7 +14,7 @@ import Product from './Product';
        <br/><br/>
       <div className="row">
         {airpod.map((product) => (
-          <Product key={product.id} product={product} onAdd={onAdd}></Product>
+          <Product key={product.id} product={product} showdata={showdata} onAdd={onAdd}></Product>
         ))}
       </div>
     </div>

@@ -6,7 +6,7 @@ export default function Product(props) {
   return (
     <>
     
-    <div className="col-md-3 align-items-center justify-contect-center align-content-center">
+    <div className="col-md-3 align-items-center justify-contect-center ">
       <br/> <br/>
       {
 

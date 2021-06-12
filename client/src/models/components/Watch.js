@@ -5,7 +5,7 @@ import Product from './Product';
 
  function Main (props) {
 
-  const { watch, onAdd} = props;
+  const { watch, showdata, onAdd} = props;
   return (
     <>
     
@@ -17,7 +17,7 @@ import Product from './Product';
 
        
        {watch.map((product) => (
-          <Product key={product.id} product={product} onAdd={onAdd}></Product>
+          <Product key={product.id} product={product} showdata={showdata} onAdd={onAdd}></Product>
         ))}
      
       </div>

@@ -8,6 +8,14 @@ function App() {
   const { led } = data;
   const screen = "Led"
   const [cartItems, setCartItems] = useState([]);
+      const [showdata, setShowdata] = useState(false);
+    const show = () =>{
+      setShowdata(true)
+    }
+      const hide = () =>{
+      setShowdata(false)
+    }
+    console.log('====================================',showdata);
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist) {
@@ -41,9 +49,11 @@ function App() {
           cartItems={cartItems}
           onAdd={onAdd}
           onRemove={onRemove}
+            showdata={show}
+          hidedata={hide}
         ></Basket>
       <div className="row">
-        <Led led={led} onAdd={onAdd}></Led>
+        <Led led={led} showdata={showdata}  onAdd={onAdd}></Led>
       
         
       </div>

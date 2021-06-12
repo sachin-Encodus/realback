@@ -5,7 +5,7 @@ import Product from './Product';
 
  function Main (props) {
 
-  const { laptop, onAdd} = props;
+  const { laptop, showdata, onAdd} = props;
   return (
     <>
     
@@ -17,7 +17,7 @@ import Product from './Product';
 
        
        {laptop.map((product) => (
-          <Product key={product.id} product={product} onAdd={onAdd}></Product>
+          <Product key={product.id} product={product} showdata={showdata} onAdd={onAdd}></Product>
         ))}
      
       </div>

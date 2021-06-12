@@ -72,7 +72,7 @@ return (
 	
 
 </div>
-	<p className=" p-5 mt-1"  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, nulla ab! Alias excepturi at optio sint! Ut est sit veniam molestias qui illum laborum nobis recusandae, expedita amet et voluptate!</p>
+
 
 </div>
    

@@ -5,7 +5,7 @@ import Product from './Product';
 
  function Main (props) {
 
-  const { ipad, onAdd} = props;
+  const { ipad, showdata, onAdd} = props;
   return (
     <>
     
@@ -16,7 +16,7 @@ import Product from './Product';
       <div className="row">
 
         {ipad.map((product) => (
-          <Product key={product.id} product={product} onAdd={onAdd}></Product>
+          <Product key={product.id} product={product} showdata={showdata} onAdd={onAdd}></Product>
         ))}
        
     

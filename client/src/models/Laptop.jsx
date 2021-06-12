@@ -9,6 +9,14 @@ function App() {
   const screen = "33420-2-asus-laptop-transparent-picture.png"
     const device = "laptop"
   const [cartItems, setCartItems] = useState([]);
+    const [showdata, setShowdata] = useState(false);
+    const show = () =>{
+      setShowdata(true)
+    }
+      const hide = () =>{
+      setShowdata(false)
+    }
+    console.log('====================================',showdata);
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist) {
@@ -43,9 +51,12 @@ function App() {
           cartItems={cartItems}
           onAdd={onAdd}
           onRemove={onRemove}
+           showdata={show}
+          hidedata={hide}
+          
         ></Basket>
       <div className="row">
-        <Laptop laptop={laptop} onAdd={onAdd}></Laptop>
+        <Laptop laptop={laptop} showdata={showdata} onAdd={onAdd}></Laptop>
       
         
       </div>

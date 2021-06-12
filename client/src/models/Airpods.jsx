@@ -9,6 +9,14 @@ function App() {
   const screen = "400116-wireless-portable-headphones-apple-airpods-pro-10009323.png"
 const device = "Airpods"
   const [cartItems, setCartItems] = useState([]);
+      const [showdata, setShowdata] = useState(false);
+    const show = () =>{
+      setShowdata(true)
+    }
+      const hide = () =>{
+      setShowdata(false)
+    }
+    console.log('====================================',showdata);
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist) {
@@ -43,9 +51,11 @@ const device = "Airpods"
           cartItems={cartItems}
           onAdd={onAdd}
           onRemove={onRemove}
+           showdata={show}
+          hidedata={hide}
         ></Basket>
       <div className="row">
-        <Airpod airpod={airpod} onAdd={onAdd}></Airpod>
+        <Airpod airpod={airpod} showdata={showdata} onAdd={onAdd}></Airpod>
       
         
       </div>

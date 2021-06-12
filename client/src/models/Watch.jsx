@@ -9,6 +9,14 @@ function App() {
   const screen = "pngfind.com-apple-watch-png-100526.png"
    const device = "watch"
   const [cartItems, setCartItems] = useState([]);
+   const [showdata, setShowdata] = useState(false);
+    const show = () =>{
+      setShowdata(true)
+    }
+      const hide = () =>{
+      setShowdata(false)
+    }
+    console.log('====================================',showdata);
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist) {
@@ -43,9 +51,11 @@ function App() {
           cartItems={cartItems}
           onAdd={onAdd}
           onRemove={onRemove}
+             showdata={show}
+          hidedata={hide}
         ></Basket>
       <div className="row">
-        <Watch watch={watch} onAdd={onAdd}></Watch>
+        <Watch watch={watch}  showdata={showdata} onAdd={onAdd}></Watch>
       
         
       </div>
