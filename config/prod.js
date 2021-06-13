@@ -8,5 +8,8 @@ module.exports={
     EMAIL:process.env.EMAIL,
     PASS:process.env.PASS,
     KEY_ID:process.env.KEY_ID,
-    KEY_SECRET:process.env.KEY_SECRET
+    KEY_SECRET:process.env.KEY_SECRET,
+    Account_Sid:process.env. Account_Sid,
+     Auth_Token:process.env.Auth_Token,
+      Service_id:process.env.Service_id
 }
