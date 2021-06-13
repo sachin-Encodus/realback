@@ -18,7 +18,10 @@ const express = require('express');
 // const app  = express();  
 
 const { OAuth2Client } = require('google-auth-library');
-const {EMAIL, 
+const {EMAIL,
+    Account_Sid,
+     Auth_Token,
+     Service_id, 
        KEY_ID,
        KEY_SECRET,
        CLIENT_URL,
@@ -1154,62 +1157,62 @@ exports.adminMiddleware = (req, res, next) => {
 
 
 
-// Google login
+// // Google login
 
-const client = new OAuth2Client("363253994087-8v0st55651s53q0ni7t18i1gke5qkqpf.apps.googleusercontent.com");
-// Google Login
-exports.googleController = (req, res) => {
-  const { idToken } = req.body;
+// const client = new OAuth2Client("363253994087-8v0st55651s53q0ni7t18i1gke5qkqpf.apps.googleusercontent.com");
+// // Google Login
+// exports.googleController = (req, res) => {
+//   const { idToken } = req.body;
 
-  client
-    .verifyIdToken({ idToken, audience: "363253994087-8v0st55651s53q0ni7t18i1gke5qkqpf.apps.googleusercontent.com" })
-    .then(response => {
-      // console.log('GOOGLE LOGIN RESPONSE',response)
-      const { email_verified, name, email } = response.payload;
-      if (email_verified) {
-        User.findOne({ email }).exec((err, user) => {
-          if (user) {
-            const token = jwt.sign({ _id: user._id }, SECRET_KEY, {
-              expiresIn: '7d'
-            });
-            const { _id, email, name, role } = user;
-            return res.json({
-              token,
-              user: { _id, email, name, role }
-            });
-          } else {
-            let password = email + SECRET_KEY;
-            user = new User({ name, email, password });
-            user.save((err, data) => {
-              if (err) {
-                console.log('ERROR GOOGLE LOGIN ON USER SAVE', err);
-                return res.status(400).json({
-                  error: 'User signup failed with google'
-                });
-              }
-                console.log(user);
-              const token = jwt.sign(
-                { _id: data._id },
-                process.env.SECRET_KEY,
-                { expiresIn: '7d' }
-              );
-              const { _id, email, name, role } = data;
-              return res.json({
-                token,
-                user: { _id, email, name, role }
-              });
-            });
-          }
-        });
-         console.log("success");
-      } else {
-        console.log("error");
-        return res.status(400).json({
-          error: 'Google login failed. Try again'
-        });
-      }
-    });
-};
+//   client
+//     .verifyIdToken({ idToken, audience: "363253994087-8v0st55651s53q0ni7t18i1gke5qkqpf.apps.googleusercontent.com" })
+//     .then(response => {
+//       // console.log('GOOGLE LOGIN RESPONSE',response)
+//       const { email_verified, name, email } = response.payload;
+//       if (email_verified) {
+//         User.findOne({ email }).exec((err, user) => {
+//           if (user) {
+//             const token = jwt.sign({ _id: user._id }, SECRET_KEY, {
+//               expiresIn: '7d'
+//             });
+//             const { _id, email, name, role } = user;
+//             return res.json({
+//               token,
+//               user: { _id, email, name, role }
+//             });
+//           } else {
+//             let password = email + SECRET_KEY;
+//             user = new User({ name, email, password });
+//             user.save((err, data) => {
+//               if (err) {
+//                 console.log('ERROR GOOGLE LOGIN ON USER SAVE', err);
+//                 return res.status(400).json({
+//                   error: 'User signup failed with google'
+//                 });
+//               }
+//                 console.log(user);
+//               const token = jwt.sign(
+//                 { _id: data._id },
+//                 process.env.SECRET_KEY,
+//                 { expiresIn: '7d' }
+//               );
+//               const { _id, email, name, role } = data;
+//               return res.json({
+//                 token,
+//                 user: { _id, email, name, role }
+//               });
+//             });
+//           }
+//         });
+//          console.log("success");
+//       } else {
+//         console.log("error");
+//         return res.status(400).json({
+//           error: 'Google login failed. Try again'
+//         });
+//       }
+//     });
+// };
 
 
 
@@ -1857,20 +1860,84 @@ console.log(email);
 //     }   
 
 
+const accountSid =   Account_Sid;
+const authToken =   Auth_Token;
+const client = require('twilio')(accountSid, authToken);
+
+
+exports.otp = (req, res) => {
+const {number} = req.body
+ client.verify.services(Service_id)
+             .verifications
+             .create({to: '+91' + number, channel: 'sms'})
+             .then((verification) => {
+               res.status(200).json({verification});
+             } ).catch((error) =>{
+                res.status(400).json({error});
+             })
+
+};
+
+
+
+
+exports.Verifyotp = (req, res) => {
+const {number , otp} = req.body
+console.log(number,  otp);
+client.verify.services(Service_id)
+      .verificationChecks
+      .create({to: '+91' + number, code: otp})
+      .then((verification_check) => {
+          res.status(200).json({verification_check});
+      } ).catch((error) =>{
+                res.status(400).json({error});
+             })
+
+
+};
+
+
+
+//!Email otp
+
+exports.emailOtp = (req, res) => {
+const {number} = req.body
+ client.verify.services(Service_id)
+             .verifications
+             .create({to: '+91' + number, channel: 'sms'})
+             .then((verification) => {
+               res.status(200).json({verification});
+             } ).catch((error) =>{
+                res.status(400).json({error});
+             })
+
+};
+
+
+
+
+
+
+
+
+
 exports.payment = (req, res) => {
-  var options = {
-    amount: 100, // amount in the smallest currency unit
-    currency: "INR",
-    receipt: uniquId(),
-  };
-  instance.orders.create(options, function (err, order) {
+  const { price } = req.params 
+
+console.log( price);
+
+const amount = price;
+const currency = "INR"
+const receipt = uniquId();
+  
+  instance.orders.create({amount, currency , receipt  }, function (err, order) {
     if (err) {
       return res.status(500).json({
         error: err,
       });
     }
     orderId = order.id;
-    res.json(order);
+   return res.status(200).json(order);
   });
 };
 
@@ -1902,10 +1969,10 @@ exports.paymentCallback = (req, res) => {
               error: "Not able to save in Db",
             });
           } else {
-            console.log("=========>>>>>>>>>",order);
-            res.redirect(
-              `${CLIENT_URL}/payment/status/${fields.razorpay_payment_id}`
-            );
+            console.log("=========>>>>>>>>>success",order);
+            // res.redirect(
+            //   `${CLIENT_URL}/payment/status/${fields.razorpay_payment_id}`
+            // );
           }
         });
       } else {

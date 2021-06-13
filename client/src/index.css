@@ -10657,9 +10657,9 @@ body {
   left: 0;
   height: 50px;
   width: 100%;
-  backdrop-filter: blur(5px);
-opacity: 1!important;
-background: rgba(0, 0, 0, 0.5);
+  /* backdrop-filter: blur(5px);
+opacity: 1!important; */
+background: black;
   overflow: hidden;
   -webkit-transition: all 0.5s ease-out, background 1s ease-out;
   transition: all 0.5s ease-out, background 1s ease-out;
@@ -10797,9 +10797,9 @@ background: rgba(0, 0, 0, 0.5);
 }
 .window .header.menu-opened {
   height: 100%;
-  backdrop-filter: blur(5px);
-opacity: 1!important;
-background: rgba(0, 0, 0, 0.5);
+ 
+
+background:"#000";
   -webkit-transition: all 0.3s ease-in, background 0.5s ease-in;
   transition: all 0.3s ease-in, background 0.5s ease-in;
   -webkit-transition-delay: 0.25s;

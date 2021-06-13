@@ -5,12 +5,16 @@ import axios from 'axios';
 import {  Redirect } from 'react-router-dom';
 import { MdLocationOn } from "react-icons/md";
  import { IoBagCheck } from "react-icons/io5";
+ import logo from '../../images/real.jpg'
 export default function Cart(props) {
 
 
 const [userdata, setUserdata] = useState([])
 const [email, setEmail] = useState('noreply@gmai.com')
-
+ const [payments , setPayments] = useState(false)
+  const [orderId , setOrderId] = useState("")
+  const [signature, setSignature] = useState('')
+  const [paymentID, setPaymentID] = useState('')
 console.log("mmmmmmmmmmm========>>>>>>>>>>",email);
 
 
@@ -33,10 +37,91 @@ useEffect(() => {
 
 }, [email])
 
+var val = Math.floor(1000 + Math.random() * 9000);
+console.log(val);
+
+var seq = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
+console.log(seq);
 
 
 
+const payment = async(_id) =>{
 
+ console.log("=====>>>>>", _id);
+
+var Data =  userdata.filter(hero =>{
+	return hero._id === _id;
+});
+
+  const payData =  Data[0]
+  const {totalPrice , email, name ,number } = payData
+  console.log(totalPrice ,email, name , number);
+// const Mydata = Data.map(item => {
+//   return console.log(item.totalPrice);
+// })
+
+// const myJSON = JSON.stringify(Data);
+
+  const  res = await axios
+        .get(`/api/payment/${totalPrice}/`)
+       
+console.log("========>>>>>>>>>", res.data.amount);
+
+if(res.status !== 200){
+  return;
+}
+
+
+   const options = {
+    "key": "rzp_live_yim6z2vfc3HOs6", // Enter the Key ID generated from the Dashboard
+    "amount":  res.data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": res.data.currency,
+    "name": "Realback",
+    "description": "paying to realback",
+    "image": logo,
+    "order_id": res.data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+        // alert(response.razorpay_payment_id);
+        // alert(response.razorpay_order_id);
+        // alert(response.razorpay_signature)
+        setPaymentID(response.razorpay_payment_id)
+        setOrderId(response.razorpay_order_id)
+        setSignature(response.razorpay_signature)
+        setPayments(true)
+        // toast.dark("payment Successfull")
+    },
+    "prefill": {
+        "name":name ,
+        "email": email,
+        "contact": number
+    },
+    // "notes": {
+    //     "address": "Razorpay Corporate Office"
+    // },
+    // "theme": {
+    //     "color": "#3399cc"
+    // }
+};
+ 
+      var rzp1 = new   window.Razorpay(options);
+
+      rzp1.open()
+      rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+});
+
+
+
+  
+  
+  
+}
 
 
 
@@ -134,8 +219,8 @@ const list   =  userdata.map(item => {
 <div style={{justifyContent:'space-between' , display:'flex'}} >
 <h5 style={{fontFamily:'sans-serif' ,}}  > payment </h5>
 
- <h6 style={{fontFamily:'sans-serif' ,}}  >{item.mode}</h6>
-
+ <h6 style={{fontFamily:'sans-serif'}}>{item.mode}</h6>
+ 
 </div>
 
 
@@ -145,7 +230,14 @@ const list   =  userdata.map(item => {
  <h5 style={{fontFamily:'sans-serif' ,}}  > ₹ {item.totalPrice}</h5>
 
 </div>
+{
 
+item.mode === "online" ?  <button className="btn"   onClick={() => payment(item._id)}>
+              
+              Payment Now
+              </button> : null 
+
+}
 
             </div>
             </div>
@@ -181,8 +273,10 @@ const list   =  userdata.map(item => {
    <br/>
      <div  style={{backgroundColor:'#f5f5f7' ,fontFamily:'sans-serif',  padding:20, textAlign:'center', borderRadius:10}}  >  <IoBagCheck size='25'/>  Pay $13.90/mo.per month¹ at 0% APR for eligible items in your order with Apple Card Monthly Installments.</div>
      <br/>
-     
-  {list}
+     {
+       userdata.length === 0 ? <h1  style={{textAlign:'center' , marginTop: 20}}   >Sorry You don't have any order</h1> : list
+     }
+  
      
     
      <hr/>

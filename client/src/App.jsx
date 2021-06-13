@@ -18,6 +18,7 @@ import Ipad from './models/Ipad'
 import Airpods from './models/Airpods.jsx';
 import Mobile from './models/Mobile'
 import Admin from './screens/Admin'
+import Otp from './screens/Otp.jsx'
 import ForgetPassword from './screens/ForgetPassword.jsx';
 import ResetPassword from './screens/ResetPassword'
 import Private from './screens/Private.jsx';
@@ -44,6 +45,7 @@ function App() {
          <Route path='/' exact render={props => <Home {...props} />} />
          <Route path='/dashboard/'  render={props => <HomePage {...props} />} />
          <Route path='/login' exact render={props => <Login {...props} />} />
+          <Route path='/otp' exact render={props => <Otp {...props} />} />
          <Route path='/admin' exact render={props => <Admin {...props} />} />
          <Route path='/user' exact render={props => <Private {...props} />} />
          <Route path='/about' exact render={props => <About {...props} />} />

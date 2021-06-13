@@ -36,7 +36,7 @@ if(stringLength > 10){
       if (password1 === password2) {
         setFormData({ ...formData, textChange: 'Submitting' });
         axios
-          .post("http://localhost:5000/api/register", {
+          .post("/api/register", {
             name,
             mobile,
             email,

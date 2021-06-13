@@ -4,7 +4,7 @@ const data = {
       id: '1',
         productName: "mobile",
       name: 'battery',
-      price: 156400,
+      price: 100,
       image: 'https://www.flaticon.com/svg/static/icons/svg/733/733438.svg',
     },
     

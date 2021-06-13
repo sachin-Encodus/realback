@@ -11,7 +11,9 @@ const { register, activate,signin, device,
         getPayment,
         getLogo,
         orderData,
-        userData
+        userData,
+        otp,
+        Verifyotp
 
 } = require('../../controllers/auth.controller')
 
@@ -22,14 +24,17 @@ router.post('/device', device);
 router.get('/cart/:id', cart);
 router.get('/order', orderData);
 router.get('/user', userData);
-router.get('/payment' , payment)
+router.post('/otp', otp);
+router.post('/Verifyotp', Verifyotp);
+
+router.get('/payment/:price' , payment)
 router.post("/payment/callback", paymentCallback);
 router.get("/payments/:paymentId", getPayment);
 router.get("/logo", getLogo);
 // router.get('/logoutall', logoutall);
 router.post('/activate-email', activate);
 router.post('/personal', personal);
-router.post('/googlelogin', googleController)
+// router.post('/googlelogin', googleController)
 // forgot reset password
 router.put('/forgotpassword',  forgotPasswordController);
 router.put('/resetpassword',  resetPasswordController);
