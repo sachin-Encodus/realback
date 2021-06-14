@@ -83,6 +83,14 @@ pincode:{
   date:{ 
        type:String,
    
+   },
+    paymentid:{ 
+       type:String,
+   
+   },
+   orderid:{ 
+       type:String,
+   
    }
 })
 

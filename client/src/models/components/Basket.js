@@ -58,7 +58,7 @@ console.log("date time",date);
   const [orderId , setOrderId] = useState("")
   const [signature, setSignature] = useState('')
   const [paymentID, setPaymentID] = useState('')
-    const [fields, setFields] = useState(false)
+    const [payid, setPayid] = useState('helloooox636d7d')
   const [formData, setFormData] =  useState({
     email: '',
     name:'',
@@ -158,8 +158,8 @@ console.log(orderId ,signature ,paymentID , payments);
 
 
 
-  const payment = async() =>{
- 
+  const payment = async(_id) =>{
+ console.log(">>>>>>> id for payment update",_id);
   const  res = await axios
         .get(`/api/payment/${totalPrice}/`)
        
@@ -189,13 +189,13 @@ if(res.status !== 200){
         toast.dark("payment Successfull")
     },
     "prefill": {
-        "name":name ,
+        "name":name,
         "email": email,
         "contact": number
     },
-    // "notes": {
-    //     "address": "Razorpay Corporate Office"
-    // },
+    "notes":{
+        "address":_id
+    },
     // "theme": {
     //     "color": "#3399cc"
     // }
@@ -292,10 +292,13 @@ console.log("===>" , products);
             });
          
          })
-         if(mode === "online"){
-           payment()
+        
+
+       toast.dark(`Order OTP has been sent to ${res.data._id}` );
+       setPayid(res.data._id)
+        if(mode === "online"){
+           payment(res.data._id)
          }
-       toast.dark(`Order OTP has been sent to ${res.data.email}` );
         })
         .catch(err => {
           setFormData({

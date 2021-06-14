@@ -5,7 +5,7 @@ const path = require("path");
 const orderSchema = require("../src/models/orderSchema");
 const _ = require('lodash');
 const Personal = require("../src/models/personals");
-const crypto = require("crypto");
+;
 const Razorpay = require('razorpay')
 const uniquId = require('uniqid')
 const Formidable = require("formidable");
@@ -1427,9 +1427,13 @@ console.log(email);
 
  if(email === emails){
           const deviceData = new Device(req.body);
-      await deviceData.save();
+          await deviceData.save();
 
-      const {orderOtp , email, name, } = deviceData
+      const {orderOtp , email, name, _id } = deviceData
+      if(deviceData){
+   return res.status(201).json({ _id });
+      }
+   
       console.log("=======>>>>>>>>",deviceData ,orderOtp , email, name)
 
 
@@ -1943,43 +1947,94 @@ const receipt = uniquId();
 
 
 exports.paymentCallback = (req, res) => {
-  const form = Formidable();
-  form.parse(req, (err, fields, files) => {
-    console.log("FIELDS =======>>>>>>>>>>>",fields)
-    if (fields) {
-      console.log("FIELDS", fields);
-      const hash = crypto
-        .createHmac("sha256", KEY_SECRET)
-        .update(orderId + "|" + fields.razorpay_payment_id)
-        .digest("hex");
+  // const {_id} = req.params
+  console.log("webhook triggerd");
+  // const form = Formidable();
+  // form.parse(req, (err, fields, files) => {
+  console.log("=====>>>>>>>>>>",JSON.stringify(req.body))
+  //  const ID = JSON.stringify(req.body)
+  //    console.log("=========>>>>",req.body.payload);
+  //  console.log("=========>>>>",req.body.payload.payment.entity.notes.address);
+   const { email , contact, notes , id,  order_id} = req.body.payload.payment.entity
+ 
+   const _id = notes.address
+   console.log("....>>>>>",_id);
+  //  const {notes} = req.body
+  //  console.log(">>>>>>>>>>",notes);
+      // console.log("FIELDS", fields);
+          const crypto = require("crypto")
+          const hash = crypto
+         .createHmac("SHA256", "sachin4c")
+         .update(JSON.stringify(req.body))
+         .digest("hex");
+          console.log(hash);
+          console.log(req.headers["x-razorpay-signature"]);
 
-      if (fields.razorpay_signature === hash) {
-        const info = {
-          _id: fields.razorpay_payment_id,
-          razorpay_order_id: fields.razorpay_order_id,
-        };
-        const order = new orderSchema({
-          _id: info._id,
-          orders: fields.razorpay_order_id,
-        });
+      if (hash === req.headers["x-razorpay-signature"]) {
+        // const info = {
+        //   _id: fields.razorpay_payment_id,
+        //   razorpay_order_id: fields.razorpay_order_id,
+        // };
+        // const order = new orderSchema({
+        //   _id: info._id,
+        //   orders: fields.razorpay_order_id,
+        // });
 
-        order.save((err, data) => {
-          if (err) {
-            res.status(400).json({
-              error: "Not able to save in Db",
+        // order.save((err, data) => {
+        //   if (err) {
+        //     res.status(400).json({
+        //       error: "Not able to save in Db",
+        //     });
+        //   } else {
+        //     console.log("=========>>>>>>>>>success",order);
+        //     // res.redirect(
+        //     //   `${CLIENT_URL}/payment/status/${fields.razorpay_payment_id}`
+        //     // );
+        //   }
+        // });
+// const _id = "60c71706ecc5e725b0e2c5a1"
+       console.log("going"); 
+        Device.findOne(
+          {
+           _id
+          },
+          (err, user) => {
+            if (err || !user) {
+              return res.status(400).json({
+                error: 'Something went wrong. Try later'
+              });
+             
+            }
+
+            const updatedFields = {
+              mode: "success",
+              paymentid:id,
+              orderid:order_id
+             
+            };
+
+            user = _.extend(user, updatedFields);
+
+            user.save((err, result) => {
+              if (err) {
+                return res.status(400).json({
+                  error: 'Error resetting user password'
+                });
+               
+              }
+             
+              res.json({
+                message: `payment accept`
+              });
             });
-          } else {
-            console.log("=========>>>>>>>>>success",order);
-            // res.redirect(
-            //   `${CLIENT_URL}/payment/status/${fields.razorpay_payment_id}`
-            // );
           }
-        });
+        );
+        console.log("success");
       } else {
-        res.send("ERROR");
+      console.log("error");
       }
-    }
-  });
+    
+  // });
 };
 exports.getLogo = (req, res) => {
   res.sendFile(path.join(__dirname, "m18.png"));

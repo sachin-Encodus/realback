@@ -1,6 +1,7 @@
 import React ,{useEffect , useState}from 'react';
 import { Link ,Redirect } from 'react-router-dom';
 import Footer from './Footer';
+import Menu from './Menu'
 import { isAuth } from '../helpers/auth';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
@@ -59,7 +60,7 @@ useEffect(() => {
  return (
 
 <>
-{/* <Menu/> */}
+<Menu/>
  {!isAuth() ? <Redirect to='/login' /> : null}
 
 
@@ -341,16 +342,12 @@ useEffect(() => {
   </div>
 </div>
 
-{/* 
+
 
  
-    <br/><br/>
-    <br/><br/>
-    <br/><br/>
-    <br/><br/>   <br/><br/>
    
 
-<Footer/> */}
+<Footer/>
 
 
 </>

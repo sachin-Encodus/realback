@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Menu from './Menu'
 
 import image from '../images/team2.png';
 import image1 from '../images/aboutrb.png';
@@ -13,7 +13,7 @@ const About = () =>{
     
 return (
 <>
-
+<Menu/>
 <div  style={{backgroundColor: '#ebf5fc'}}>
      {!isAuth() ? <Redirect to='/login' /> : null}
 

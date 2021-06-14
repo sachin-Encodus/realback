@@ -55,7 +55,7 @@ var Data =  userdata.filter(hero =>{
 
   const payData =  Data[0]
   const {totalPrice , email, name ,number } = payData
-  console.log(totalPrice ,email, name , number);
+  console.log(totalPrice ,email, name ,_id, number);
 // const Mydata = Data.map(item => {
 //   return console.log(item.totalPrice);
 // })
@@ -95,9 +95,9 @@ if(res.status !== 200){
         "email": email,
         "contact": number
     },
-    // "notes": {
-    //     "address": "Razorpay Corporate Office"
-    // },
+    "notes": {
+        "address": _id
+    },
     // "theme": {
     //     "color": "#3399cc"
     // }
