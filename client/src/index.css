@@ -170,7 +170,7 @@ a {
      font-family: montserrat, arial, verdana;
 }
 a:hover {
-  color: #e91b1b;
+  color: #bbbbbb;
   text-decoration: none;
 }
 
@@ -12014,7 +12014,7 @@ a.buy-btn{
   text-transform: uppercase;
 }
 .app-btn.blu {
-  background-color: #101010;
+  background-color: #000000;
   transition: background-color 0.25s linear;
 }
 .app-btn.blu:hover {

@@ -125,7 +125,7 @@ import '../order.css';
      <li className="nav-item "><NavLink className="nav-link js-scroll-trigger  "  to="/service">Services</NavLink></li>
      <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/about">About</NavLink></li>
       <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/cart">Orders</NavLink></li>
-       <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/dashboard">dashboard</NavLink></li>
+       {/* <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/payment">dashboard</NavLink></li> */}
      {
 
 login ===  '' ?  <li className="nav-item"><NavLink onClick={Hello} className="nav-link js-scroll-trigger" to="/login">Login</NavLink></li>  :[ <li className="nav-item"><NavLink 
@@ -236,11 +236,11 @@ mobile menu */}
 
 
 
-            <form className="form-search" method="get" action="#">
+            {/* <form className="form-search" method="get" action="#">
                 <input type="search" name="search" placeholder="search your book here for.." />
                 <button type="submit">Search</button>
 
-            </form>
+            </form> */}
             <ul className="menu">
  
              <li className="menu-item">

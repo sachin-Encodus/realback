@@ -14,6 +14,23 @@ import App from '../images/macpro.png'
 import Electrical from '../images/ele.webp'
 // import Pod from '../images/.png'
 const Home = () =>{
+ 
+  
+
+// const name = "sachin"
+// const price = "500"
+// const number ="9147203189"
+const payds ={
+    //  _id,
+     totalPrice:"500",
+     name:"sachin",
+     email:"schin1245e@gmail.com",
+     number:"9174203189"
+}
+const Data = JSON.stringify(payds)
+// const qs = new URLSearchParams(payds);
+// console.log('====================================',payds);
+
 
 useEffect(() => {
 
@@ -27,12 +44,12 @@ useEffect(() => {
 
 
 return (
-<>
- <Menu/>
+  <>
+    <Menu />
 
-<div  style={{backgroundColor:'black'}} >
- <ToastContainer />
-{/* 
+    <div style={{}}>
+      <ToastContainer />
+      {/* 
   <div className="container-fluid  text-center">
                
 
@@ -48,49 +65,44 @@ return (
           </div>
   </div> */}
 
-<section style={{backgroundColor:'black'}}  >
+      <section style={{}}>
+        <div className="container-fluid ">
+          <div className="row  ">
+            <div className="col-md-1"></div>
+            <div className="col-md-4 ">
+              <div style={{ paddingLeft: 10 }}>
+                <h1 style={{ color: "#000" }} className=" mt-5">
+                  Realback for your
+                </h1>
+                <h1 style={{ color: "#000" }}>all devices solutions</h1>
+                <p style={{ color: "#000", fontWeight: "bold" }}>
+                  You can esaliy repair your elctronics devices with Realback
+                  get your service Now!
+                </p>
+                <div class=" social-btns">
+                  <Link
+                    style={{ padding: 15 }}
+                    class="app-btn blu flex vert  "
+                    to="/service"
+                  >
+                    <span class="big-txt">Service</span>
+                  </Link>
 
+                  {/* 4vwsYy1_MRH2xGJnidDh6W-eMD4kRcQNwJcRVyLz */}
+                </div>
+              </div>
+            </div>
 
-  <div className="container-fluid  text-center">
-               
-
-      
-    <div className="row text-center ">
-
- 
-
-<div className="col-md-5">
-  
-<h1 style={{color:'#fff'}} className=" p-5 mt-5"  >Realback for your all devices solutions</h1>
-<div class="flex social-btns">
-  <Link  style={{padding:15}} class="app-btn blu flex vert  " to="/service">
-   
-    <span class="big-txt">Service</span>
-  </Link>
-
-
-	
-
-</div>
-
-
-</div>
-   
- 
-<div className="col-md-7 p-5 justify-content-center ">
-   <figure data-aos="fade-in "  >
-
-<img   src={App} alt="" className="img-fluid"/>
-
-   </figure> 
-</div> 
-    
+            <div className="col-md-7 p-5 justify-content-center ">
+              <figure data-aos="fade-in ">
+                <img src={App} alt="" className="img-fluid" />
+              </figure>
+            </div>
           </div>
-  </div>
+        </div>
+      </section>
 
-</section>
-
-  {/* <header class="masthead">
+      {/* <header class="masthead">
     <img src="images/gpod.png" alt="" class="img-fluid gpod"/>
         <div class="masthead-heading">
           Realback for your device solution
@@ -99,7 +111,7 @@ return (
     </div>
         </div>
     </header>  */}
-    {/* <section>
+      {/* <section>
 <div className="container">
   <div className="row   justify-content-center   align-items-center">
 <div className="col-md-6 p-5" >
@@ -130,14 +142,13 @@ return (
   </div>
 </section> */}
 
-{/* <section  style={{backgroundColor:'#FFFFFF'}} >
+      {/* <section  style={{backgroundColor:'#FFFFFF'}} >
 
 
 <Service/>
 </section> */}
 
-
-{/* 
+      {/* 
 <section>
 
 
@@ -156,57 +167,49 @@ return (
           </div>
   </div>
 </section> */}
-   {/* <figure data-aos="fade-in"  >
+      {/* <figure data-aos="fade-in"  >
 
 <img   src={Pod} alt="" className="img-fluid"/>
 
    </figure>  */}
 
-<section  style={{backgroundColor:'rgb(227 229 232)'}}  >
-
-
-  <div className="container-fluid  text-center">
-               
-
-      
-    <div className="row text-center ">
-
-
-<div className="col-md-7">
-   <figure data-aos="fade-in"  >
-
-<img   src={Electrical} alt="" className="img-fluid"/>
-
-   </figure> 
-</div>  
-
-<div className="col-md-5">
-  
-<h1 className=" p-5 mt-5"  >Download the Realback Android and ios app soon.</h1>
-<div class="flex social-btns">
-  <Link class="app-btn blu flex vert" to="http:apple.com">
+      <section style={{}}>
+        <div className="container-fluid  ">
+          <div className="row  ">
+            <div className="col-md-6">
+              <figure data-aos="fade-in">
+                <img src={Electrical} alt="" className="img-fluid" />
+              </figure>
+            </div>
+            <div className="col-md-1"></div>
+            <div className="col-md-5">
+              <div style={{ paddingLeft: 10 }}>
+                <h1 className=" mt-5">Available on App Store</h1>
+                <p style={{ fontWeight: "bold", color: "#000" }}>
+                  Download our App from App Store for both Android  and IOS platform soon.
+                </p>
+                <div class=" social-btns">
+                  {/* <Link class="app-btn blu flex vert" to="http:apple.com">
     <i class="fab fa-apple"></i>
     <p>Available on the <br/> <span class="big-txt">App Store</span></p>
-  </Link>
+  </Link> */}
 
-  <Link class="app-btn blu flex vert" to="http:google.com">
-    <i class="fab fa-google-play"></i>
-    <p>Get it on <br/> <span class="big-txt">Google Play</span></p>
-  </Link>
-	
+                  <Link class="app-btn blu flex vert" to="http:google.com">
+                    <i class="fab fa-google-play"></i>
+                    <p>
+                      Get it on <br /> <span class="big-txt">Google Play</span>
+                    </p>
+                  </Link>
+                </div>
+              </div>
 
-</div>
-	<p className=" p-5 mt-1"  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, nulla ab! Alias excepturi at optio sint! Ut est sit veniam molestias qui illum laborum nobis recusandae, expedita amet et voluptate!</p>
-
-</div>
-   
- 
-    
+             
+            </div>
           </div>
-  </div>
-</section>
+        </div>
+      </section>
 
-{/* 
+      {/* 
 <section>
 
 
@@ -225,7 +228,7 @@ return (
   </div>
 </section> */}
 
-{/* 
+      {/* 
 <section  >
 
 
@@ -245,7 +248,7 @@ return (
   </div>
 </section> */}
 
-{/* 
+      {/* 
 
 <section style={{backgroundColor:'white'}} >
 
@@ -266,14 +269,7 @@ return (
   </div>
 </section> */}
 
-
-
-
-
-
-
-
-{/* 
+      {/* 
 <section>
   <div className="container-fluid">
     <div className="row">
@@ -293,7 +289,7 @@ return (
     </div>
   </div>
 </section> */}
-{/* 
+      {/* 
 <section >
 
   <div className="conatiner-fluid">
@@ -328,8 +324,7 @@ return (
   </div>
 </section> */}
 
-
-{/* 
+      {/* 
 
 <section>
   <div className="container-fluid">
@@ -355,7 +350,7 @@ return (
   </div>
 </section> */}
 
-{/* 
+      {/* 
 <div class="wrapper1">
 
    <video autoPlay loop muted class="wrapper__video">
@@ -363,12 +358,10 @@ return (
    </video>
   
 </div>  */}
+    </div>
 
-</div>
-
-    <Footer/>
-</>
-
+    <Footer />
+  </>
 );
 
 

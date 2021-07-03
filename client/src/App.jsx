@@ -23,10 +23,12 @@ import ForgetPassword from './screens/ForgetPassword.jsx';
 import ResetPassword from './screens/ResetPassword'
 import Private from './screens/Private.jsx';
 import Cart from './models/components/Cart'
-import Payments from './models/components/Payments'
+// import Payments from './models/components/Payments'
 import PaymentStatus from './comps/PaymentStatus';
 import HomePage from './Dashboard/pages/HomePage'
 import '../src/index.css'
+import Terms from './screens/Terms';
+import Payment from './screens/Payment';
 
 
 
@@ -55,12 +57,13 @@ function App() {
          <Route path='/ipad' exact render={props => <Ipad {...props} />} />
          <Route path='/watch' exact render={props => <Watch {...props} />} />
          <Route path='/cart' exact render={props => <Cart {...props} />} />
+         <Route path='/terms' exact render={props => <Terms {...props} />} />
          <Route path='/forget' exact render={props => <ForgetPassword {...props} />} />
          <Route path='/reset/:token' exact render={props => <ResetPassword {...props} />} />
          <Route path='/led' exact render={props => <Led {...props} />} />
          <Route path='/airpod' exact render={props => <Airpods {...props} />} />
          <Route path='/register' exact render={props => <Register {...props} />} />
-         <Route path='/paymentme' exact render={props => <Payments {...props} />} />
+         <Route path='/payment/:payds' exact render={props => <Payment {...props} />} />
          <Route path="/payment/status/:paymentId" exact render={props => < PaymentStatus {...props} />} />
          <Route path='/service' exact render={props => <Service {...props} />} />
          <Route path='/activate/:token' exact render={props => <Activate {...props} />} />

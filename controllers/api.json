@@ -1,0 +1,2576 @@
+{     "Dtype":"mobile",
+      "deviceName": "Oppo",
+      "model": [
+        {
+            "modelno":"A1K",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 2800
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1700
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 2800
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 1400
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 1200
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 1400
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 1100
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 1700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 800
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+          ]
+        },
+         {
+            "modelno":"A11K",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 3300
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 2100
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 3300
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 1100
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 1400
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 1200
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 1300
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 1400
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Fingerprintsensor",
+              "price": 1300
+            },
+            {
+              "productName": "mobile",
+              "name": "Backpanel",
+              "price": 1000
+            }   
+           
+          ]
+        },
+        {
+            "modelno":"A12K",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 6500
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 3200
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 3700
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 2200
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 1500
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 1400
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 2500
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 1800
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 1400
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 400
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 400
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Fingerprintsensor",
+              "price": 2400
+            },
+            {
+              "productName": "mobile",
+              "name": "Backpanel",
+              "price": 2500
+            }   
+           
+          ]
+        },
+        {
+            "modelno":"A33",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 1999
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1100
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 1999
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 1100
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 950
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 2400
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 2800
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 200
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 150
+            },
+            {
+              "productName": "mobile",
+              "name": "Backpanel",
+              "price": 1100
+            }   
+           
+          ]
+        },
+        {
+            "modelno":"A37",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 2000
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 2000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 600
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 300
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 150
+            }
+          ]
+        }, 
+        {
+            "modelno":"A39",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 3000
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 3000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 600
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 150
+            }
+           
+          ]
+        },
+        {
+            "modelno":"A3s",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 3700
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1600
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 2700
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 2000
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 1100
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 1200
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 1000
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 1300
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+          ]
+        },
+        {
+            "modelno":"A5",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 3000
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1400
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 1700
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 1300
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 1500
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 1200
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 1100
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 800
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 300
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 150
+            }
+             
+           
+          ]
+        },
+        {
+            "modelno":"A52020",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 4200
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 2000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 2500
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 1600
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 1200
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 1100
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 1200
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 800
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 300
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 150
+            }  
+           
+          ]
+        },
+        {
+            "modelno":"A57",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 2200
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 600
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 1700
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 900
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "standbyphone",
+              "price": 200
+            },
+            {
+              "productName": "mobile",
+              "name": "cabinetorframe",
+              "price": 900
+            }   
+           
+          ]
+        },
+        {
+            "modelno":"A5s",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 2500
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 2400
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "phonediagnosis",
+              "price": 300
+            },
+            {
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 800
+            },
+            {
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 3400
+            } ,     
+            {
+              "productName": "mobile",
+              "name": "Touchscreen/glass",
+              "price": 3450
+            }   
+          ]
+        },
+        {
+            "modelno":"oppoA7",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 2700
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1700
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 1700
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 2000
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 900
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"oppoA71",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 2900
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 2900
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 800
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"oppoA83",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 2700
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 1700
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 800
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"A92020",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 3700
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 3000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 3700
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 800
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"F1Plus",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 4300
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1200
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 3000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 1100
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 900
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 800
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"F1s",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 2200
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 600
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 1700
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 800
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"F11",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 3200
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 2000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 3200
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 2000
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"F11 pro",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 3700
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 2000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 3700
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 2000
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Backpanel",
+              "price": 1300
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"F17 pro",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 9200
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 3000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 9200
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 2600
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 1200
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 300
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 300
+            }
+            
+            
+           
+          ]
+        },
+        {
+            "modelno":"F1 Plus",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 3200
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 3200
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+          
+            
+           
+          ]
+        },
+        {
+            "modelno":"F1 S",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 2200
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 600
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 2200
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"F15",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 5000
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 3000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 5000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 2600
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 300
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 400
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"F17Pro",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 9300
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 3000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 9300
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 2600
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 1500
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 2200
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 1900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 1400
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+            
+           
+          ]
+        },
+        {
+            "modelno":"F1Plus",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 3200
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 3200
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 800
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+            
+            
+           
+          ]
+        },
+        {
+            "modelno":"F3",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 3000
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 3000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 800
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"F3Plus",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 2700
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1300
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 2700
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 1200
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"F4",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 2700
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1200
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 2700
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 1200
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"F5",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 2700
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 2700
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 400
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"F7",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 2900
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 2900
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 1200
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 900
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 1000
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"F9",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 3200
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1600
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 2000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 1500
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 1500
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 1600
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 400
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"F9 pro",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 3700
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 1600
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 2600
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 1400
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 1500
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 1600
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 250
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"OppoF1",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 2200
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 600
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 2200
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 700
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 900
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phone servicing",
+              "price": 150
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "software diagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphone diagnosis",
+              "price": 250
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "water diagnosis",
+              "price": 250
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"R17 Pro",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Backpanel",
+              "price": 1700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phone servicing",
+              "price": 2600
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"Reno10X",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 9700
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 4300
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Chargeport",
+              "price": 2300
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Loudspeaker",
+              "price": 1500
+            },
+            {
+             
+              "productName": "Earspeaker",
+              "name": "microphone",
+              "price": 1600
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Audiojack",
+              "price": 1400
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 800
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 400
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 400
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 150
+            }
+            
+           
+          ]
+        },
+        {
+            "modelno":"Reno2Z",
+            "modedata": [
+            {
+             
+              "productName": "mobile",
+              "name": "Touch/Lcd",
+              "price": 8700
+            },
+              {
+             
+              "productName": "mobile",
+              "name": "battery",
+              "price": 3000
+            },
+             {
+             
+              "productName": "mobile",
+              "name": "Touchscreen/Glass",
+              "price": 8700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Phoneservicing",
+              "price": 1700
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "softwarediagnosis",
+              "price": 1500
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "Deadphonediagnosis",
+              "price": 500
+            },
+            {
+             
+              "productName": "mobile",
+              "name": "waterdiagnosis",
+              "price": 500
+            },
+            {
+              "productName": "mobile",
+              "name": "Backpanel",
+              "price": 5300
+            }
+            
+           
+          ]
+        }
+
+
+
+       
+      ]
+     
+    
+
+  
+}

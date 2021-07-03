@@ -1,90 +1,123 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
+import logo from '../images/real.jpg'
+
+const Payment = ({props ,match}) =>{
+    // const params = useParams()
+// const {params} = props;
+// const {payds} = params
+console.log('====================================',props);
+
+    console.log('====================================>>>>>>', JSON.parse( match.params));
+  
+    const {totalPrice, name, email, number , _id } = match.params;
+  const [payments , setPayments] = useState(false)
+  const [orderId , setOrderId] = useState("")
+  const [signature, setSignature] = useState('')
+  const [paymentID, setPaymentID] = useState('')
+// var car = {
+//     type:"Fiat",
+//      model:"500"
+//      , color:"white"
+//     };
+
+// const totalPrice = "500"
+useEffect(() => {
+
+
+ 
+    // let { name } = jwt.decode(token);
+
+   
+
+     console.log(totalPrice, name , email, number, _id );
 
 
 
-const Payment = () =>{
+
+
+  payment()
+}, [])
+
+  const payment = async() =>{
+ console.log(">>>>>>> id for payment update");
+  const  res = await axios
+        .get(`/api/payment/${totalPrice}/`)
+       
+console.log("========>>>>>>>>>", res.data.amount);
+
+if(res.status !== 200){
+  return;
+}
+
+
+   const options = {
+    "key": "rzp_live_yim6z2vfc3HOs6", // Enter the Key ID generated from the Dashboard
+    "amount":  res.data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": res.data.currency,
+    "name": "Realback",
+    "description": "paying to realback",
+    "image": logo,
+    "order_id": res.data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+        // alert(response.razorpay_payment_id);
+        // alert(response.razorpay_order_id);
+        // alert(response.razorpay_signature)
+        setPaymentID(response.razorpay_payment_id)
+        setOrderId(response.razorpay_order_id)
+        setSignature(response.razorpay_signature)
+        setPayments(true)
+        toast.dark("payment Successfull")
+    },
+    "prefill": {
+        "name":name,
+        "email": email,
+        "contact": number
+    },
+    "notes":{
+        "address":''
+    },
+    // "theme": {
+    //     "color": "#3399cc"
+    // }
+};
+ 
+   var rzp1 = new   window.Razorpay(options);
+
+      rzp1.open()
+    rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+});
+
+
+
+  
+  
+  
+}
+
+
+
+
+
 
 return(
 
 <>
 
+<h1>{name}</h1>
 
-    <div class="navbar ">
-        <ul class="listu">
-            <a href="/"><i class="fa fa-home fa-2x" style="color: rgb(0, 0, 0);"> </i></a>&nbsp;&nbsp;
-
-
-        </ul>
-    </div>
-    <br/><br/>
-
-
-    <div id="svg_wrap"></div>
-    <br/><br/><br/><br/><br/><br/>
-    <div class="container-fluid">
-
-        <div class="row">
-            <div class="col-md-12">
-
-
-                <section class="get-in-touch">
-                    <h2 class="title">Payment</h2>
-                    <form class="contact-form">
-                        <div class="container-fluid">
-                            <div class="row align-items-center justify-content-center">
-
-                                <div class="payment  ">
-                                    <a
-                                        href="upi://pay?pa=9174203189@okbizaxis&pn=Realback&mc=7622&aid=uGICAgIDjwuqBBA&tr=BCR2DN6T3PUMRLZ7"><img
-                                            src="images/logo.png" class="pay" alt="" /></a>
-                                </div>
-
-                                <div class="payment  ">
-
-                                    <a href=""><img src="images/nwg.png" class="pay" alt="" /></a>
-                                </div>
-
-                                <div class="payment  ">
-                                    <a href=""><img src="images/ppay.png" class="pay" alt="" /></a>
-                                </div>
-
-
-
-                                <div class="payment  ">
-                                    <a href=""><img src="images/pal.png" class="pay" alt="" /></a>
-                                </div>
-
-                                <div class="payment  ">
-                                    <a href=""><img src="images/paytm1.jpg" class="paytm" alt="" /></a>
-                                </div>
-
-
-                                <div class="payment  ">
-                                    <a href=""><img src="images/bhim.webp" class="pay" alt="" /></a>
-                                </div>
-                                <div class="Qr">
-                                    <img src="images/Qrcode.jpeg" style="width: 280px; height: 250px; " />
-                                    <h4>Realback</h4>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-                    </form>
-                </section>
-
-
-            </div>
-
-
-
-        </div>
-    </div>
-
-
-
+  <h1>{totalPrice}</h1>
+  <h1>{email}</h1>
+   <h1>{number}</h1> 
 </>
 
 
