@@ -63,4 +63,3 @@ router.put("/forgotpassword", forgotPasswordController);
 router.put("/resetpassword", resetPasswordController);
 router.put("/resetPass", resetPass);
 module.exports = router;
- ;    ;    ;    ;    ;    ;    ;    ;    ;        ;    ;      ;    ; ;    ;    ;    ;    ;    ;    ;    ;    ;        ;    ;     ; ;  ; ;""

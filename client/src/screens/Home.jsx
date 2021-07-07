@@ -10,8 +10,8 @@ import Menu from './Menu';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import Service from './Service';
-import App from '../images/macpro.png'
-import Electrical from '../images/ele.webp'
+import App from "../images/airpods.png";
+import Electrical from "../images/image1.png";
 // import Pod from '../images/.png'
 const Home = () =>{
  
@@ -27,7 +27,7 @@ const payds ={
      email:"schin1245e@gmail.com",
      number:"9174203189"
 }
-const Data = JSON.stringify(payds)
+const Data = JSON.stringify({ payds });
 // const qs = new URLSearchParams(payds);
 // console.log('====================================',payds);
 
@@ -36,9 +36,9 @@ useEffect(() => {
 
  
   AOS.init({
-  offset: 200, // offset (in px) from the original trigger point
-  delay: 0, // values from 0 to 3000, with step 50ms
-  duration: 1200, // values from 0 to 3000, with step 50ms
+    offset: 300, // offset (in px) from the original trigger point
+    delay: 10, // values from 0 to 3000, with step 50ms
+    duration: 1400, // values from 0 to 3000, with step 50ms
   });
 }, [])
 
@@ -47,7 +47,7 @@ return (
   <>
     <Menu />
 
-    <div style={{}}>
+    <div style={{ backgroundColor: "#000" }}>
       <ToastContainer />
       {/* 
   <div className="container-fluid  text-center">
@@ -71,11 +71,14 @@ return (
             <div className="col-md-1"></div>
             <div className="col-md-4 ">
               <div style={{ paddingLeft: 10 }}>
-                <h1 style={{ color: "#000" }} className=" mt-5">
+                <h1
+                  style={{ color: "#fff", fontFamily: "unset" }}
+                  className=" mt-5"
+                >
                   Realback for your
                 </h1>
-                <h1 style={{ color: "#000" }}>all devices solutions</h1>
-                <p style={{ color: "#000", fontWeight: "bold" }}>
+                <h1 style={{ color: "#fff" }}>all devices solutions</h1>
+                <p style={{ color: "#fff" }}>
                   You can esaliy repair your elctronics devices with Realback
                   get your service Now!
                 </p>
@@ -87,13 +90,28 @@ return (
                   >
                     <span class="big-txt">Service</span>
                   </Link>
-
+                  {/* <Link
+                    to={{
+                      pathname: "/service",
+                      search: `choosenDog=${Data}`, //dog is the object to pass along
+                    }}
+                  >
+                    {" "}
+                    <span class="big-txt">Service me</span>
+                  </Link> */}
                   {/* 4vwsYy1_MRH2xGJnidDh6W-eMD4kRcQNwJcRVyLz */}
                 </div>
               </div>
             </div>
 
-            <div className="col-md-7 p-5 justify-content-center ">
+            <div
+              style={{
+                margin: "auto",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              className="col-md-7 p-2  "
+            >
               <figure data-aos="fade-in ">
                 <img src={App} alt="" className="img-fluid" />
               </figure>
@@ -176,19 +194,25 @@ return (
       <section style={{}}>
         <div className="container-fluid  ">
           <div className="row  ">
-            <div className="col-md-6">
+            <div className="col-md-7">
               <figure data-aos="fade-in">
                 <img src={Electrical} alt="" className="img-fluid" />
               </figure>
             </div>
-            <div className="col-md-1"></div>
+            {/* <div className="col-md-1"></div> */}
             <div className="col-md-5">
-              <div style={{ paddingLeft: 10 }}>
-                <h1 className=" mt-5">Available on App Store</h1>
-                <p style={{ fontWeight: "bold", color: "#000" }}>
-                  Download our App from App Store for both Android  and IOS platform soon.
+              <div data-aos="fade-in" style={{ paddingLeft: 10 }}>
+                <h1
+                  style={{ fontWeight: "bold", color: "#fff" }}
+                  className=" mt-5"
+                >
+                  Available on App Store
+                </h1>
+                <p style={{  color: "#fff" }}>
+                  Download our App from App Store for both Android and IOS
+                  platform soon.
                 </p>
-                <div class=" social-btns">
+                <div class="mt-5 social-btns">
                   {/* <Link class="app-btn blu flex vert" to="http:apple.com">
     <i class="fab fa-apple"></i>
     <p>Available on the <br/> <span class="big-txt">App Store</span></p>
@@ -202,31 +226,23 @@ return (
                   </Link>
                 </div>
               </div>
-
-             
             </div>
           </div>
         </div>
       </section>
 
-      {/* 
-<section>
-
-
-  <div className="container  text-center">
-
-      
-    <div className="row text-center ">
-
-     
- <figure  data-aos="fade-in">
-
-<img  data-aos="fade-in" src={process.env.PUBLIC_URL+"images/wallpaperflare.com_wallpaper (15).jpg "} alt="" className="img-fluid"/>
-
-   </figure>     
+      {/* <section style={{ backgroundColor: "#000" }}>
+        <div className="container-fluid  text-center">
+          <div className="row text-center ">
+            <img
+              data-aos="fade-in"
+              src={Electrical}
+              alt=""
+              className="img-fluid"
+            />
           </div>
-  </div>
-</section> */}
+        </div>
+      </section> */}
 
       {/* 
 <section  >

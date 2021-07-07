@@ -29,6 +29,10 @@ import HomePage from './Dashboard/pages/HomePage'
 import '../src/index.css'
 import Terms from './screens/Terms';
 import Payment from './screens/Payment';
+import Device from "./models/components/Device.js";
+import Problem from "./models/components/Problem";
+import Basket from "./models/components/Basket.js";
+import Order from './models/components/Order';
 
 
 
@@ -41,36 +45,89 @@ function App() {
 
   return (
     <>
-  
-    <BrowserRouter>
-     <Switch>
-         <Route path='/' exact render={props => <Home {...props} />} />
-         <Route path='/dashboard/'  render={props => <HomePage {...props} />} />
-         <Route path='/login' exact render={props => <Login {...props} />} />
-          <Route path='/otp' exact render={props => <Otp {...props} />} />
-         <Route path='/admin' exact render={props => <Admin {...props} />} />
-         <Route path='/user' exact render={props => <Private {...props} />} />
-         <Route path='/about' exact render={props => <About {...props} />} />
-         <Route path='/laptop' exact render={props => <Laptop {...props} />} />
-         <Route path='/mobile' exact render={props => <Mobile {...props} />} />
-         <Route path='/drone' exact render={props => <Drone {...props} />} />
-         <Route path='/ipad' exact render={props => <Ipad {...props} />} />
-         <Route path='/watch' exact render={props => <Watch {...props} />} />
-         <Route path='/cart' exact render={props => <Cart {...props} />} />
-         <Route path='/terms' exact render={props => <Terms {...props} />} />
-         <Route path='/forget' exact render={props => <ForgetPassword {...props} />} />
-         <Route path='/reset/:token' exact render={props => <ResetPassword {...props} />} />
-         <Route path='/led' exact render={props => <Led {...props} />} />
-         <Route path='/airpod' exact render={props => <Airpods {...props} />} />
-         <Route path='/register' exact render={props => <Register {...props} />} />
-         <Route path='/payment/:payds' exact render={props => <Payment {...props} />} />
-         <Route path="/payment/status/:paymentId" exact render={props => < PaymentStatus {...props} />} />
-         <Route path='/service' exact render={props => <Service {...props} />} />
-         <Route path='/activate/:token' exact render={props => <Activate {...props} />} />
-         <Redirect to='/' />
-    </Switch>
-    </BrowserRouter>
-        {/* <MessengerCustomerChat
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact render={(props) => <Home {...props} />} />
+          <Route
+            path="/dashboard/"
+            render={(props) => <HomePage {...props} />}
+          />
+          <Route path="/device" render={(props) => <Device {...props} />} />
+          <Route path="/problem" render={(props) => <Problem {...props} />} />
+          <Route path="/login" exact render={(props) => <Login {...props} />} />
+          <Route path="/otp" exact render={(props) => <Otp {...props} />} />
+          <Route path="/admin" exact render={(props) => <Admin {...props} />} />
+          <Route
+            path="/user"
+            exact
+            render={(props) => <Private {...props} />}
+          />
+          <Route path="/about" exact render={(props) => <About {...props} />} />
+          <Route
+            path="/laptop"
+            exact
+            render={(props) => <Laptop {...props} />}
+          />
+          <Route
+            path="/order"
+            exact
+            render={(props) => <Order {...props} />}
+          />
+          <Route
+            path="/mobile"
+            exact
+            render={(props) => <Mobile {...props} />}
+          />
+          <Route path="/drone" exact render={(props) => <Drone {...props} />} />
+          <Route path="/ipad" exact render={(props) => <Ipad {...props} />} />
+          <Route path="/watch" exact render={(props) => <Watch {...props} />} />
+          <Route path="/cart" exact render={(props) => <Cart {...props} />} />
+          <Route path="/terms" exact render={(props) => <Terms {...props} />} />
+          <Route
+            path="/forget"
+            exact
+            render={(props) => <ForgetPassword {...props} />}
+          />
+          <Route
+            path="/reset/:token"
+            exact
+            render={(props) => <ResetPassword {...props} />}
+          />
+          <Route path="/led" exact render={(props) => <Led {...props} />} />
+          <Route
+            path="/airpod"
+            exact
+            render={(props) => <Airpods {...props} />}
+          />
+          <Route
+            path="/register"
+            exact
+            render={(props) => <Register {...props} />}
+          />
+          <Route
+            path="/payment/:payds"
+            exact
+            render={(props) => <Payment {...props} />}
+          />
+          <Route
+            path="/payment/status/:paymentId"
+            exact
+            render={(props) => <PaymentStatus {...props} />}
+          />
+          <Route
+            path="/service"
+            exact
+            render={(props) => <Service {...props} />}
+          />
+          <Route
+            path="/activate/:token"
+            exact
+            render={(props) => <Activate {...props} />}
+          />
+          <Redirect to="/" />
+        </Switch>
+      </BrowserRouter>
+      {/* <MessengerCustomerChat
     pageId="113164043777947"
     appId="976657536472023"
     

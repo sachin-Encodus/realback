@@ -1840,12 +1840,12 @@ exports.personal = async function (req, res) {
 //          return res.status(400).json({error: "not submit"});
 //     }
 
-// const accountSid =   Account_Sid;
-// const authToken =   Auth_Token;
-// const client = require('twilio')(accountSid, authToken);
+const accountSid = Account_Sid;
+const authToken = Auth_Token;
+// const client = require("twilio")(accountSid, authToken);
 
-const accountSid = "AC9627beb94cd72e5dea9f3f626e09db90";
-const authToken = "f4dbd2ff58c356d09332af72a519e863";
+// const accountSid = "AC9627beb94cd72e5dea9f3f626e09db90";
+// const authToken = "f4dbd2ff58c356d09332af72a519e863";
 const client = require("twilio")(accountSid, authToken);
 
 exports.otp = (req, res) => {

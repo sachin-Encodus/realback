@@ -10130,9 +10130,9 @@ background: rgba(0, 0, 0, 0.8);
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
     border: none;
-    backdrop-filter: saturate(180%) blur(20px);
-opacity: 1!important;
-background: rgba(0, 0, 0, 0.8);
+    /* backdrop-filter: saturate(180%) blur(20px);
+opacity: 1!important; */
+background: rgb(0, 0, 0);
   
     transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
   }
@@ -11771,20 +11771,20 @@ top: 0;
 @import url('https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i');
 body{
   font-family: 'Muli', sans-serif;
-  background:#ddd;
+
 }
 .shell{
-  padding:80px 0;
+  padding:10px 0;
 }
 .wsk-cp-product{
   /* background:#fff; */
     display: flex;
             flex-direction: column;
             
-            background-color: #fff;
+            background-color: rgb(245, 245, 247);
             width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px -14px rgb(17, 17, 17);
+            border-radius: 15px;
+            /* box-shadow: 0 20px 40px -14px rgb(17, 17, 17); */
         
  
  
@@ -11847,10 +11847,12 @@ padding:20px;
 .wsk-cp-text .category > span{
   padding: 12px 30px;
  
-  background: #090a0a;
-  color:#fff;
-  box-shadow:  0px 15px 20px rgba(63, 63, 63, 0.4);
-  border-radius:27px;
+  /* background: #090a0a; */
+  color:rgb(0, 0, 0);
+  font-size: medium;
+  font-weight: bold;
+  /* box-shadow:  0px 15px 20px rgba(63, 63, 63, 0.4); */
+  /* border-radius:27px; */
   transition: all 0.05s ease-in-out;
   
 }
@@ -11874,10 +11876,9 @@ box-shadow:  0px 15px 20px rgba(63, 63, 63, 0.4);
   font-size:20px;
   font-weight:bold;
   margin:15px auto;
-  overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+ 
   width:100%;
+  padding: 10px;
 }
 .wsk-cp-text .description-prod p{
   padding: 20;
@@ -11966,7 +11967,7 @@ a.buy-btn:hover , a.buy-btn:active, a.buy-btn:focus{
 }
 @media screen and (max-width: 991px) {
   .wsk-cp-product{
-    margin:40px auto;
+    margin:16px auto;
   }
   /* .wsk-cp-product .wsk-cp-img{
   top:-40px;
@@ -12012,12 +12013,16 @@ a.buy-btn{
   font-family: "Lucida Grande", sans-serif;
   font-size: 10px;
   text-transform: uppercase;
+  border: none;
+  outline: none;
 }
 .app-btn.blu {
   background-color: #000000;
   transition: background-color 0.25s linear;
 }
 .app-btn.blu:hover {
+   border: none;
+  outline: none;
   background-color: #000000;
 }
 .app-btn i {
@@ -12039,4 +12044,17 @@ a.buy-btn{
            
             padding: 20px;
             
+}
+
+
+.glass{
+background: rgba( 255, 255, 255, 0.15 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4.0px );
+-webkit-backdrop-filter: blur( 4.0px );
+border-radius: 10px;
+
+position: relative;
+top: 20px;
+margin-bottom: 100px;
 }

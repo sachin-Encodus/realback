@@ -7,27 +7,38 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 
 import data from './Servicedata'
+import useQuery from "./Query";
+
+
+
+
+
 const Service = () =>{
-    const [cities, setCities] = useState([]);
+  // const query = useQuery();
+  // const dogString = query.get("choosenDog");
+  // const dogObject = JSON.parse(dogString);
+
+  // console.log("====================================", dogObject.payds);
+
+  const [cities, setCities] = useState([]);
   const [selectedCounty, setSelectedCountry] = useState("Selected country");
   const [selectedCity, setSelectedCity] = useState("Selected city");
 
   const countries = {
     France: ["Paris", "Marseille", "Lille", "Lyon"],
     Usa: ["New York", "San Francisco", "Austin", "Dallas"],
-    Brazil: ["São Paulo", "Rio de Janeiro", "Salvador"]
+    Brazil: ["São Paulo", "Rio de Janeiro", "Salvador"],
   };
 
-
-
-  const countryList = Object.keys(countries).map(key => ({
-    name: key
+  const countryList = Object.keys(countries).map((key) => ({
+    name: key,
   }));
 
   function handleCountrySelect(e) {
     console.log("Selected country", e.target.value);
     const countrySel = e.target.value;
-    const citiesSel = countrySel !== "" ? countries[countrySel] : "Selected country";
+    const citiesSel =
+      countrySel !== "" ? countries[countrySel] : "Selected country";
     setSelectedCountry(countrySel);
     setCities(citiesSel);
     setSelectedCity("Selected city");
@@ -39,48 +50,22 @@ const Service = () =>{
     setSelectedCity(citiesSel);
   }
 
+  const { mobile } = data;
 
+  useEffect(() => {
+    console.log("====================================", mobile);
 
+    AOS.init({
+      duration: 1000, // values from 0 to 3000, with step 50ms
+    });
+  }, []);
 
-const {mobile} = data;
+  return (
+    <>
+      <Menu />
+      {!isAuth() ? <Redirect to="/login" /> : null}
 
-useEffect(() => {
-  console.log('====================================' ,mobile);
- 
-  AOS.init({
-      
- 
-  duration: 1000, // values from 0 to 3000, with step 50ms
- 
-  });
-}, [])
-
-
-
- return (
-
-<>
-<Menu/>
- {!isAuth() ? <Redirect to='/login' /> : null}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* 
+      {/* 
 
     <div className="App">
       <h1>Example DropDown {selectedCounty} and {selectedCity}</h1>
@@ -115,32 +100,7 @@ useEffect(() => {
     </div>
    */}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- {/* <div  className="container-fluid">
+      {/* <div  className="container-fluid">
      <div className="row">
     <div className="wrapper mt-5 d-flex justify-content-center align-items-center ">
   
@@ -157,7 +117,7 @@ useEffect(() => {
 
 
     <br/><br/><br/><br/><br/><br/> */}
-    {/* <div className="container">
+      {/* <div className="container">
         <h4 style={{display: 'inline-block'}}>Repair Services</h4>
       
         <br/>
@@ -283,79 +243,59 @@ useEffect(() => {
         </div>
     </div> */}
 
+      <div class="container mt-5 ">
+        <h1 class=" mt-5 ">Get your </h1>
+        <h1>device service</h1>
+      </div>
 
+      <div class="shell">
+        <div class="container">
+          <div class="row">
+            {mobile.map((product) => (
+              <div class="col-6 col-sm-6  col-md-3 col-lg-3 ">
+                <div class="wsk-cp-product">
+                  <Link
+                    to={{
+                      pathname: "/device",
+                      search: `routeName=${JSON.stringify(product.data)}`, //dog is the object to pass along
+                    }}
+                  >
+                    <div class="wsk-cp-img">
+                      <img
+                        src={product.image}
+                        alt="Product"
+                        class="img-responsive"
+                      />
+                    </div>
 
+                    <div class="wsk-cp-text">
+                      {/* <div style={{backgroundColor:'#000' , borderRadius:20}}  > */}
 
-<div class="container mt-5 text-center">
-<h1>Product card</h1>
-  <span>Create With ❤<i class="zmdi zmdi-favorite red"></i>By: <strong>Sachin , Rohit</strong> From:Realback </span>
-</div>
+                      <div class="category">
+                        <span>{product.productName}</span>
+                      </div>
 
+                      <div class="title-product">
+                        {/* <h3>Get your device Service</h3> */}
+                      </div>
 
-<div class="shell">
-  <div class="container">
-    <div class="row">
-        {mobile.map((product) => (
-      <div class="col-md-3">
-
-         
-      
-
-        <div class="wsk-cp-product">
-          <div class="wsk-cp-img">
-            <img src={product.image} alt="Product" class="img-responsive" />
-          </div>
-        
-          <div class="wsk-cp-text">
-             {/* <div style={{backgroundColor:'#000' , borderRadius:20}}  > */}
-                   <Link to={product.name}> 
-            <div class="category">
-          
-              <span>{product.productName}</span>
-             
-            </div>
-               </Link>
-            <div class="title-product">
-              <h3>My face not my heart</h3>
-            </div>
-            <div  class="description-prod">
-              <p>Description Product tell me how to change playlist </p>
-            </div>
-              {/* </div> */}
-            {/* <div class="card-footer">
+                      {/* </div> */}
+                      {/* <div class="card-footer">
               <div class="wcf-left"><span class="price">Rp500.000</span></div>
               <div class="wcf-right"><a href="#" class="buy-btn"><i class="zmdi zmdi-shopping-basket"></i></a></div>
             </div> */}
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
-        
         </div>
-        
       </div>
-  ))}
-    </div>
 
-
-
-
-
-
-  </div>
-</div>
-
-
-
- 
-   
-
-<Footer/>
-
-
-</>
-
-
- );
-
-
+      <Footer />
+    </>
+  );
 }
     
 export default Service;
