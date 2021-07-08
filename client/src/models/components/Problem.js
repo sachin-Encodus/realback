@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import Menu from "../../screens/Menu";
 import useQuery from "../../screens/Query";
 import { Link } from "react-router-dom";
+import Footer from "./../../screens/Footer";
 const Problem = () => {
   const [selected, setSelected] = React.useState(new Map());
 
   const query = useQuery();
   const dogString = query.get("routeName");
+  const device = query.get("devicename");
+
+  console.log(device);
   const dogObject = JSON.parse(dogString);
   console.log("============>>>>>>>>>>", dogObject);
 
@@ -62,141 +66,145 @@ const Problem = () => {
   return (
     <div>
       <Menu />
-      <div style={{ marginTop: 100 }} className="container">
-        <h1 style={{ marginBottom: 20 }}>Select your device problem</h1>
-        <div className="row">
-          {dogObject && dogObject !== undefined ? (
-            dogObject.map((item) => (
-              <div className="col-md-4">
-                <div
-                  key={item._id}
-                  style={{
-                    backgroundColor: !!selected.get(item._id)
-                      ? "#000"
-                      : "rgb(245, 245, 247)",
-
-                    padding: 18,
-                    marginTop: 10,
-                    marginVertical: 8,
-                    marginHorizontal: 30,
-                    borderRadius: 15,
-                  }}
-                >
+      <section>
+        <div style={{ marginTop: 100 }} className="container">
+          <h1 style={{ marginBottom: 20 }}>Select your {device} problem </h1>
+          <div className="row">
+            {dogObject && dogObject !== undefined ? (
+              dogObject.map((item) => (
+                <div className="col-md-4">
                   <div
-                    onClick={() => {
-                      onSelect(item._id);
-                      !!selected.get(item._id) ? onRemove(item) : onAdd(item);
+                    key={item._id}
+                    style={{
+                      backgroundColor: !!selected.get(item._id)
+                        ? "#000"
+                        : "rgb(245, 245, 247)",
+
+                      padding: 18,
+                      marginTop: 10,
+                      marginVertical: 8,
+                      marginHorizontal: 30,
+                      borderRadius: 15,
                     }}
                   >
                     <div
-                      key={item._id}
-                      style={{
-                        justifyContent: "space-between",
-                        display: "flex",
+                      onClick={() => {
+                        onSelect(item._id);
+                        !!selected.get(item._id) ? onRemove(item) : onAdd(item);
                       }}
                     >
-                      <h3
+                      <div
+                        key={item._id}
                         style={{
-                          color: !!selected.get(item._id) ? "white" : "black",
-                          fontSize: 17,
-                          fontWeight: "bold",
+                          justifyContent: "space-between",
+                          display: "flex",
                         }}
                       >
-                        {item.name}
-                      </h3>
+                        <h3
+                          style={{
+                            color: !!selected.get(item._id) ? "white" : "black",
+                            fontSize: 17,
+                            fontWeight: "bold",
+                          }}
+                        >
+                          {item.name}
+                        </h3>
 
-                      <h3
-                        style={{
-                          color: !!selected.get(item._id) ? "white" : "black",
-                          fontSize: 17,
-                          fontWeight: "bold",
-                        }}
-                      >
-                        Rs. {item.price}
-                      </h3>
+                        <h3
+                          style={{
+                            color: !!selected.get(item._id) ? "white" : "black",
+                            fontSize: 17,
+                            fontWeight: "bold",
+                          }}
+                        >
+                          Rs. {item.price}
+                        </h3>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))
-          ) : (
-            <h1>no data to show</h1>
-          )}
+              ))
+            ) : (
+              <h1>no data to show</h1>
+            )}
+          </div>
+          <div className="  row ">
+            {cartItems.length !== 0 && (
+              <>
+                <div className="col-md-12 glass">
+                  <div
+                    style={{
+                      justifyContent: "space-between",
+                      display: "flex",
+                      marginBottom: 5,
+                    }}
+                  >
+                    <div className="">Items Price</div>
+                    <div className="">{itemsPrice.toFixed(2)}</div>
+                  </div>
+
+                  <div
+                    style={{
+                      justifyContent: "space-between",
+                      display: "flex",
+                      marginBottom: 5,
+                    }}
+                  >
+                    <div>Tax Price</div>
+                    <div>{taxPrice.toFixed(2)}</div>
+                  </div>
+
+                  <div
+                    style={{
+                      justifyContent: "space-between",
+                      display: "flex",
+                      marginBottom: 5,
+                    }}
+                  >
+                    <div>Shipping Price</div>
+                    <div>{shippingPrice.toFixed(2)}</div>
+                  </div>
+
+                  <div
+                    style={{
+                      justifyContent: "space-between",
+                      display: "flex",
+                      marginBottom: 5,
+                    }}
+                  >
+                    <div>discount</div>
+                    <div>{discount.toFixed(2)}</div>
+                  </div>
+
+                  <div
+                    style={{
+                      justifyContent: "space-between",
+                      display: "flex",
+                      marginBottom: 5,
+                    }}
+                  >
+                    <div>Total Price</div>
+                    <div>{totalPrice.toFixed(2)}</div>
+                  </div>
+                  <Link
+                    style={{ padding: 15, width: "500px" }}
+                    to={{
+                      pathname: "/order",
+                      search: `routeName=${JSON.stringify(
+                        cartItems
+                      )}&price=${totalPrice}&device=${device}`, //dog is the object to pass along
+                    }}
+                    class="app-btn blu flex vert  "
+                  >
+                    <span class="big-txt">Next</span>
+                  </Link>
+                </div>
+              </>
+            )}
+          </div>
         </div>
-        <div className="  row ">
-          {cartItems.length !== 0 && (
-            <>
-              <div className="col-md-12 p-3 glass">
-                <div
-                  style={{
-                    justifyContent: "space-between",
-                    display: "flex",
-                    marginBottom: 5,
-                  }}
-                >
-                  <div className="">Items Price</div>
-                  <div className="">{itemsPrice.toFixed(2)}</div>
-                </div>
-
-                <div
-                  style={{
-                    justifyContent: "space-between",
-                    display: "flex",
-                    marginBottom: 5,
-                  }}
-                >
-                  <div>Tax Price</div>
-                  <div>{taxPrice.toFixed(2)}</div>
-                </div>
-
-                <div
-                  style={{
-                    justifyContent: "space-between",
-                    display: "flex",
-                    marginBottom: 5,
-                  }}
-                >
-                  <div>Shipping Price</div>
-                  <div>{shippingPrice.toFixed(2)}</div>
-                </div>
-
-                <div
-                  style={{
-                    justifyContent: "space-between",
-                    display: "flex",
-                    marginBottom: 5,
-                  }}
-                >
-                  <div>discount</div>
-                  <div>{discount.toFixed(2)}</div>
-                </div>
-
-                <div
-                  style={{
-                    justifyContent: "space-between",
-                    display: "flex",
-                    marginBottom: 5,
-                  }}
-                >
-                  <div>Total Price</div>
-                  <div>{totalPrice.toFixed(2)}</div>
-                </div>
-
-                <Link
-                  to={{
-                    pathname: "/order",
-                    search: `routeName=${JSON.stringify(cartItems)}`, //dog is the object to pass along
-                  }}
-                >
-                  <button className="btn" style={{ display: "block" }}>
-                    Next
-                  </button>
-                </Link>
-              </div>
-            </>
-          )}
-        </div>
-      </div>
+      </section>
+      <Footer />
     </div>
   );
 };

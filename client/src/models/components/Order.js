@@ -5,10 +5,13 @@ import axios from "axios";
 import useQuery from "../../screens/Query";
 import logo from "../../images/real.jpg";
 import Menu from "../../screens/Menu";
+import Footer from "./../../screens/Footer";
 
 const Order = () => {
   const query = useQuery();
   const dogString = query.get("routeName");
+  const Price = query.get("price");
+  const deive = query.get("device");
   const cartItems = JSON.parse(dogString);
   console.log("============>>>>>>>>>>", cartItems);
 
@@ -17,7 +20,7 @@ const Order = () => {
   const [signature, setSignature] = useState("");
   const [paymentID, setPaymentID] = useState("");
   const [payid, setPayid] = useState("helloooox636d7d");
-  const totalPrice = "5000";
+  const totalPrice = Price;
   const [adds, setAdds] = React.useState([]);
 
   const [formData, setFormData] = useState({
@@ -173,7 +176,12 @@ const Order = () => {
   };
 
   const handleChange = (text) => (e) => {
-    setFormData({ ...formData, [text]: e.target.value, products: cartItems });
+    setFormData({
+      ...formData,
+      [text]: e.target.value,
+      products: cartItems,
+      company: deive,
+    });
   };
   console.log("===>", products);
   // sachin1245e@gmail.com
@@ -201,8 +209,8 @@ const Order = () => {
         .post(`/api/device`, {
           email,
           name,
-          company: "mi",
-          model: "6a",
+          company,
+          model,
           message,
           products,
           mode,
@@ -272,140 +280,143 @@ const Order = () => {
   return (
     <div>
       <Menu />
-      <div className="container justify-contect-center mt-5 ">
-        <ToastContainer />
-        <div className="row  justify-content-center align-item-center mt-5 ">
-          <form
-            onSubmit={onSubmits}
-            className="contact-form  justify-content-center align-item-center"
-          >
-            <div>
-              <h1>Give your details </h1>
-              <div className="form-field  justify-content-center align-item-center col-xl-3">
-                <input
-                  id="city"
-                  className="input-text js-input"
-                  type="email"
-                  placeholder="email"
-                  onChange={handleChange("email")}
-                  value={email}
-                  disabled
-                />
-              </div>
-              <div class="form-field  col-xl-3">
-                <input
-                  onChange={handleChange("name")}
-                  class="input-text js-input"
-                  placeholder="Full Name"
-                  value={name}
-                  type="text"
-                />
-              </div>
+      <section>
+        <div className="container ">
+          <ToastContainer />
+          <div className="row   ">
+            <form
+              onSubmit={onSubmits}
+              className="contact-form "
+            >
+              <div>
+                <h1>Give your details </h1>
+                <div className="form-field  col-xl-3">
+                  <input
+                    id="city"
+                    className="input-text js-input"
+                    type="email"
+                    placeholder="email"
+                    onChange={handleChange("email")}
+                    value={email}
+                    disabled
+                  />
+                </div>
+                <div class="form-field  col-xl-3">
+                  <input
+                    onChange={handleChange("name")}
+                    class="input-text js-input"
+                    placeholder="Full Name"
+                    value={name}
+                    type="text"
+                  />
+                </div>
 
-              <div class="form-field col-xl-3">
-                <input
-                  onChange={handleChange("number")}
-                  class="input-text js-input"
-                  value={number}
-                  placeholder="Mobile"
-                  type="num"
-                  maxlength="10"
-                />
-              </div>
-              <div class="form-field col-xl-3">
-                <input
-                  onChange={handleChange("country")}
-                  class="input-text js-input"
-                  placeholder="Country"
-                  type="string"
-                  value={country}
-                />
-              </div>
+                <div class="form-field col-xl-3">
+                  <input
+                    onChange={handleChange("number")}
+                    class="input-text js-input"
+                    value={number}
+                    placeholder="Mobile"
+                    type="num"
+                    maxlength="10"
+                  />
+                </div>
+                <div class="form-field col-xl-3">
+                  <input
+                    onChange={handleChange("country")}
+                    class="input-text js-input"
+                    placeholder="Country"
+                    type="string"
+                    value={country}
+                  />
+                </div>
 
-              <div className="form-field col-xl-9">
-                <input
-                  id="Address"
-                  className="input-text js-input"
-                  name="message"
-                  onChange={handleChange("message")}
-                  value={message}
-                  placeholder="Please type here if your problem is not mentioned in the above section."
-                  type="text"
-                />
-              </div>
+                <div className="form-field col-xl-9">
+                  <input
+                    id="Address"
+                    className="input-text js-input"
+                    name="message"
+                    onChange={handleChange("message")}
+                    value={message}
+                    placeholder="Please type here if your problem is not mentioned in the above section."
+                    type="text"
+                  />
+                </div>
 
-              <div class="form-field col-xl-3">
-                <input
-                  onChange={handleChange("state")}
-                  class="input-text js-input"
-                  placeholder="State"
-                  value={state}
-                  type="text"
-                />
-              </div>
-              <div class="form-field col-xl-3">
-                <input
-                  onChange={handleChange("city")}
-                  class="input-text js-input"
-                  placeholder="City"
-                  value={city}
-                  type="text"
-                />
-              </div>
-              <div class="form-field col-xl-3">
-                <input
-                  onChange={handleChange("pincode")}
-                  class="input-text js-input"
-                  placeholder="Pincode"
-                  value={pincode}
-                  type="number"
-                />
-              </div>
+                <div class="form-field col-xl-3">
+                  <input
+                    onChange={handleChange("state")}
+                    class="input-text js-input"
+                    placeholder="State"
+                    value={state}
+                    type="text"
+                  />
+                </div>
+                <div class="form-field col-xl-3">
+                  <input
+                    onChange={handleChange("city")}
+                    class="input-text js-input"
+                    placeholder="City"
+                    value={city}
+                    type="text"
+                  />
+                </div>
+                <div class="form-field col-xl-3">
+                  <input
+                    onChange={handleChange("pincode")}
+                    class="input-text js-input"
+                    placeholder="Pincode"
+                    value={pincode}
+                    type="number"
+                  />
+                </div>
 
-              <div class="form-field col-xl-6">
-                <input
-                  onChange={handleChange("Address")}
-                  class="input-text js-input"
-                  placeholder="Address"
-                  value={Address}
-                  type="text"
-                />
-              </div>
-              {/* <Link className="btn"  style={{padding:10}}  onClick={() => {showdata(); setNext(true);}} >Next</Link> */}
-              <div
-                className=" col-xl-4"
-                style={{ display: "flex", justifyContent: "space-between" }}
-              >
-                <Link
-                  style={{ padding: 15, width: "500px" }}
-                  class="app-btn blu flex vert  "
-                  onClick={() =>
-                    setFormData({
-                      ...formData,
-                      mode: "COD",
-                    })
-                  }
+                <div class="form-field col-xl-6">
+                  <input
+                    onChange={handleChange("Address")}
+                    class="input-text js-input"
+                    placeholder="Address"
+                    value={Address}
+                    type="text"
+                  />
+                </div>
+                {/* <Link className="btn"  style={{padding:10}}  onClick={() => {showdata(); setNext(true);}} >Next</Link> */}
+                <div
+                  className=" col-xl-4"
+                  style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <span class="big-txt">{textChange}</span>
-                </Link>
+                  <button
+                    style={{ padding: 15, width: "500px" }}
+                    class="app-btn blu flex vert  "
+                    onClick={() =>
+                      setFormData({
+                        ...formData,
+                        mode: "COD",
+                      })
+                    }
+                  >
+                    <span class="big-txt">{textChange}</span>
+                  </button>
 
-                <button
-                  style={{ padding: 15, width: "500px" }}
-                  class="app-btn blu flex vert  "
-                  onClick={() =>
-                    setFormData({
-                      ...formData,
-                      mode: "online",
-                    })
-                  }
-                >
-                  <span class="big-txt"> Payment Now</span>
-                </button>
+                  <button
+                    style={{ padding: 15, width: "500px" }}
+                    class="app-btn blu flex vert  "
+                    onClick={() =>
+                      setFormData({
+                        ...formData,
+                        mode: "online",
+                      })
+                    }
+                  >
+                    <span class="big-txt"> Payment Now</span>
+                  </button>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
+      </section>
+      <Footer        />
     </div>
   );
 };

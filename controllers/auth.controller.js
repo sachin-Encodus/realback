@@ -1927,7 +1927,7 @@ exports.payment = (req, res) => {
 
   console.log(price);
 
-  const amount = price;
+  const amount = price * 100;
   const currency = "INR";
   const receipt = uniquId();
 

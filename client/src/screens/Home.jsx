@@ -11,7 +11,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import Service from './Service';
 import App from "../images/airpods.png";
-import Electrical from "../images/image1.png";
+import myvideo from "../images/App2.mp4";
 // import Pod from '../images/.png'
 const Home = () =>{
  
@@ -66,15 +66,23 @@ return (
   </div> */}
 
       <section style={{}}>
-        <div className="container-fluid ">
+        <div className="container">
           <div className="row  ">
-            <div className="col-md-1"></div>
-            <div className="col-md-4 ">
-              <div style={{ paddingLeft: 10 }}>
-                <h1
-                  style={{ color: "#fff", fontFamily: "unset" }}
-                  className=" mt-5"
-                >
+            <div
+              style={{
+                margin: "auto",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              className="col-md-7 p-2 mt-5 "
+            >
+              <figure data-aos="fade-in ">
+                <img src={App} alt="" className="img-fluid" />
+              </figure>
+            </div>
+            <div className="col-md-5 mt-5 ">
+              <div style={{ padding: 20 }}>
+                <h1 style={{ color: "#fff", fontFamily: "unset" }} className="">
                   Realback for your
                 </h1>
                 <h1 style={{ color: "#fff" }}>all devices solutions</h1>
@@ -82,7 +90,7 @@ return (
                   You can esaliy repair your elctronics devices with Realback
                   get your service Now!
                 </p>
-                <div class=" social-btns">
+                <div class=" social-btns mt-5">
                   <Link
                     style={{ padding: 15 }}
                     class="app-btn blu flex vert  "
@@ -103,22 +111,83 @@ return (
                 </div>
               </div>
             </div>
-
-            <div
-              style={{
-                margin: "auto",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-              className="col-md-7 p-2  "
-            >
-              <figure data-aos="fade-in ">
-                <img src={App} alt="" className="img-fluid" />
-              </figure>
-            </div>
           </div>
         </div>
       </section>
+
+      <div class="logoMarqueeSection">
+        <div class="container" id="logoMarqueeSection">
+          <div class="default-content-container flex items-center">
+            <div class="default-content-container-inner marquee-wrapper relative overflow-hidden inline-block">
+              <div class="marquee" style={{ animationDuration: "57s" }}>
+                <a target="_blank">
+                  <img
+                    src="https://1000logos.net/wp-content/uploads/2018/09/Honor-logo.png"
+                    title=""
+                    class="marqueelogo"
+                  />
+                </a>
+                <a target="_blank">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Realme-realme-_logo_box-RGB-01.png"
+                    title=""
+                    class="marqueelogo"
+                  />
+                </a>
+                <a target="_blank">
+                  <img
+                    src="https://www.freepnglogos.com/uploads/xiaomi-png/xiaomi-logo-logos-marcas-8.png"
+                    title=""
+                    class="marqueelogo"
+                  />
+                </a>
+                <a target="_blank">
+                  <img
+                    src="https://www.searchpng.com/wp-content/uploads/2019/01/vivo-Phone-logo.png"
+                    title=""
+                    class="marqueelogo"
+                  />
+                </a>
+                <a target="_blank">
+                  <img
+                    src="https://www.freepnglogos.com/uploads/oppo-logo-png/oppo-green-logo-transparent-0.png"
+                    title=""
+                    class="marqueelogo"
+                  />
+                </a>
+                <a target="_blank">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOXkMpw3xPGNNNto3lgm9Phz9jsfz80-AITBKiEpgL5ZuXy-It_5v5Ar2cVjXI-nwjFIY&usqp=CAU"
+                    title=""
+                    class="marqueelogo"
+                  />
+                </a>
+                <a target="_blank">
+                  <img
+                    src="https://pngimg.com/uploads/sony_logo/sony_logo_PNG5.png"
+                    title=""
+                    class="marqueelogo"
+                  />
+                </a>
+                <a target="_blank">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/ASUS_Logo.svg/2560px-ASUS_Logo.svg.png"
+                    title=""
+                    class="marqueelogo"
+                  />
+                </a>
+                {/* <a target="_blank">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Nokia_wordmark.svg/1024px-Nokia_wordmark.svg.png"
+                    title=""
+                    class="marqueelogo"
+                  />
+                </a> */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* <header class="masthead">
     <img src="images/gpod.png" alt="" class="img-fluid gpod"/>
@@ -192,32 +261,32 @@ return (
    </figure>  */}
 
       <section style={{}}>
-        <div className="container-fluid  ">
+        <div className="container-fluid ">
           <div className="row  ">
-            <div className="col-md-7">
-              <figure data-aos="fade-in">
-                <img src={Electrical} alt="" className="img-fluid" />
-              </figure>
-            </div>
-            {/* <div className="col-md-1"></div> */}
-            <div className="col-md-5">
-              <div data-aos="fade-in" style={{ paddingLeft: 10 }}>
+            <div className="col-md-12 ">
+              <div class="wrapper ">
+                <video autoplay="autoplay" muted class="wrapper__video ">
+                  <source type="video/mp4" src={myvideo} />
+                </video>
+              </div>
+              <div  style={{ paddingLeft: 10 }}>
                 <h1
-                  style={{ fontWeight: "bold", color: "#fff" }}
-                  className=" mt-5"
+                  style={{
+                    fontWeight: "bold",
+                    color: "#fff",
+                    textAlign: "center",
+                  }}
                 >
                   Available on App Store
                 </h1>
-                <p style={{  color: "#fff" }}>
+                <p style={{ color: "#fff", textAlign: "center" }}>
                   Download our App from App Store for both Android and IOS
                   platform soon.
                 </p>
-                <div class="mt-5 social-btns">
-                  {/* <Link class="app-btn blu flex vert" to="http:apple.com">
-    <i class="fab fa-apple"></i>
-    <p>Available on the <br/> <span class="big-txt">App Store</span></p>
-  </Link> */}
-
+                <div
+                  class="mt-5 social-btns"
+                  style={{ justifyContent: "center", display: "flex" }}
+                >
                   <Link class="app-btn blu flex vert" to="http:google.com">
                     <i class="fab fa-google-play"></i>
                     <p>
@@ -227,6 +296,7 @@ return (
                 </div>
               </div>
             </div>
+            {/* <div className="col-md-1"></div> */}
           </div>
         </div>
       </section>
@@ -234,12 +304,11 @@ return (
       {/* <section style={{ backgroundColor: "#000" }}>
         <div className="container-fluid  text-center">
           <div className="row text-center ">
-            <img
-              data-aos="fade-in"
-              src={Electrical}
-              alt=""
-              className="img-fluid"
-            />
+            <div class="wrapper">
+              <video autoplay="autoplay" muted class="wrapper__video">
+                <source type="video/mp4" src={myvideo} />
+              </video>
+            </div>
           </div>
         </div>
       </section> */}

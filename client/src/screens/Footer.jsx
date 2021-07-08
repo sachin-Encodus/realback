@@ -17,13 +17,13 @@ const Footer = () => {
                   focuses on providing the most efficient code or snippets as
                   the code wants to be simple. We will help programmers build up
                   concepts in different programming languages that include C,
-                  C++, Java, HTML, CSS, Bootstrap, JavaScript,{" "}
+                  C++, Java, HTML, CSS, Bootstrap, JavaScript,
                 </p>
               </span>
             </div>
             <div className="col-md-6 text-center ">
               <span>
-                <ul>
+              
                   <strong>Realback Store</strong>
                   <p class="text-justify  text-center">
                     Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an
@@ -35,7 +35,7 @@ const Footer = () => {
                     JavaScript, PHP, Android, SQL and Algorithm.
                   </p>
                   <br />
-                </ul>
+               
               </span>
             </div>
 

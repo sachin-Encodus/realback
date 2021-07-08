@@ -111,49 +111,87 @@ import '../order.css';
 
 
  return (
-<>
+   <>
+     <nav
+       className="navbar navbar-expand-lg navbar-dark fixed-top"
+       id="mainNav"
+     >
+       <div className="container">
+         <NavLink className="navbar-brand js-scroll-trigger" to="#page-top">
+           Realback
+         </NavLink>
+         <div className="collapse navbar-collapse" id="navbarResponsive">
+           <ul className="navbar-nav  ml-auto">
+             <input type="submit" value="" className="search-submit" />
+             <input
+               type="search"
+               name=""
+               className="search-text"
+               placeholder="Search..."
+               autocomplete="on"
+             />
+             <li className="nav-item ">
+               <NavLink className="nav-link js-scroll-trigger  " to="/">
+                 Home
+               </NavLink>
+             </li>
+             <li className="nav-item ">
+               <NavLink className="nav-link js-scroll-trigger  " to="/service">
+                 Services
+               </NavLink>
+             </li>
+             <li className="nav-item">
+               <NavLink className="nav-link js-scroll-trigger" to="/about">
+                 About
+               </NavLink>
+             </li>
+             <li className="nav-item">
+               <NavLink className="nav-link js-scroll-trigger" to="/cart">
+                 Orders
+               </NavLink>
+             </li>
+             {/* <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/payment">dashboard</NavLink></li> */}
+             {login === "" ? (
+               <li className="nav-item">
+                 <NavLink
+                   onClick={Hello}
+                   className="nav-link js-scroll-trigger"
+                   to="/login"
+                 >
+                   Login
+                 </NavLink>
+               </li>
+             ) : (
+               [
+                 <li className="nav-item">
+                   <NavLink
+                     onClick={() => {
+                       signout(() => {
+                         Hello();
+                       });
+                     }}
+                     className="nav-link js-scroll-trigger"
+                     to="/logout"
+                   >
+                     <p data-tip="Tap to Logout" data-type="warning">
+                       {login}
+                     </p>
+                   </NavLink>
+                 </li>,
+                 <ReactTooltip />,
+               ]
+             )}
 
-    <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-    <div className="container-fluid">
-        <NavLink className="navbar-brand js-scroll-trigger" to="#page-top">Realback</NavLink>
-        <div className="collapse navbar-collapse" id="navbarResponsive">
-            <ul className="navbar-nav  ml-auto">
+             {/* <li className="nav-item"><NavLink onClick={mylogin} className="nav-link js-scroll-trigger" to="/">check</NavLink></li> */}
 
-  <input type="submit" value="" className="search-submit"/>
-  <input type="search" name="" className="search-text" placeholder="Search..." autocomplete="on"/>
-    <li className="nav-item "><NavLink className="nav-link js-scroll-trigger  "  to="/">Home</NavLink></li>
-     <li className="nav-item "><NavLink className="nav-link js-scroll-trigger  "  to="/service">Services</NavLink></li>
-     <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/about">About</NavLink></li>
-      <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/cart">Orders</NavLink></li>
-       {/* <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/payment">dashboard</NavLink></li> */}
-     {
+             {/* <button style={{ }} onClick={mylogin}>check</button> */}
+           </ul>
+         </div>
+       </div>
+     </nav>
 
-login ===  '' ?  <li className="nav-item"><NavLink onClick={Hello} className="nav-link js-scroll-trigger" to="/login">Login</NavLink></li>  :[ <li className="nav-item"><NavLink 
-       onClick={() => {signout(() => {Hello() });
-    
-    }}
-
-
-    
-     className="nav-link js-scroll-trigger"   to="/logout"><p data-tip="Tap to Logout"
-    data-type="warning"   >{login}</p></NavLink></li> ,
-    <ReactTooltip />
-]
-
-
-     }
-    
-    
-      {/* <li className="nav-item"><NavLink onClick={mylogin} className="nav-link js-scroll-trigger" to="/">check</NavLink></li> */}
-    
-{/* <button style={{ }} onClick={mylogin}>check</button> */}
-    </ul> 
-    </div>
-    </div>
-    </nav>
-
-{/* mobile menu */}
-{/* 
+     {/* mobile menu */}
+     {/* 
 
 <div className="mobile">
     <div className="window">
@@ -215,88 +253,88 @@ login ===  '' ?  <li className="nav-item"><NavLink onClick={Hello} className="na
     </div>
 </div> */}
 
-
-{/* 
+     {/* 
 mobile menu */}
-<div className="mobile">
-    <div className="window">
-        <div className="header">
-            <div className="burger-container">
-                <div id="burger" onClick={mymenu}   >
-                    <div className="bar topBar"></div>
-                    <div className="bar btmBar"></div>
-                </div>
-            </div>
+     <div className="mobile">
+       <div className="window">
+         <div className="header">
+           <div className="burger-container">
+             <div id="burger" onClick={mymenu}>
+               <div className="bar topBar"></div>
+               <div className="bar btmBar"></div>
+             </div>
+           </div>
 
-            <div className="icon icon-apple">
-                <NavLink className="js-scroll-trigger" to="#page-top"><img src={process.env.PUBLIC_URL+"images/m18.png"} className="logos" />
-                </NavLink>
-            </div>
+           <div className="icon icon-apple">
+             <NavLink className="js-scroll-trigger" to="#page-top">
+               <img
+                 src={process.env.PUBLIC_URL + "images/m18.png"}
+                 className="logos"
+               />
+             </NavLink>
+           </div>
 
-
-
-
-            {/* <form className="form-search" method="get" action="#">
+           {/* <form className="form-search" method="get" action="#">
                 <input type="search" name="search" placeholder="search your book here for.." />
                 <button type="submit">Search</button>
 
             </form> */}
-            <ul className="menu">
- 
+           <ul className="menu">
              <li className="menu-item">
-                    <NavLink to="/">Home</NavLink>
-                </li>
- <li className="menu-item">
-                    <NavLink to="/cart">Orders</NavLink>
-                </li>
-                <li className="menu-item">
-                    <NavLink to="/service">Service</NavLink>
-                </li>
-                <li className="menu-item">
-                    <NavLink to="/about">about</NavLink>
-                </li>
-                <li className="menu-item">
-                    <NavLink to="#">contact</NavLink>
-                </li>
-  <li className="menu-item">
-                    <NavLink to="#">Donate to realback</NavLink>
-                </li>
+               <NavLink to="/">Home</NavLink>
+             </li>
+             <li className="menu-item">
+               <NavLink to="/cart">Orders</NavLink>
+             </li>
+             <li className="menu-item">
+               <NavLink to="/service">Service</NavLink>
+             </li>
+             <li className="menu-item">
+               <NavLink to="/about">about</NavLink>
+             </li>
+             <li className="menu-item">
+               <NavLink to="#">contact</NavLink>
+             </li>
+             <li className="menu-item">
+               <NavLink to="#">Donate to realback</NavLink>
+             </li>
 
-                {
-login === '' ? <li className="menu-item">
-                    <NavLink to="/login">Login</NavLink>
-                </li> :  <li className="menu-item">
-                    <NavLink 
-                    
-                          onClick={() => {signout(() => {Hello() }); }}
-                    
-                    
-                    to="/logout">{login}</NavLink>
-                </li>
+             {login === "" ? (
+               <li className="menu-item">
+                 <NavLink to="/login">Login</NavLink>
+               </li>
+             ) : (
+               <li className="menu-item">
+                 <NavLink
+                   onClick={() => {
+                     signout(() => {
+                       Hello();
+                     });
+                   }}
+                   to="/logout"
+                 >
+                   {login}
+                 </NavLink>
+               </li>
+             )}
+           </ul>
 
-                }
-               
-                
-               
-               
-            </ul>
-
-            <div className="shop icon icon-bag">
-                {
-
-login === '' ?   <NavLink to="/login"><i className="fas fa-user " style={{color: "white"}}></i></NavLink> : 
-                        <NavLink to="/service"><FaServer color='white'  /></NavLink>
-
-                }
-              
-            </div>
-        </div>
-        <div className="content">
-        </div>
-    </div>
-</div>
-</>
-
+           <div className="shop icon icon-bag">
+             {login === "" ? (
+               <NavLink to="/login">
+                 <i className="fas fa-user " style={{ color: "white" }}></i>
+               </NavLink>
+             ) : (
+               <NavLink to="/service">
+                 <FaServer color="white" />
+               </NavLink>
+             )}
+           </div>
+         </div>
+         <div className="content"></div>
+       </div>
+     </div>
+   </>
  );
 
 }
