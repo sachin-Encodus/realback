@@ -92,7 +92,11 @@ return (
                 </p>
                 <div class=" social-btns mt-5">
                   <Link
-                    style={{ padding: 15 }}
+                    style={{
+                      padding: 15,
+                      backgroundColor: "#0070f3",
+                      boxShadow: "0 4px 14px 0 rgb(0 118 255 / 39%)",
+                    }}
                     class="app-btn blu flex vert  "
                     to="/service"
                   >
@@ -269,7 +273,7 @@ return (
                   <source type="video/mp4" src={myvideo} />
                 </video>
               </div>
-              <div  style={{ paddingLeft: 10 }}>
+              <div style={{ paddingLeft: 10 }}>
                 <h1
                   style={{
                     fontWeight: "bold",

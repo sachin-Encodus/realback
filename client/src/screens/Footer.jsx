@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
-      <div className="mainfooter " style={{ backgroundColor: "rgb(0, 0, 0)" }}>
+      <div style={{ backgroundColor: "#000" }}>
         <br /> <br /> <br /> <br />
-        <div className="container">
+        {/* <div className="container">
           <div className="row">
             <div className="col-md-6   text-center ">
               <span>
                 <strong>Services</strong>
-                <p class="text-justify  text-center">
+                <p style={{ color: "#fff" }} class="text-justify  text-center">
                   Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative
                   to help the upcoming programmers with the code. Scanfcode
                   focuses on providing the most efficient code or snippets as
@@ -23,19 +23,17 @@ const Footer = () => {
             </div>
             <div className="col-md-6 text-center ">
               <span>
-              
-                  <strong>Realback Store</strong>
-                  <p class="text-justify  text-center">
-                    Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an
-                    initiative to help the upcoming programmers with the code.
-                    Scanfcode focuses on providing the most efficient code or
-                    snippets as the code wants to be simple. We will help
-                    programmers build up concepts in different programming
-                    languages that include C, C++, Java, HTML, CSS, Bootstrap,
-                    JavaScript, PHP, Android, SQL and Algorithm.
-                  </p>
-                  <br />
-               
+                <strong>Realback Store</strong>
+                <p style={{ color: "#fff" }} class="text-justify  text-center">
+                  Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative
+                  to help the upcoming programmers with the code. Scanfcode
+                  focuses on providing the most efficient code or snippets as
+                  the code wants to be simple. We will help programmers build up
+                  concepts in different programming languages that include C,
+                  C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL
+                  and Algorithm.
+                </p>
+                <br />
               </span>
             </div>
 
@@ -44,14 +42,14 @@ const Footer = () => {
             <br />
             <br />
           </div>
-        </div>
+        </div> */}
         <div className="container ">
           <hr className="hre" />
           <div className="row">
             <div className="col-md-4 text-center ">
               <p
                 style={{
-                  color: "#808080",
+                  color: "#fff",
                   marginLeft: "10px",
                   marginTop: "-2px",
                   fonFfamily: '"Sulphur Point", sans-serif',
@@ -71,7 +69,7 @@ const Footer = () => {
                 to="/terms"
                 style={{
                   marginLeft: "10px",
-                  color: "#808080",
+                  color: "#fff",
                   fontSize: "13px",
                 }}
               >
@@ -82,11 +80,22 @@ const Footer = () => {
                 href="tel:9174203189"
                 style={{
                   marginLeft: "10px",
-                  color: "#808080",
+                  color: "#fff",
                   fontSize: "13px",
                 }}
               >
-                Toll Free : 9174203189
+                Call us
+              </a>
+              &nbsp;
+              <a
+                href=""
+                style={{
+                  marginLeft: "10px",
+                  color: "#fff",
+                  fontSize: "13px",
+                }}
+              >
+                privacy Policy
               </a>
               &nbsp;
               {/* <a
@@ -109,32 +118,32 @@ const Footer = () => {
                 {" "}
                 <i
                   className="fab fa-linkedin  fa-2x  "
-                  style={{ color: "rgb(71, 72, 73)", marginLeft: "10px" }}
+                  style={{ color: "#fff", marginLeft: "10px" }}
                 ></i>
               </a>
               <i
                 className="fab fa-facebook-square fa-2x "
-                style={{ color: "rgb(71, 72, 73)", marginLeft: "10px" }}
+                style={{ color: "#fff", marginLeft: "10px" }}
               ></i>
               <i
                 className="fab fa-twitterfa-2x "
-                style={{ color: "rgb(71, 72, 73)", marginLeft: "10px" }}
+                style={{ color: "#fff", marginLeft: "10px" }}
               >
                 {" "}
               </i>
               <a href="https://www.instagram.com/realbackindia?r=nametag">
                 <i
                   className="fab fa-instagram fa-2x"
-                  style={{ color: "rgb(71, 72, 73)", marginLeft: "10px" }}
+                  style={{ color: "#fff", marginLeft: "10px" }}
                 ></i>
               </a>
               <i
                 className="fab fa-youtube fa-2x "
-                style={{ color: "rgb(71, 72, 73)", marginLeft: "10px" }}
+                style={{ color: "#fff", marginLeft: "10px" }}
               ></i>
               <i
                 className="fab fa-github fa-2x "
-                style={{ color: "rgb(71, 72, 73)", marginLeft: "10px" }}
+                style={{ color: "#fff", marginLeft: "10px" }}
               ></i>
             </div>
           </div>

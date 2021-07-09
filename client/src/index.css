@@ -10720,7 +10720,7 @@ background: black;
   text-align: center;
   color: #FFF;
   font-size: 22px;
-  left: 50%;
+  left: 53%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
@@ -11530,7 +11530,7 @@ strong
         .cards .card-image-4 {
             height: 240px;
             overflow: hidden;
-            background: url('/src/images/watchs.png');
+           
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -11541,7 +11541,7 @@ strong
         .cards .card-image-5 {
             height: 240px;
             overflow: hidden;
-            background: url('/src/images/airpods.png');
+           
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -11552,7 +11552,7 @@ strong
         .cards .card-image-6 {
             height: 240px;
             overflow: hidden;
-            background: url('/src/images/Tvs.png');
+         
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -11566,7 +11566,7 @@ strong
         .cards .card-image-7 {
             height: 240px;
             overflow: hidden;
-            background: url('/src/images/ipad5.jpg');
+         
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -11577,7 +11577,7 @@ strong
         .cards .card-image-8 {
             height: 240px;
             overflow: hidden;
-            background: url('/src/images/max3.png');
+          
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -12107,7 +12107,7 @@ div.marquee>a>img {
 
 @keyframes marquee {
     0% {
-        transform: translate3d(50%, 0, 0);
+        transform: translate3d(10%, 0, 0);
     }
  
     100% {
@@ -12128,7 +12128,41 @@ div.marquee>a>img {
 
 .wrapper .wrapper__video{
   object-fit: cover;
-  width: 100%;
+  width: 105%;
   height: 100%;
   
 }
+@media screen and (max-width: 991px) {
+.wrapper{
+  
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.wrapper .wrapper__video{
+  object-fit: cover;
+  width: 110%;
+  height: 100%;
+  
+}
+}
+@media screen and (max-width: 768px) {
+.wrapper{
+  
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.wrapper .wrapper__video{
+  object-fit: cover;
+  width: 110%;
+  height: 100%;
+  
+}
+}
+
+
+
+
