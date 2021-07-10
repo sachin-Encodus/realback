@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import useQuery from "../../screens/Query";
-import logo from "../../images/real.jpg";
+import logo from "../../images/realback.png";
 import Menu from "../../screens/Menu";
 import Footer from "./../../screens/Footer";
 
@@ -284,10 +284,7 @@ const Order = () => {
         <div className="container ">
           <ToastContainer />
           <div className="row   ">
-            <form
-              onSubmit={onSubmits}
-              className="contact-form "
-            >
+            <form onSubmit={onSubmits} className="contact-form ">
               <div>
                 <h1>Give your details </h1>
                 <div className="form-field  col-xl-3">
@@ -386,7 +383,7 @@ const Order = () => {
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
                   <button
-                    style={{ padding: 15, width: "500px" }}
+                    style={{ padding: 20 }}
                     class="app-btn blu flex vert  "
                     onClick={() =>
                       setFormData({
@@ -399,7 +396,7 @@ const Order = () => {
                   </button>
 
                   <button
-                    style={{ padding: 15, width: "500px" }}
+                    style={{ padding: 20 }}
                     class="app-btn blu flex vert  "
                     onClick={() =>
                       setFormData({
@@ -416,7 +413,7 @@ const Order = () => {
           </div>
         </div>
       </section>
-      <Footer        />
+      <Footer />
     </div>
   );
 };

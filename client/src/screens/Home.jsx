@@ -12,44 +12,38 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 import Service from './Service';
 import App from "../images/airpods.png";
 import myvideo from "../images/App2.mp4";
+import { FiAlertCircle } from "react-icons/fi";
 // import Pod from '../images/.png'
-const Home = () =>{
- 
-  
-
-// const name = "sachin"
-// const price = "500"
-// const number ="9147203189"
-const payds ={
+const Home = () => {
+  // const name = "sachin"
+  // const price = "500"
+  // const number ="9147203189"
+  const payds = {
     //  _id,
-     totalPrice:"500",
-     name:"sachin",
-     email:"schin1245e@gmail.com",
-     number:"9174203189"
-}
-const Data = JSON.stringify({ payds });
-// const qs = new URLSearchParams(payds);
-// console.log('====================================',payds);
+    totalPrice: "500",
+    name: "sachin",
+    email: "schin1245e@gmail.com",
+    number: "9174203189",
+  };
+  const Data = JSON.stringify({ payds });
+  // const qs = new URLSearchParams(payds);
+  // console.log('====================================',payds);
 
+  useEffect(() => {
+    AOS.init({
+      offset: 300, // offset (in px) from the original trigger point
+      delay: 10, // values from 0 to 3000, with step 50ms
+      duration: 1400, // values from 0 to 3000, with step 50ms
+    });
+  }, []);
 
-useEffect(() => {
+  return (
+    <>
+      <Menu />
 
- 
-  AOS.init({
-    offset: 300, // offset (in px) from the original trigger point
-    delay: 10, // values from 0 to 3000, with step 50ms
-    duration: 1400, // values from 0 to 3000, with step 50ms
-  });
-}, [])
-
-
-return (
-  <>
-    <Menu />
-
-    <div style={{ backgroundColor: "#000" }}>
-      <ToastContainer />
-      {/* 
+      <div style={{ backgroundColor: "#000" }}>
+        <ToastContainer />
+        {/* 
   <div className="container-fluid  text-center">
                
 
@@ -65,44 +59,69 @@ return (
           </div>
   </div> */}
 
-      <section style={{}}>
-        <div className="container">
-          <div className="row  ">
-            <div
-              style={{
-                margin: "auto",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-              className="col-md-7 p-2 mt-5 "
-            >
-              <figure data-aos="fade-in ">
-                <img src={App} alt="" className="img-fluid" />
-              </figure>
-            </div>
-            <div className="col-md-5 mt-5 ">
-              <div style={{ padding: 20 }}>
-                <h1 style={{ color: "#fff", fontFamily: "unset" }} className="">
-                  Realback for your
-                </h1>
-                <h1 style={{ color: "#fff" }}>all devices solutions</h1>
-                <p style={{ color: "#fff" }}>
-                  You can esaliy repair your elctronics devices with Realback
-                  get your service Now!
-                </p>
-                <div class=" social-btns mt-5">
-                  <Link
-                    style={{
-                      padding: 15,
-                      backgroundColor: "#0070f3",
-                      boxShadow: "0 4px 14px 0 rgb(0 118 255 / 39%)",
-                    }}
-                    class="app-btn blu flex vert  "
-                    to="/service"
+        <section style={{}}>
+          <div className="container">
+            <div className="row  ">
+              <div
+                className="notification"
+                style={{
+                  backgroundColor: "rgb(16 16 16 / 81%)",
+                  fontFamily: "sans-serif",
+                  padding: 20,
+                  textAlign: "center",
+                  borderRadius: 10,
+                  // marginTop: 50,
+                  color: "#6b6b6b",
+                }}
+              >
+                {" "}
+                <FiAlertCircle
+                  size="25"
+                  color="white"
+                  style={{ marginRight: 10 }}
+                />
+                Welcome to Realback services we notify you that our services
+                only Available in Jaipur now
+              </div>
+
+              <div
+                style={{
+                  margin: "auto",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                className="col-md-7 p-2 mt-5 "
+              >
+                <figure data-aos="fade-in ">
+                  <img src={App} alt="" className="img-fluid" />
+                </figure>
+              </div>
+              <div className="col-md-5 mt-5 ">
+                <div style={{ padding: 20 }}>
+                  <h1
+                    style={{ color: "#fff", fontFamily: "unset" }}
+                    className=""
                   >
-                    <span class="big-txt">Service</span>
-                  </Link>
-                  {/* <Link
+                    Realback for your
+                  </h1>
+                  <h3 style={{ color: "#fff" }}>all devices solutions</h3>
+                  <p style={{ color: "#fff" }}>
+                    You can esaliy repair your elctronics devices with Realback
+                    get your service Now!
+                  </p>
+                  <div class=" social-btns mt-5">
+                    <Link
+                      style={{
+                        padding: 15,
+                        backgroundColor: "#0070f3",
+                        boxShadow: "0 4px 14px 0 rgb(0 118 255 / 39%)",
+                      }}
+                      class="app-btn blu flex vert  "
+                      to="/service"
+                    >
+                      <span class="big-txt">Service</span>
+                    </Link>
+                    {/* <Link
                     to={{
                       pathname: "/service",
                       search: `choosenDog=${Data}`, //dog is the object to pass along
@@ -111,89 +130,89 @@ return (
                     {" "}
                     <span class="big-txt">Service me</span>
                   </Link> */}
-                  {/* 4vwsYy1_MRH2xGJnidDh6W-eMD4kRcQNwJcRVyLz */}
+                    {/* 4vwsYy1_MRH2xGJnidDh6W-eMD4kRcQNwJcRVyLz */}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <div class="logoMarqueeSection">
-        <div class="container" id="logoMarqueeSection">
-          <div class="default-content-container flex items-center">
-            <div class="default-content-container-inner marquee-wrapper relative overflow-hidden inline-block">
-              <div class="marquee" style={{ animationDuration: "57s" }}>
-                <a target="_blank">
-                  <img
-                    src="https://1000logos.net/wp-content/uploads/2018/09/Honor-logo.png"
-                    title=""
-                    class="marqueelogo"
-                  />
-                </a>
-                <a target="_blank">
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Realme-realme-_logo_box-RGB-01.png"
-                    title=""
-                    class="marqueelogo"
-                  />
-                </a>
-                <a target="_blank">
-                  <img
-                    src="https://www.freepnglogos.com/uploads/xiaomi-png/xiaomi-logo-logos-marcas-8.png"
-                    title=""
-                    class="marqueelogo"
-                  />
-                </a>
-                <a target="_blank">
-                  <img
-                    src="https://www.searchpng.com/wp-content/uploads/2019/01/vivo-Phone-logo.png"
-                    title=""
-                    class="marqueelogo"
-                  />
-                </a>
-                <a target="_blank">
-                  <img
-                    src="https://www.freepnglogos.com/uploads/oppo-logo-png/oppo-green-logo-transparent-0.png"
-                    title=""
-                    class="marqueelogo"
-                  />
-                </a>
-                <a target="_blank">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOXkMpw3xPGNNNto3lgm9Phz9jsfz80-AITBKiEpgL5ZuXy-It_5v5Ar2cVjXI-nwjFIY&usqp=CAU"
-                    title=""
-                    class="marqueelogo"
-                  />
-                </a>
-                <a target="_blank">
-                  <img
-                    src="https://pngimg.com/uploads/sony_logo/sony_logo_PNG5.png"
-                    title=""
-                    class="marqueelogo"
-                  />
-                </a>
-                <a target="_blank">
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/ASUS_Logo.svg/2560px-ASUS_Logo.svg.png"
-                    title=""
-                    class="marqueelogo"
-                  />
-                </a>
-                {/* <a target="_blank">
+        <div class="logoMarqueeSection mt-5">
+          <div class="container" id="logoMarqueeSection">
+            <div class="default-content-container flex items-center">
+              <div class="default-content-container-inner marquee-wrapper relative overflow-hidden inline-block">
+                <div class="marquee" style={{ animationDuration: "57s" }}>
+                  <a target="_blank">
+                    <img
+                      src="https://1000logos.net/wp-content/uploads/2018/09/Honor-logo.png"
+                      title=""
+                      class="marqueelogo"
+                    />
+                  </a>
+                  <a target="_blank">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Realme-realme-_logo_box-RGB-01.png"
+                      title=""
+                      class="marqueelogo"
+                    />
+                  </a>
+                  <a target="_blank">
+                    <img
+                      src="https://www.freepnglogos.com/uploads/xiaomi-png/xiaomi-logo-logos-marcas-8.png"
+                      title=""
+                      class="marqueelogo"
+                    />
+                  </a>
+                  <a target="_blank">
+                    <img
+                      src="https://www.searchpng.com/wp-content/uploads/2019/01/vivo-Phone-logo.png"
+                      title=""
+                      class="marqueelogo"
+                    />
+                  </a>
+                  <a target="_blank">
+                    <img
+                      src="https://www.freepnglogos.com/uploads/oppo-logo-png/oppo-green-logo-transparent-0.png"
+                      title=""
+                      class="marqueelogo"
+                    />
+                  </a>
+                  <a target="_blank">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOXkMpw3xPGNNNto3lgm9Phz9jsfz80-AITBKiEpgL5ZuXy-It_5v5Ar2cVjXI-nwjFIY&usqp=CAU"
+                      title=""
+                      class="marqueelogo"
+                    />
+                  </a>
+                  <a target="_blank">
+                    <img
+                      src="https://pngimg.com/uploads/sony_logo/sony_logo_PNG5.png"
+                      title=""
+                      class="marqueelogo"
+                    />
+                  </a>
+                  <a target="_blank">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/ASUS_Logo.svg/2560px-ASUS_Logo.svg.png"
+                      title=""
+                      class="marqueelogo"
+                    />
+                  </a>
+                  {/* <a target="_blank">
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Nokia_wordmark.svg/1024px-Nokia_wordmark.svg.png"
                     title=""
                     class="marqueelogo"
                   />
                 </a> */}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* <header class="masthead">
+        {/* <header class="masthead">
     <img src="images/gpod.png" alt="" class="img-fluid gpod"/>
         <div class="masthead-heading">
           Realback for your device solution
@@ -202,7 +221,7 @@ return (
     </div>
         </div>
     </header>  */}
-      {/* <section>
+        {/* <section>
 <div className="container">
   <div className="row   justify-content-center   align-items-center">
 <div className="col-md-6 p-5" >
@@ -233,13 +252,13 @@ return (
   </div>
 </section> */}
 
-      {/* <section  style={{backgroundColor:'#FFFFFF'}} >
+        {/* <section  style={{backgroundColor:'#FFFFFF'}} >
 
 
 <Service/>
 </section> */}
 
-      {/* 
+        {/* 
 <section>
 
 
@@ -258,36 +277,36 @@ return (
           </div>
   </div>
 </section> */}
-      {/* <figure data-aos="fade-in"  >
+        {/* <figure data-aos="fade-in"  >
 
 <img   src={Pod} alt="" className="img-fluid"/>
 
    </figure>  */}
 
-      <section style={{}}>
-        <div className="container-fluid ">
-          <div className="row  ">
-            <div className="col-md-12 ">
-              <div class="wrapper ">
-                <video autoplay="autoplay" muted class="wrapper__video ">
-                  <source type="video/mp4" src={myvideo} />
-                </video>
-              </div>
-              <div style={{ paddingLeft: 10 }}>
-                <h1
-                  style={{
-                    fontWeight: "bold",
-                    color: "#fff",
-                    textAlign: "center",
-                  }}
-                >
-                  Available on App Store
-                </h1>
-                <p style={{ color: "#fff", textAlign: "center" }}>
-                  Download our App from App Store for both Android and IOS
-                  platform soon.
-                </p>
-                <div
+        <section style={{}}>
+          <div className="container-fluid ">
+            <div className="row  ">
+              <div className="col-md-12 ">
+                <div class="wrapper ">
+                  <video autoplay="autoplay" muted class="wrapper__video ">
+                    <source type="video/mp4" src={myvideo} />
+                  </video>
+                </div>
+                <div style={{ paddingLeft: 10 }}>
+                  <h1
+                    style={{
+                      fontWeight: "bold",
+                      color: "#fff",
+                      textAlign: "center",
+                    }}
+                  >
+                    Available on App Store
+                  </h1>
+                  <p style={{ color: "#fff", textAlign: "center" }}>
+                    Download our App from App Store for both Android and IOS
+                    platform soon.
+                  </p>
+                  {/* <div
                   class="mt-5 social-btns"
                   style={{ justifyContent: "center", display: "flex" }}
                 >
@@ -297,15 +316,15 @@ return (
                       Get it on <br /> <span class="big-txt">Google Play</span>
                     </p>
                   </Link>
+                </div> */}
                 </div>
               </div>
+              {/* <div className="col-md-1"></div> */}
             </div>
-            {/* <div className="col-md-1"></div> */}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* <section style={{ backgroundColor: "#000" }}>
+        {/* <section style={{ backgroundColor: "#000" }}>
         <div className="container-fluid  text-center">
           <div className="row text-center ">
             <div class="wrapper">
@@ -317,7 +336,7 @@ return (
         </div>
       </section> */}
 
-      {/* 
+        {/* 
 <section  >
 
 
@@ -337,7 +356,7 @@ return (
   </div>
 </section> */}
 
-      {/* 
+        {/* 
 
 <section style={{backgroundColor:'white'}} >
 
@@ -358,7 +377,7 @@ return (
   </div>
 </section> */}
 
-      {/* 
+        {/* 
 <section>
   <div className="container-fluid">
     <div className="row">
@@ -378,7 +397,7 @@ return (
     </div>
   </div>
 </section> */}
-      {/* 
+        {/* 
 <section >
 
   <div className="conatiner-fluid">
@@ -413,7 +432,7 @@ return (
   </div>
 </section> */}
 
-      {/* 
+        {/* 
 
 <section>
   <div className="container-fluid">
@@ -439,7 +458,7 @@ return (
   </div>
 </section> */}
 
-      {/* 
+        {/* 
 <div class="wrapper1">
 
    <video autoPlay loop muted class="wrapper__video">
@@ -447,15 +466,12 @@ return (
    </video>
   
 </div>  */}
-    </div>
+      </div>
 
-    <Footer />
-  </>
-);
-
-
-
-}
+      <Footer />
+    </>
+  );
+};
 
 export default Home;
 

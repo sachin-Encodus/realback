@@ -5,7 +5,7 @@ import axios from 'axios';
 import {  Redirect } from 'react-router-dom';
 import { MdLocationOn } from "react-icons/md";
  import { IoBagCheck } from "react-icons/io5";
- import logo from '../../images/real.jpg'
+ import logo from "../../images/realback.png";
 export default function Cart(props) {
 
 

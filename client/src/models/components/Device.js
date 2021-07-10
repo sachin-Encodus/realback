@@ -70,43 +70,44 @@ const [model, setmodel] = useState("");
       console.log(error);
     }
   };
+console.log(devicedata);
+const getservice = async (itemValue) => {
+  try {
+    const filteredData = modelno.filter((item) => item._id === itemValue);
+    setDevicedata(filteredData[0].modedata);
+    setmodel(filteredData[0].modelno);
+    console.log("============>>>>>>>>>>", filteredData[0].modedata);
+    //   console.log("============>>>>>>>>>>xxxxxxxxxxx", filteredData[0].modelno);
+  } catch (error) {}
+};
 
-  const getservice = async (itemValue) => {
-    try {
-      const filteredData = modelno.filter((item) => item._id === itemValue);
-      setDevicedata(filteredData[0].modedata);
-      setmodel(filteredData[0].modelno);
-      console.log("============>>>>>>>>>>", filteredData[0].modedata);
-      //   console.log("============>>>>>>>>>>xxxxxxxxxxx", filteredData[0].modelno);
-    } catch (error) {}
-  };
+return (
+  <div>
+    <Menu />
+    <section>
+      <div className="container   mt-5">
+        <div className="row">
+          <div className="col-md-6  d-flex">
+            <div
+              style={{
+                padding: 20,
+                width: 300,
+                height: 300,
+                justifyContent: "center",
+                alignItems: "center",
 
-  return (
-    <div>
-      <Menu />
-      <section>
-        <div className="container   mt-5">
-          <div className="row">
-            <div className="col-md-6  d-flex">
-              <div
-                style={{
-                  padding: 20,
-                  width: 300,
-                  height: 300,
-                  justifyContent: "center",
-                  alignItems: "center",
-
-                  margin: "auto",
-                }}
-              >
-                <img src={dogObject.image} className="img-fluid" alt="3" />
-              </div>
+                margin: "auto",
+              }}
+            >
+              <img src={dogObject.image} className="img-fluid" alt="3" />
             </div>
-            <div className="col-md-6">
-              <div style={{ padding: 30, marginTop: 20 }}>
-                <h1>Get your </h1> <h1>{dogObject.name} service</h1>
+          </div>
+          <div className="col-md-6">
+            <div style={{ marginLeft: 20, marginRight: 20 }}>
+              <div style={{ padding: 10, marginTop: 20 }}>
+                <h1>{dogObject.name}</h1> <h1>Get your </h1>
+                <h1>device service</h1>
               </div>
-
               <div
                 style={{
                   justifyContent: "center",
@@ -137,7 +138,6 @@ const [model, setmodel] = useState("");
                   ))}
                 </select>
               </div>
-
               <div
                 style={{
                   justifyContent: "center",
@@ -166,24 +166,27 @@ const [model, setmodel] = useState("");
                   ))}
                 </select>
               </div>
-              <Link
-                style={{ padding: 15, width: "500px" }}
-                to={{
-                  pathname: "/problem",
-                  search: `routeName=${JSON.stringify(
-                    devicedata
-                  )}&devicename=${devicename} ${model}`, //dog is the object to pass along
-                }}
-                class="app-btn blu flex vert  "
-              >
-                <span class="big-txt">Service</span>
-              </Link>
+
+              {devicedata.length !== 0 ? (
+                <Link
+                  style={{ padding: 18 }}
+                  to={{
+                    pathname: "/problem",
+                    search: `routeName=${JSON.stringify(
+                      devicedata
+                    )}&devicename=${devicename} ${model}`, //dog is the object to pass along
+                  }}
+                  class="app-btn blu flex vert  "
+                >
+                  <span class="big-txt">Service</span>
+                </Link>
+              ) : null}
             </div>
           </div>
         </div>
+      </div>
 
-       
-        {/* <div className="container">
+      {/* <div className="container">
         <div className="row">
           <div className="col-md-6">
             {devicedata && devicedata !== undefined ? (
@@ -245,10 +248,9 @@ const [model, setmodel] = useState("");
           <div className="col-md-6"></div>
         </div>
       </div> */}
-      </section>
-      <Footer />
-    </div>
-  );
+    </section>
+  </div>
+);
 }
 
 export default Device;

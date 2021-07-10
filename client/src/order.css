@@ -144,7 +144,7 @@
     .contact-form .input-text {
       display: block;
       width: 100%;
-      height: 36px;
+      
       border: none;
       /* border-width: 0 0 2px 0;
       border-color: rgb(0, 0, 0); */
@@ -157,7 +157,7 @@
       font-family: montserrat, arial, verdana;
       background-color: rgb(245, 245, 247);
       border-radius: 15px;
-      padding: 25px;
+      padding: 22px;
     }
 
     .contact-form .input-text:focus {

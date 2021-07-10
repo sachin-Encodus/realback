@@ -68,8 +68,10 @@ const Problem = () => {
       <Menu />
       <section>
         <div style={{ marginTop: 100 }} className="container">
-          <h1 style={{ marginBottom: 20 }}>Select your {device} problem </h1>
-          <div className="row">
+          <h1 style={{ marginBottom: 20, marginRight: 20, marginLeft: 20 }}>
+            Select your {device} problem{" "}
+          </h1>
+          <div className="row" style={{ padding: 20 }}>
             {dogObject && dogObject !== undefined ? (
               dogObject.map((item) => (
                 <div className="col-md-4">
@@ -83,7 +85,8 @@ const Problem = () => {
                       padding: 18,
                       marginTop: 10,
                       marginVertical: 8,
-                      marginHorizontal: 30,
+                      // marginLeft: 20,
+                      // marginRight: 20,
                       borderRadius: 15,
                     }}
                   >
@@ -128,7 +131,7 @@ const Problem = () => {
               <h1>no data to show</h1>
             )}
           </div>
-          <div className="  row ">
+          <div className="  row " style={{ padding: 30 }}>
             {cartItems.length !== 0 && (
               <>
                 <div className="col-md-12 glass">
@@ -187,7 +190,7 @@ const Problem = () => {
                     <div>{totalPrice.toFixed(2)}</div>
                   </div>
                   <Link
-                    style={{ padding: 15, width: "500px" }}
+                    style={{ padding: 18 }}
                     to={{
                       pathname: "/order",
                       search: `routeName=${JSON.stringify(

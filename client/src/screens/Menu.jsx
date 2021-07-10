@@ -5,20 +5,46 @@ import ReactTooltip from "react-tooltip";
 import { BiCartAlt } from "react-icons/bi";
 import { signout } from "../helpers/auth";
 import "../order.css";
-
+import axios from "axios";
 const Menu = () => {
   const [login, setLogin] = useState("");
+  const [notification, setNotification] = useState(false);
   const [logout, setLogout] = useState("logout");
-
   useEffect(() => {
     let loggedIn = JSON.parse(localStorage.getItem("user"));
     if (loggedIn !== null) {
       console.log(loggedIn.name);
       setLogin(loggedIn.name);
+      cartdata(loggedIn.email);
     } else {
       setLogin("");
     }
   }, [logout]);
+
+  const cartdata = (email) => {
+    axios
+      .get(`/api/cart/${email}`)
+      .then(({ data }) => {
+        // setUserdata(data.user);
+        notify(data.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  // console.log("====================================", userdata);
+  function notify(user) {
+    console.log("====================================<<<<<<<<<<<<<<", user);
+
+    user.map((item) => {
+      console.log("====================================", item.mode);
+
+      return item.mode !== "success"
+        ? setNotification(true)
+        : setNotification(false);
+    });
+  }
+  console.log("====================================>>>>>>>>>>>", notification);
 
   //    https://codepen.io/GA-MO/pen/yJzERy?editors=0110
 
@@ -104,14 +130,14 @@ const Menu = () => {
           </NavLink>
           <div className="collapse navbar-collapse" id="navbarResponsive">
             <ul className="navbar-nav  ml-auto">
-              <input type="submit" value="" className="search-submit" />
+              {/* <input type="submit" value="" className="search-submit" />
               <input
                 type="search"
                 name=""
                 className="search-text"
                 placeholder="Search..."
                 autocomplete="on"
-              />
+              /> */}
               <li className="nav-item ">
                 <NavLink className="nav-link js-scroll-trigger  " to="/">
                   Home
@@ -122,12 +148,25 @@ const Menu = () => {
                   Services
                 </NavLink>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <NavLink className="nav-link js-scroll-trigger" to="/about">
                   About
                 </NavLink>
-              </li>
+              </li> */}
               <li className="nav-item">
+                {notification === true ? (
+                  <div
+                    style={{
+                      width: 5,
+                      height: 5,
+                      borderRadius: 30,
+                      marginLeft: 50,
+                      marginTop: 5,
+                      position: "absolute",
+                      backgroundColor: "red",
+                    }}
+                  ></div>
+                ) : null}
                 <NavLink className="nav-link js-scroll-trigger" to="/cart">
                   Orders
                 </NavLink>
@@ -278,9 +317,9 @@ mobile menu */}
               <li className="menu-item">
                 <NavLink to="/service">Service</NavLink>
               </li>
-              <li className="menu-item">
+              {/* <li className="menu-item">
                 <NavLink to="/about">about</NavLink>
-              </li>
+              </li> */}
               <li className="menu-item">
                 <a href="https://api.whatsapp.com/send?phone=919522540020">
                   WhatsApp Us
@@ -317,6 +356,19 @@ mobile menu */}
                 </NavLink>
               ) : (
                 <NavLink to="/cart">
+                  {notification === true ? (
+                    <div
+                      style={{
+                        width: 5,
+                        height: 5,
+                        borderRadius: 30,
+                        marginLeft: 30,
+                        marginTop: 5,
+                        position: "absolute",
+                        backgroundColor: "red",
+                      }}
+                    ></div>
+                  ) : null}
                   <BiCartAlt color="white" />
                 </NavLink>
               )}
