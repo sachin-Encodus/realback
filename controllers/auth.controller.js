@@ -883,7 +883,7 @@ padding: 0 35px 40px;">
 <br>
 <h2>click the button to reset password</h2><br>
               <p class="near_title last" style="margin-top: 10px;margin-bottom: 0;">Please verify that your email address is ${email}   and that you entered it when signing up for Realback.</p>
-              <h3 href="${CLIENT_URL}/reset/${token}"" style=" display: block;
+              <a href="${CLIENT_URL}/reset/${token}"" style=" display: block;
   width: 100%;
   max-width: 300px;
   background: #ffc107;

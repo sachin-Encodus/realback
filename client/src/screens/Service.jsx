@@ -61,195 +61,31 @@ const Service = () =>{
   }, []);
 
   return (
-    <>
+    <div>
       <Menu />
       {!isAuth() ? <Redirect to="/login" /> : null}
 
-      {/* 
-
-    <div className="App">
-      <h1>Example DropDown {selectedCounty} and {selectedCity}</h1>
-
-      <div className="Container">
-        <select
-          name="Countries"
-          onChange={e => handleCountrySelect(e)}
-          value={selectedCounty}
-        >
-          <option value="">Select the country</option>
-          {countryList.map((country, key) => (
-            <option key={key} value={country.name}>
-              {country.name}
-            </option>
-          ))}
-        </select>
-
-        <select
-          name="Cities"
-          onChange={e => handleCitySelect(e)}
-          value={selectedCity}
-        >
-          <option value="">Select the city</option>
-          {cities.map((city, key) => (
-            <option key={key} value={city}>
-              {city}
-            </option>
-          ))}
-        </select>
-      </div>
-    </div>
-   */}
-
-      {/* <div  className="container-fluid">
-     <div className="row">
-    <div className="wrapper mt-5 d-flex justify-content-center align-items-center ">
-  
-
-
- <img src={process.env.PUBLIC_URL+"images/mi.jpeg"}  alt="" className="  mt-5"/>
-
-    </div>
-
-     </div>
-
- </div>
-
-
-
-    <br/><br/><br/><br/><br/><br/> */}
-      {/* <div className="container">
-        <h4 style={{display: 'inline-block'}}>Repair Services</h4>
-      
-        <br/>
-        <div className="row ">
-
-            <div className="cards"      >
-                 <Link to="/mobile">  
-                    <div className="card-item">
-                    
-                    <img src={apple} alt="" className="card-image-1"/> 
-                   
-                        <div className="card-info text-center ">
-                            <h2 className="card-title">Mobile</h2>
-                            <p className="card-intro">Far far away, behind the word mountains, far from the countries
-                                Vokalia and Consonantia, there live the blind texts.</p>
-                        </div>
-                    </div>
-                 </Link>
-            </div>
-            <div className="cards"      >
-                 <Link to="/laptop">
-                <div className="card-item">
-                   
-                  <div  className="card-image-3" >
-                    <img src={Laptop} alt=""  className="img-fluid"   /> 
-                  </div>
-                         
-             
-                    <div className="card-info text-center">
-                        <h2 className="card-title">Laptop</h2>
-                        <p className="card-intro">Far far away, behind the word mountains, far from the countries Vokalia
-                            and Consonantia, there live the blind texts.</p>
-                    </div>
-                </div>
-                    </Link>
-            </div>
-            <div className="cards"        >
-                   <Link to="/ipad">
-                <div className="card-item">
-                 
-                     <img src={Laptop} alt="" className="card-image-2"/> 
-                  
-                    <div className="card-info">
-                        <h2 className="card-title">IPad</h2>
-                        <p className="card-intro">Far far away, behind the word mountains, far from the countries Vokalia
-                            and Consonantia, there live the blind texts.</p>
-                    </div>
-                </div>
-                  </Link>
-            </div>
-            <div  className="cards"      >
-                   <Link to="/watch">
-                <div className="card-item">
-                 
-                     <img src={Watch} alt="" className="card-image-2"/> 
-                 
-                    <div className="card-info text-center">
-                        <h2 className="card-title">Smartwatch</h2>
-                        <p className="card-intro">Far far away, behind the word mountains, far from the countries Vokalia
-                            and Consonantia, there live the blind texts.</p>
-                    </div>
-                </div>
-                   </Link>
-            </div>
-            <div className="cards"      >
-                  <Link to="/airpod">
-                <div className="card-item">
-                  
-                    <img src={Airpod} alt="" className="card-image-2"/> 
-                
-                    <div className="card-info text-center">
-                        <h2 className="card-title">Airpods</h2>
-                        <p className="card-intro">Far far away, behind the word mountains, far from the countries Vokalia
-                            and Consonantia, there live the blind texts.</p>
-                    </div>
-                </div>
-                    </Link>
-            </div>
-            <div className="cards"      >
-                    <Link to="/led">
-                <div className="card-item">
-                
-                     <img src={Airpod} alt="" className="card-image-2"/> 
-                    <div className="card-info text-center">
-                        <h2 className="card-title">Smart tv </h2>
-                        <p className="card-intro">Far far away, behind the word mountains, far from the countries Vokalia
-                            and Consonantia, there live the blind texts.</p>
-                    </div>
-                </div>
-                </Link>
-            </div>
-            <div className="cards"      >
-                   <Link to="/">
-                <div className="card-item">
-                 
-                   <img src={Airpod} alt="" className="card-image-2"/> 
-                   
-                    <div className="card-info text-center">
-                        <h2 className="card-title">Tablets</h2>
-                        <p className="card-intro">Far far away, behind the word mountains, far from the countries Vokalia
-                            and Consonantia, there live the blind texts.</p>
-                    </div>
-                </div>
-                 </Link>
-            </div>
-            <div className="cards"      >
-                  <Link to="/drone">
-                <div className="card-item">
-                  
-                    <img src={Max} alt="" className="card-image-2"/> 
-             
-                    <div className="card-info text-center">
-                        <h2 className="card-title">Camera</h2>
-                        <p className="card-intro">Far far away, behind the word mountains, far from the countries Vokalia
-                            and Consonantia, there live the blind texts.</p>
-                    </div>
-                </div>
-                       </Link>
-            </div>
-
-
-
-        </div>
-    </div> */}
-
-      <div class="container mt-5 ">
-        <h1 class=" mt-5 ">Get your </h1>
-        <h1>device service</h1>
+      <div class="container ">
+        {/* <h1 class=" mt-5 ">Get your </h1>
+        <h1>device service</h1> */}
       </div>
 
       <div class="shell">
         <div class="container">
+          <div
+            style={{
+              backgroundColor: "#f5f5f7",
+              fontFamily: "sans-serif",
+              padding: 20,
+              textAlign: "center",
+              borderRadius: 10,
+              marginTop: 55,
+              fontWeight: "bold",
+              fontSize: 20,
+            }}
+          >
+            Choose your device for which you are looking for services
+          </div>
           <div class="row">
             {mobile.map((product) => (
               <div class="col-6 col-sm-6  col-md-3 col-lg-3 ">
@@ -292,9 +128,7 @@ const Service = () =>{
           </div>
         </div>
       </div>
-
-      <Footer />
-    </>
+    </div>
   );
 }
     

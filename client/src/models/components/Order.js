@@ -13,7 +13,7 @@ const Order = () => {
   const Price = query.get("price");
   const deive = query.get("device");
   const cartItems = JSON.parse(dogString);
-  console.log("============>>>>>>>>>>", cartItems);
+  // console.log("============>>>>>>>>>>", cartItems);
 
   const [payments, setPayments] = useState(false);
   const [orderId, setOrderId] = useState("");
@@ -22,9 +22,9 @@ const Order = () => {
   const [payid, setPayid] = useState("helloooox636d7d");
   const totalPrice = Price;
   const [adds, setAdds] = React.useState([]);
-
+// console.log("=====xxxxx",adds);
   const [formData, setFormData] = useState({
-    email: "sachin1245e@gmail.com",
+    email: "",
     name: "",
     company: "",
     model: "",
@@ -59,54 +59,69 @@ const Order = () => {
   useEffect(() => {
     let loggedIn = JSON.parse(localStorage.getItem("user"));
     if (loggedIn !== null) {
+      axios
+        .get(`/api/cart/${loggedIn.email}`)
+        .then(({ data }) => setAdds(data.user[0]))
+        .catch((err) => {
+          console.log(err);
+        });
+      // console.log("========>>>>>>>>sssssss", adds);
+      if (adds !== undefined) {
+        console.log("calling");
+        setFormData({
+          ...formData,
+          email:adds.email,
+          name: adds.name,
+          country: adds.country,
+          number: adds.number,
+          city: adds.city,
+          state: adds.state,
+          pincode: parseInt(adds.pincode),
+          Address: adds.Address,
+        });
+      }
+
       console.log("my email", loggedIn.email);
       console.log("my email", loggedIn.name);
-      setFormData({
-        ...formData,
-        name: loggedIn.name,
-        email: loggedIn.email,
-      });
+      // setFormData({
+      //   ...formData,
+      //   name: loggedIn.name,
+      //   email: loggedIn.email,
+      // });
     } else {
       setFormData({ email: "noreply@gmai.com" });
     }
-  }, []);
-
-  useEffect(() => {
-    let isMounted = true;
-    addsdata();
-    return () => {
-      isMounted = false;
-    };
   }, [adds]);
 
-  const addsdata = () => {
-    axios
-      .get(`/api/cart/${email}`)
-      .then(({ data }) => setAdds(data.user[0]))
-      .catch((err) => {
-        console.log(err);
-      });
-    // console.log("========>>>>>>>>sssssss", adds);
-    if (adds !== undefined) {
-      setFormData({
-        ...formData,
-        name: adds.name,
-        country: adds.country,
-        number: adds.number,
-        city: adds.city,
-        state: adds.state,
-        pincode: parseInt(adds.pincode),
-        Address: adds.Address,
-      });
-      // setAddress(adds.Address);
-      // setCountry(adds.country);
-      // setCity(adds.city);
-      // setName(adds.name);
-      // setNumber(adds.number);
-      // setPincode(adds.pincode);
-      // setState(adds.state);
-    }
-  };
+  // useEffect(() => {
+  //   let isMounted = true;
+  //   addsdata();
+  //   return () => {
+  //     isMounted = false;
+  //   };
+  // }, [adds]);
+
+  // const addsdata = () => {
+  //   axios
+  //     .get(`/api/cart/${email}`)
+  //     .then(({ data }) => setAdds(data.user[0]))
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  //   // console.log("========>>>>>>>>sssssss", adds);
+  //   if (adds !== undefined) {
+  //     setFormData({
+  //       ...formData,
+  //       name: adds.name,
+  //       country: adds.country,
+  //       number: adds.number,
+  //       city: adds.city,
+  //       state: adds.state,
+  //       pincode: parseInt(adds.pincode),
+  //       Address: adds.Address,
+  //     });
+  //   }
+  // };
 
   function generateOTP() {
     // Declare a digits variable
@@ -124,7 +139,7 @@ const Order = () => {
     console.log(">>>>>>> id for payment update", _id);
     const res = await axios.get(`/api/payment/${totalPrice}/`);
 
-    console.log("========>>>>>>>>>", res.data.amount);
+    // console.log("========>>>>>>>>>", res.data.amount);
 
     if (res.status !== 200) {
       return;
@@ -413,9 +428,9 @@ const Order = () => {
           </div>
         </div>
       </section>
-      <Footer />
+     
     </div>
   );
-};
+};;
 
 export default Order;

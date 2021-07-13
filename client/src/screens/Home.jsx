@@ -60,6 +60,9 @@ const Home = () => {
   </div> */}
 
         <section style={{}}>
+          {/* <div class="feedback-btn">
+            <p class="feedback-txt">Feedback</p>
+          </div> */}
           <div className="container">
             <div className="row  ">
               <div
@@ -100,12 +103,14 @@ const Home = () => {
                 <div style={{ padding: 20 }}>
                   <h1
                     style={{ color: "#fff", fontFamily: "unset" }}
-                    className=""
+                    className="gradtext"
                   >
                     Realback for your
                   </h1>
-                  <h3 style={{ color: "#fff" }}>all devices solutions</h3>
-                  <p style={{ color: "#fff" }}>
+                  <h3 className="gradtext" style={{ color: "#fff" }}>
+                    all devices solutions
+                  </h3>
+                  <p className="gradtext" style={{ color: "#fff" }}>
                     You can esaliy repair your elctronics devices with Realback
                     get your service Now!
                   </p>
@@ -299,10 +304,14 @@ const Home = () => {
                       color: "#fff",
                       textAlign: "center",
                     }}
+                    className="gradtext"
                   >
                     Available on App Store
                   </h1>
-                  <p style={{ color: "#fff", textAlign: "center" }}>
+                  <p
+                    className="gradtext"
+                    style={{ color: "#fff", textAlign: "center" }}
+                  >
                     Download our App from App Store for both Android and IOS
                     platform soon.
                   </p>

@@ -11764,7 +11764,7 @@ body{
     display: flex;
             flex-direction: column;
             
-            background-color: rgb(245, 245, 247);
+            background-color: #f5f5f7;
             width: 100%;
             border-radius: 15px;
             /* box-shadow: 0 20px 40px -14px rgb(17, 17, 17); */
@@ -12172,6 +12172,47 @@ div.marquee>a>img {
 }
 }
 
+.gradtext{
+  background: linear-gradient(
+121.57deg
+,#FFFFFF 18.77%,rgba(255,255,255,0.66) 60.15%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
 
 
+.feedback-btn {
+    position: fixed;
+    position-attachment: fixed;
+    width: 45px;
+    height: 100px;
+    background: #000000;
+    top: 45%;
+    right: 0;
+  
+    box-shadow: 1px 1px 3px rgb(37, 37, 37);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+}
+
+.feedback-btn:hover {
+	width: 50px;
+}
+
+.feedback-txt {
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    position: absolute;
+    right: -10px;
+    top: 22px;
+    color: #fff;
+    transition: 0.2s ease-out;
+}
+
+.feedback-btn:hover .feedback-txt {
+	right: -6px;
+}

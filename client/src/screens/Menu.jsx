@@ -58,7 +58,7 @@ const Menu = () => {
   //    }
 
   //    }
-
+ 
   const Hello = () => {
     setLogout("logged out");
   };
@@ -125,7 +125,7 @@ const Menu = () => {
         id="mainNav"
       >
         <div className="container">
-          <NavLink className="navbar-brand js-scroll-trigger" to="#page-top">
+          <NavLink className="navbar-brand js-scroll-trigger" to="/">
             Realback
           </NavLink>
           <div className="collapse navbar-collapse" id="navbarResponsive">
@@ -172,12 +172,9 @@ const Menu = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <a
-                  className="nav-link js-scroll-trigger"
-                  href="https://api.whatsapp.com/send?phone=919522540020"
-                >
+                <NavLink className="nav-link js-scroll-trigger" to="/feedback">
                   WhatsApp Us
-                </a>
+                </NavLink>
               </li>
               {login === "" ? (
                 <li className="nav-item">
@@ -321,9 +318,7 @@ mobile menu */}
                 <NavLink to="/about">about</NavLink>
               </li> */}
               <li className="menu-item">
-                <a href="https://api.whatsapp.com/send?phone=919522540020">
-                  WhatsApp Us
-                </a>
+                <NavLink to="/feedback">WhatsApp Us</NavLink>
               </li>
               <li className="menu-item">
                 <a href="https://rzp.io/l/ypLTEOH">Donate to realback</a>

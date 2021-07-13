@@ -25,7 +25,7 @@ import Terms from "./screens/Terms";
 import Payment from "./screens/Payment";
 import Device from "./models/components/Device.js";
 import Problem from "./models/components/Problem";
-
+import Feedback from "./screens/Feedback";
 import Order from "./models/components/Order";
 
 function App() {
@@ -38,6 +38,7 @@ function App() {
             path="/dashboard/"
             render={(props) => <HomePage {...props} />}
           />
+          <Route path="/feedback" render={(props) => <Feedback {...props} />} />
           <Route path="/device" render={(props) => <Device {...props} />} />
           <Route path="/problem" render={(props) => <Problem {...props} />} />
           <Route path="/login" exact render={(props) => <Login {...props} />} />
