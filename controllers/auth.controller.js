@@ -1352,6 +1352,24 @@ exports.cart = async function (req, res) {
 
 
 
+exports.cartid = async function (req, res) {
+  try {
+    await Device.findOne({ _id: req.params.id }, (err, user) => {
+      if (user) {
+        console.log(user);
+        return res.status(201).send({
+          user,
+        });
+      } else {
+        console.log(err);
+      }
+      console.log(user);
+    });
+  } catch (error) {
+    console.log("logout error");
+    res.status(500).json({ message: "you have already logged out sir !" });
+  }
+};
 
 // // logout by clearCookie and jwt token
 // exports.address = async function (req, res) {
@@ -1371,8 +1389,6 @@ exports.cart = async function (req, res) {
 //     res.status(500).json({ message: "you have already logged out sir !" });
 //   }
 // };
-
-
 
 // devices
 exports.device = async function (req, res) {
@@ -1417,18 +1433,34 @@ exports.device = async function (req, res) {
       const deviceData = new Device(req.body);
       await deviceData.save();
 
-          const {orderOtp , email, name, _id } = deviceData
-          if(deviceData){
-       return res.status(201).json({ _id });
-          }
+      const {
+        orderOtp,
+        email,
+        name,
+        _id,
+        number,
+        products,
+        totalPrice,
+        company,
+        model,
+        mode,
+      } = deviceData;
+
+      const data = products.map((item) => {
+        return item.name;
+      });
+
+      //     if(deviceData){
+      //  return res.status(201).json({ _id });
+      //     }
 
       console.log("=======>>>>>>>>", deviceData, orderOtp, email, name);
       console.log("===>>..", email);
 
       const mailOptions = {
         from: EMAIL,
-        to: email,
-        subject: "Welcome to Realback",
+        to: EMAIL,
+        subject: "Team Realback",
         html: `<head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1634,11 +1666,23 @@ padding: 0 35px 40px;">
   color: #171717;
   margin-top: 20px;
   margin-bottom: 0;
-">Welcome To Realback Services</h1>
+">Realback Services</h1>
 <br>
-<h1   style="color: #171717;  font-size: 30px;" >Hii ${name}</h1><br>
-              <p class=" margin-top: 10px; font-size: 20px;  color: #171717; " style="margin-top: 10px;margin-bottom: 0;"> ${email} your order is successfully submitted  and your order otp is given below please don't share it with anyone share this only realback agent Thank you from Realback</p>
-              <h1  style="color: #171717;  font-size: 30px;">${orderOtp}</h1>
+<h1   style="color: #171717;  font-size: 30px;" >New order from ${name}</h1><br>
+              <h1 class=" margin-top: 10px; font-size: 20px;  color: #171717; " style="margin-top: 10px;margin-bottom: 0;"> ${email} order successfully submitted </h1>
+                <h1 class=" margin-top: 10px; font-size: 20px;  color: #171717; " style="margin-top: 10px;margin-bottom: 0;"> _id : ${_id} </h1>
+               <h1 class=" margin-top: 10px; font-size: 20px;  color: #171717; " style="margin-top: 10px;margin-bottom: 0;"> name : ${name} </h1>
+
+                <h1 class=" margin-top: 10px; font-size: 20px;  color: #171717; " style="margin-top: 10px;margin-bottom: 0;"> number : ${number} </h1>
+                <h1 class=" margin-top: 10px; font-size: 20px;  color: #171717; " style="margin-top: 10px;margin-bottom: 0;"> Device : ${company} ${model} </h1>
+                 <h1 class=" margin-top: 10px; font-size: 20px;  color: #171717; " style="margin-top: 10px;margin-bottom: 0;">Price : ${totalPrice} </h1>
+
+                 <h1 class=" margin-top: 10px; font-size: 20px;  color: #171717; " style="margin-top: 10px;margin-bottom: 0;">Service : ${data} </h1>
+
+                 <h1 class=" margin-top: 10px; font-size: 20px;  color: #171717; " style="margin-top: 10px;margin-bottom: 0;"> Otp : ${orderOtp} </h1>
+ 
+               
+           
               
             </td>
           </tr>

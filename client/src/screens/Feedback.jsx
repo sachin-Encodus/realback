@@ -12,7 +12,7 @@ const Feedback = () => {
         <div className="container mt-5">
           <div className="row">
             <div className="col-md-6">
-              <div className="text-canter">
+              <div className="text-canter mt-3">
                 <img
                   src="https://image.flaticon.com/icons/png/512/2111/2111728.png"
                   alt="2"
@@ -22,8 +22,9 @@ const Feedback = () => {
                 <h1 className="gradtext">
                   Simple. Secure. Reliable. Messaging.
                 </h1>
-                <h3 className="gradtext">Feedback + contact Us + Help</h3>
-                <p className="gradtext">
+                {/* <h1 className="gradtext mt-2">Feel Freeto chat with us</h1> */}
+                {/* <h3 className="gradtext">Feedback + contact Us + Help</h3> */}
+                <p className="gradtext" style={{ marginTop: 20 }}>
                   you can send us your Feedback and Message , Contact us and for
                   help feel free to chat with us. With your regional language
                   Team Realback.
@@ -31,7 +32,6 @@ const Feedback = () => {
               </div>
             </div>
             <div className="col-md-6">
-              <h1 className="gradtext"> Free feel to chat with us</h1>
               <div style={{ padding: 10, marginTop: 40 }}>
                 <div
                   style={{
@@ -43,21 +43,7 @@ const Feedback = () => {
                     color: "white",
                   }}
                 >
-                  hii there!! how can we help you
-                </div>
-                <div
-                  style={{
-                    marginTop: 10,
-                    marginLeft: "auto",
-                    padding: 10,
-                    backgroundColor: "rgb(0, 112, 243)",
-                    boxShadow: "rgb(0 118 255 / 39%) 0px 4px 14px 0px",
-                    borderRadius: 30,
-                    width: 250,
-                    color: "white",
-                  }}
-                >
-                  i need service for my Mac os
+                  hii there!! how we can help you
                 </div>
               </div>
 

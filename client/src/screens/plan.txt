@@ -1,0 +1,52 @@
+1.  all data api of product
+
+2.  feedback system 
+
+3.  Real-time order tracker
+
+4.  all design issue 
+
+5.  Domain registraiton
+
+6.  Seo
+
+7.   const [userinfo, srtUserinfo] = useState([])
+ const [userdata, setUserdata] = useState([])
+ const [seacharry , setSeacharry ] = useState("")
+  const [filteredOrder, setFilteredOrder] = useState([]);
+console.log(">>>>>>>>>>>>>>>>data" , seacharry);
+
+ useEffect(() => {
+   console.log("calling.....");
+   axios.get("/api/order",)
+  .then(({data})=> setUserdata(data.user))
+  .catch(err =>{
+
+console.log(err);
+
+  })
+
+  Users()
+  
+ }, [])
+ 
+ 
+const Users = () =>{
+     axios.get("/api/user",)
+  .then(({data})=> srtUserinfo(data.user))
+  .catch(err =>{
+
+console.log(err);
+
+  })
+}
+
+console.log("uderinfo", userinfo);
+
+  useEffect(() => {
+    setFilteredOrder(
+      userdata.filter((order) =>
+        order.email.toLowerCase().includes(seacharry.toLowerCase())
+      )
+    );
+  }, [seacharry, userdata]);

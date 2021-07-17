@@ -6,10 +6,27 @@ import { BiCartAlt } from "react-icons/bi";
 import { signout } from "../helpers/auth";
 import "../order.css";
 import axios from "axios";
+import { BiLogOut, BiHome, BiDonateHeart } from "react-icons/bi";
+import { ImWhatsapp } from "react-icons/im";
+import { RiFeedbackLine } from "react-icons/ri";
+import { FiSmartphone } from "react-icons/fi";
+import { AiOutlineUser } from "react-icons/ai";
 const Menu = () => {
   const [login, setLogin] = useState("");
   const [notification, setNotification] = useState(false);
   const [logout, setLogout] = useState("logout");
+  const [count, setCount] = useState("0");
+  // const [latitude, setLatitude] = useState("");
+
+  // const [longitude, setLongitude] = useState("");
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      console.log("Latitude is :", position.coords.latitude);
+      console.log("Longitude is :", position.coords.longitude);
+    });
+  }, []);
+
   useEffect(() => {
     let loggedIn = JSON.parse(localStorage.getItem("user"));
     if (loggedIn !== null) {
@@ -35,7 +52,7 @@ const Menu = () => {
   // console.log("====================================", userdata);
   function notify(user) {
     console.log("====================================<<<<<<<<<<<<<<", user);
-
+    setCount(user.length);
     user.map((item) => {
       console.log("====================================", item.mode);
 
@@ -58,7 +75,7 @@ const Menu = () => {
   //    }
 
   //    }
- 
+
   const Hello = () => {
     setLogout("logged out");
   };
@@ -172,9 +189,13 @@ const Menu = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link js-scroll-trigger" to="/feedback">
+                <a
+                  target="blank"
+                  className="nav-link js-scroll-trigger"
+                  href="https://api.whatsapp.com/send?phone=919522540020&text=hello Realback"
+                >
                   WhatsApp Us
-                </NavLink>
+                </a>
               </li>
               {login === "" ? (
                 <li className="nav-item">
@@ -198,12 +219,11 @@ const Menu = () => {
                       className="nav-link js-scroll-trigger"
                       to="/logout"
                     >
-                      <p data-tip="Tap to Logout" data-type="warning">
-                        {login}
+                      <p className="logouts" data-type="warning">
+                        <span> {login}</span>
                       </p>
                     </NavLink>
                   </li>,
-                  <ReactTooltip />,
                 ]
               )}
 
@@ -280,8 +300,8 @@ const Menu = () => {
 
       {/* 
 mobile menu */}
-      <div className="mobile">
-        <div className="window">
+      <div className="mobile ">
+        <div className="window ">
           <div className="header">
             <div className="burger-container">
               <div id="burger" onClick={mymenu}>
@@ -305,32 +325,84 @@ mobile menu */}
 
             </form> */}
             <ul className="menu">
-              <li className="menu-item">
-                <NavLink to="/">Home</NavLink>
+              <li className="menu-item ">
+                <BiHome color="white" />{" "}
+                <NavLink style={{ marginLeft: 10 }} to="/">
+                  Home
+                </NavLink>
               </li>
-              <li className="menu-item">
-                <NavLink to="/cart">Orders</NavLink>
+              <li className="menu-item d-flex justify-content-between ">
+                <div>
+                  <BiCartAlt color="white" />
+                  <NavLink style={{ marginLeft: 10 }} to="/cart">
+                    Orders
+                  </NavLink>
+                </div>
+
+                <div
+                  style={{
+                    borderRadius: 5,
+                    padding: "0px 5px 21px 5px",
+                    backgroundColor: "#171717",
+                    height: 15,
+                    color: "red",
+                    marginTop: 5,
+                  }}
+                >
+                  {count}
+                </div>
               </li>
-              <li className="menu-item">
-                <NavLink to="/service">Service</NavLink>
+              <li
+                className="menu-item"
+                style={{ borderBottom: "1px solid #333" }}
+              >
+                <FiSmartphone color="white" />
+                <NavLink style={{ marginLeft: 10 }} to="/service">
+                  Service
+                </NavLink>
               </li>
               {/* <li className="menu-item">
                 <NavLink to="/about">about</NavLink>
               </li> */}
-              <li className="menu-item">
-                <NavLink to="/feedback">WhatsApp Us</NavLink>
+              <li className="menu-item " style={{ marginTop: 25 }}>
+                <ImWhatsapp color="white" />
+                <a
+                  target="blank"
+                  style={{ marginLeft: 10 }}
+                  href="https://api.whatsapp.com/send?phone=919522540020&text=hello Realback"
+                >
+                  WhatsApp Us
+                </a>
               </li>
               <li className="menu-item">
-                <a href="https://rzp.io/l/ypLTEOH">Donate to realback</a>
+                <RiFeedbackLine color="white" />
+                <NavLink style={{ marginLeft: 10 }} to="/feedback">
+                  Feedback
+                </NavLink>
+              </li>
+
+              <li
+                className="menu-item"
+                style={{ borderBottom: "1px solid #333" }}
+              >
+                <BiDonateHeart color="white" />
+                <a style={{ marginLeft: 10 }} href="https://rzp.io/l/ypLTEOH">
+                  Donate to realback
+                </a>
               </li>
 
               {login === "" ? (
-                <li className="menu-item">
-                  <NavLink to="/login">Login</NavLink>
+                <li className="menu-item " style={{ marginTop: 25 }}>
+                  <AiOutlineUser color="white" />
+                  <NavLink style={{ marginLeft: 10 }} to="/login">
+                    Login
+                  </NavLink>
                 </li>
               ) : (
                 <li className="menu-item">
+                  <BiLogOut color="white" />
                   <NavLink
+                    style={{ marginLeft: 10 }}
                     onClick={() => {
                       signout(() => {
                         Hello();

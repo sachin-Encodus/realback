@@ -87,16 +87,16 @@ const Footer = () => {
                 Call us
               </a>
               &nbsp;
-              <a
-                href=""
+              <Link
+                to="/feedback"
                 style={{
                   marginLeft: "10px",
                   color: "#fff",
                   fontSize: "13px",
                 }}
               >
-                privacy Policy
-              </a>
+                Feedback
+              </Link>
               &nbsp;
               {/* <a
                 href="/"

@@ -13,8 +13,10 @@ import Service from './Service';
 import App from "../images/airpods.png";
 import myvideo from "../images/App2.mp4";
 import { FiAlertCircle } from "react-icons/fi";
+import { AiOutlineClose } from "react-icons/ai";
 // import Pod from '../images/.png'
 const Home = () => {
+  const [closed, setClosed] = React.useState(false);
   // const name = "sachin"
   // const price = "500"
   // const number ="9147203189"
@@ -65,27 +67,38 @@ const Home = () => {
           </div> */}
           <div className="container">
             <div className="row  ">
-              <div
-                className="notification"
-                style={{
-                  backgroundColor: "rgb(16 16 16 / 81%)",
-                  fontFamily: "sans-serif",
-                  padding: 20,
-                  textAlign: "center",
-                  borderRadius: 10,
-                  // marginTop: 50,
-                  color: "#6b6b6b",
-                }}
-              >
-                {" "}
-                <FiAlertCircle
-                  size="25"
-                  color="white"
-                  style={{ marginRight: 10 }}
-                />
-                Welcome to Realback services we notify you that our services
-                only Available in Jaipur now
-              </div>
+              {closed === false ? (
+                <div
+                  className="notification"
+                  style={{
+                    backgroundColor: "rgb(16 16 16 / 81%)",
+                    fontFamily: "sans-serif",
+                    padding: 20,
+                    textAlign: "center",
+                    borderRadius: 10,
+                    // marginTop: 50,
+                    color: "#6b6b6b",
+                  }}
+                >
+                  {" "}
+                  <FiAlertCircle
+                    size="25"
+                    color="white"
+                    style={{ marginRight: 10 }}
+                  />
+                  Welcome to Realback services we notify you that our services
+                  only Available in Jaipur now{" "}
+                  <AiOutlineClose
+                    style={{
+                      marginLeft: "auto",
+                      float: "right",
+                    }}
+                    onClick={() => setClosed(true)}
+                    color="white"
+                    size="20"
+                  />
+                </div>
+              ) : null}
 
               <div
                 style={{

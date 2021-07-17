@@ -59,6 +59,10 @@ const Order = () => {
   useEffect(() => {
     let loggedIn = JSON.parse(localStorage.getItem("user"));
     if (loggedIn !== null) {
+      setFormData({
+        ...formData,
+        email: loggedIn.email,
+      });
       axios
         .get(`/api/cart/${loggedIn.email}`)
         .then(({ data }) => setAdds(data.user[0]))
@@ -70,7 +74,7 @@ const Order = () => {
         console.log("calling");
         setFormData({
           ...formData,
-          email:adds.email,
+          email: adds.email,
           name: adds.name,
           country: adds.country,
           number: adds.number,

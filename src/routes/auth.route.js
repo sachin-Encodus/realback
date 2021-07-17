@@ -29,13 +29,14 @@ const {
   getCompany,
   getmodel,
   getmodedata,
-  
+  cartid,
 } = require("../../controllers/auth.controller");
 
 router.post("/register", register);
 router.post("/signin", signin);
 router.post("/device", device);
 router.get("/cart/:id", cart);
+router.get("/cartid/:id", cartid);
 router.get("/order", orderData);
 router.get("/user", userData);
 router.post("/otp", otp);
