@@ -68,9 +68,6 @@ const Problem = () => {
       <Menu />
       <section>
         <div style={{ marginTop: 100 }} className="container">
-          <div class="feedback-btn">
-            <p class="feedback-txt">Feedback</p>
-          </div>
           <h1 style={{ marginBottom: 20, marginRight: 20, marginLeft: 20 }}>
             Select your {device} problem{" "}
           </h1>

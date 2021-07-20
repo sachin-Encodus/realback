@@ -10659,10 +10659,9 @@ body {
   width: 100%;
   /* backdrop-filter: blur(5px);
 opacity: 1!important; */
-background: rgba( 10, 10, 10, 0.85 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 16.5px );
--webkit-backdrop-filter: blur( 16.5px );
+background: rgb(0, 0, 0);
+box-shadow: 0 8px 32px 0 rgb(0 24 74 / 37%);
+
 
   overflow: hidden;
   -webkit-transition: all 0.5s ease-out, background 1s ease-out;
@@ -12235,3 +12234,6 @@ div.marquee>a>img {
 
 .logouts:hover span {display:none}
 .logouts:hover:before {content:"Logout User"}
+
+
+

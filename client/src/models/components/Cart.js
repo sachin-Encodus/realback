@@ -358,11 +358,11 @@ export default function Cart(props) {
 
                 <h6 style={{ fontFamily: "sans-serif" }}>{item.status}</h6>
               </div>
-              <div style={{ justifyContent: "space-between", display: "flex" }}>
+              {/* <div style={{ justifyContent: "space-between", display: "flex" }}>
                 <h5 style={{ fontFamily: "sans-serif" }}> payment </h5>
 
                 <h6 style={{ fontFamily: "sans-serif" }}>{item.mode}</h6>
-              </div>
+              </div> */}
 
               <div style={{ justifyContent: "space-between", display: "flex" }}>
                 <h5 style={{ fontFamily: "sans-serif" }}> Total</h5>
@@ -397,29 +397,62 @@ export default function Cart(props) {
       <div className="container mt-5">
         {!isAuth() ? <Redirect to="/login" /> : null}
         <ToastContainer />
-        <h1 style={{ fontFamily: "sans-serif" }}>Review your orders</h1>
-        <h5 style={{ fontFamily: "sans-serif" }}>
-          Free delivery and free returns
-        </h5>
-        <br />
-        <h2 style={{ fontFamily: "sans-serif" }}>{email}</h2>
-        <br />
-        <div
-          style={{
-            backgroundColor: "#f5f5f7",
-            fontFamily: "sans-serif",
-            padding: 20,
-            textAlign: "center",
-            borderRadius: 10,
-          }}
-        >
-          {" "}
-          <IoBagCheck size="25" /> Pay $13.90/mo.per month¹ at 0% APR for
-          eligible items in your order with Apple Card Monthly Installments.
-        </div>
-
-        <br />
         {loading ? (
+          <div>
+            <Skeleton
+              hieght={80}
+              variant="h1"
+              width="70%"
+              style={{ borderRadius: 5, marginBottom: 8 }}
+              animation="wave"
+            />
+            <Skeleton
+              variant="text"
+              style={{ borderRadius: 5, width: "50%", marginBottom: 8 }}
+              animation="wave"
+            />
+            <br />
+            <Skeleton
+              variant="text"
+              style={{ borderRadius: 5, width: "40%", marginBottom: 8 }}
+              animation="wave"
+            />
+            <br />
+            <Skeleton
+              animation="wave"
+              variant="rect"
+              width="100%"
+              height={60}
+              style={{ borderRadius: 10 }}
+            />
+          </div>
+        ) : (
+          <div>
+            <h1 style={{ fontFamily: "sans-serif" }}>Review your orders</h1>
+            <h5 style={{ fontFamily: "sans-serif" }}>
+              Free delivery and free returns
+            </h5>
+            <br />
+            <h2 style={{ fontFamily: "sans-serif" }}>{email}</h2>
+
+            <br />
+            <div
+              style={{
+                backgroundColor: "#f5f5f7",
+                fontFamily: "sans-serif",
+                padding: 20,
+                textAlign: "center",
+                borderRadius: 10,
+              }}
+            >
+              {" "}
+              <IoBagCheck size="25" /> Pay $13.90/mo.per month¹ at 0% APR for
+              eligible items in your order with Apple Card Monthly Installments.
+            </div>
+          </div>
+        )}
+        <br />
+        {userdata.length === 0 ? (
           <div>
             {skeloton()}
             <hr />
