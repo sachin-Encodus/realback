@@ -6,50 +6,9 @@ import { isAuth } from '../helpers/auth';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 
-import data from './Servicedata'
-import useQuery from "./Query";
+import data from "./Servicedata";
 
-
-
-
-
-const Service = () =>{
-  // const query = useQuery();
-  // const dogString = query.get("choosenDog");
-  // const dogObject = JSON.parse(dogString);
-
-  // console.log("====================================", dogObject.payds);
-
-  const [cities, setCities] = useState([]);
-  const [selectedCounty, setSelectedCountry] = useState("Selected country");
-  const [selectedCity, setSelectedCity] = useState("Selected city");
-
-  const countries = {
-    France: ["Paris", "Marseille", "Lille", "Lyon"],
-    Usa: ["New York", "San Francisco", "Austin", "Dallas"],
-    Brazil: ["São Paulo", "Rio de Janeiro", "Salvador"],
-  };
-
-  const countryList = Object.keys(countries).map((key) => ({
-    name: key,
-  }));
-
-  function handleCountrySelect(e) {
-    console.log("Selected country", e.target.value);
-    const countrySel = e.target.value;
-    const citiesSel =
-      countrySel !== "" ? countries[countrySel] : "Selected country";
-    setSelectedCountry(countrySel);
-    setCities(citiesSel);
-    setSelectedCity("Selected city");
-  }
-
-  function handleCitySelect(e) {
-    console.log("Selected city", e.target.value);
-    const citiesSel = e.target.value;
-    setSelectedCity(citiesSel);
-  }
-
+const Service = () => {
   const { mobile } = data;
 
   useEffect(() => {
@@ -130,7 +89,7 @@ const Service = () =>{
       </div>
     </div>
   );
-}
+};
     
 export default Service;
 

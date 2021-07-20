@@ -30,6 +30,8 @@ const {
   getmodel,
   getmodedata,
   cartid,
+  updatestatus,
+  cartotp,
 } = require("../../controllers/auth.controller");
 
 router.post("/register", register);
@@ -37,6 +39,9 @@ router.post("/signin", signin);
 router.post("/device", device);
 router.get("/cart/:id", cart);
 router.get("/cartid/:id", cartid);
+router.get("/cartotp/:id", cartotp);
+
+router.post("/status", updatestatus);
 router.get("/order", orderData);
 router.get("/user", userData);
 router.post("/otp", otp);

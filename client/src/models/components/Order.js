@@ -13,6 +13,7 @@ const Order = () => {
   const Price = query.get("price");
   const deive = query.get("device");
   const cartItems = JSON.parse(dogString);
+  const status = "orderd";
   // console.log("============>>>>>>>>>>", cartItems);
 
   const [payments, setPayments] = useState(false);
@@ -22,7 +23,7 @@ const Order = () => {
   const [payid, setPayid] = useState("helloooox636d7d");
   const totalPrice = Price;
   const [adds, setAdds] = React.useState([]);
-// console.log("=====xxxxx",adds);
+  // console.log("=====xxxxx",adds);
   const [formData, setFormData] = useState({
     email: "",
     name: "",
@@ -234,6 +235,7 @@ const Order = () => {
           products,
           mode,
           orderOtp,
+          status,
           //   date,
           number,
           totalPrice,

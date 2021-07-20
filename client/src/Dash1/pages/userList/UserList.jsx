@@ -5,11 +5,37 @@ import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { userRows } from "../../dummyData";
 import { Link } from "react-router-dom";
+import io from "socket.io-client";
 
+import { ToastContainer, toast } from "react-toastify";
 export default function UserList() {
   const [data, setData] = useState(userRows);
   const [userdata, setUserdata] = useState([]);
   console.log("========xxxxxxxxx", userdata);
+
+  const socket = io("/api/socket");
+  socket.on("Orderd", (deviceData) => {
+    // toast.dark(deviceData.status);
+    // console.log("========>>>>>xxxxxxx", deviceData);
+    // console.log("--------uerdata", userdata);
+
+    if (userdata.length !== 0) {
+      updateItem(deviceData);
+      // const objIndex = userdata.findIndex((x) => x.id === data._id);
+
+      // // console.log("Before update: ", data[objIndex]);
+      // userdata[objIndex].status = data.status;
+
+      // console.log("After update: ", userdata[objIndex]);
+      // setUserdata(userdata);
+    }
+  });
+
+  const updateItem = (deviceData) => {
+    let newUserdata = userdata.concat(deviceData);
+    setUserdata(newUserdata);
+    console.log("====>>>>>yyyyyyy", newUserdata);
+  };
 
   useEffect(() => {
     console.log("calling.....");
@@ -31,7 +57,7 @@ export default function UserList() {
       headerName: "User",
       width: 200,
       renderCell: (params) => {
-        console.log("================>>>>>>>", params);
+        // console.log("================>>>>>>>", params);
 
         return (
           <div className="userListUser">
@@ -74,6 +100,7 @@ export default function UserList() {
 
   return (
     <div className="userList">
+      <ToastContainer />
       <DataGrid
         rows={userdata}
         disableSelectionOnClick

@@ -4,8 +4,14 @@ import useQuery from "../../screens/Query";
 import Menu from "../../screens/Menu";
 import { Link } from "react-router-dom";
 import Footer from "../../screens/Footer";
+import Skeleton from "@material-ui/lab/Skeleton";
+import { makeStyles } from "@material-ui/core/styles";
 
+const useStyles = makeStyles({
+  root: {},
+});
 function Device() {
+  const classes = useStyles();
   const query = useQuery();
   const dogString = query.get("routeName");
   const dogObject = JSON.parse(dogString);
@@ -13,7 +19,7 @@ function Device() {
 
   const [loading, setLoading] = useState(false);
   const [devicename, setDevicename] = useState("");
-const [model, setmodel] = useState("");
+  const [model, setmodel] = useState("");
   const [company, setCompany] = useState([]);
   const [modelno, setModelno] = useState([]);
   const [devicedata, setDevicedata] = useState([]);
@@ -70,123 +76,179 @@ const [model, setmodel] = useState("");
       console.log(error);
     }
   };
-console.log(devicedata);
-const getservice = async (itemValue) => {
-  try {
-    const filteredData = modelno.filter((item) => item._id === itemValue);
-    setDevicedata(filteredData[0].modedata);
-    setmodel(filteredData[0].modelno);
-    console.log("============>>>>>>>>>>", filteredData[0].modedata);
-    //   console.log("============>>>>>>>>>>xxxxxxxxxxx", filteredData[0].modelno);
-  } catch (error) {}
-};
+  console.log(devicedata);
+  const getservice = async (itemValue) => {
+    try {
+      const filteredData = modelno.filter((item) => item._id === itemValue);
+      setDevicedata(filteredData[0].modedata);
+      setmodel(filteredData[0].modelno);
+      console.log("============>>>>>>>>>>", filteredData[0].modedata);
+      //   console.log("============>>>>>>>>>>xxxxxxxxxxx", filteredData[0].modelno);
+    } catch (error) {}
+  };
 
-return (
-  <div>
-    <Menu />
-    <section>
-      <div className="container   mt-5">
-        <div className="row">
-          <div className="col-md-6  d-flex">
-            <div
-              style={{
-                padding: 20,
-                width: 300,
-                height: 300,
-                justifyContent: "center",
-                alignItems: "center",
+  return (
+    <div>
+      <Menu />
+      <section>
+        <div className="container   mt-5">
+          <div className="row">
+            <div className="col-md-6  d-flex">
+              <div
+                style={{
+                  padding: 20,
+                  width: 300,
+                  height: 300,
+                  justifyContent: "center",
+                  alignItems: "center",
 
-                margin: "auto",
-              }}
-            >
-              <img src={dogObject.image} className="img-fluid" alt="3" />
+                  margin: "auto",
+                }}
+              >
+                {loading ? (
+                  <Skeleton
+                    animation="wave"
+                    variant="rect"
+                    width="100%"
+                    height="100%"
+                  />
+                ) : (
+                  <img src={dogObject.image} className="img-fluid" alt="3" />
+                )}
+              </div>
             </div>
-          </div>
-          <div className="col-md-6">
-            <div style={{ marginLeft: 20, marginRight: 20 }}>
-              <div style={{ padding: 10, marginTop: 20 }}>
-                <h1>{dogObject.name}</h1> <h1>Get your </h1>
-                <h1>device service</h1>
-              </div>
-              <div
-                style={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                  padding: 10,
-                  margin: "auto",
-                  backgroundColor: "rgb(245, 245, 247)",
-                  borderRadius: "15px",
-                  marginBottom: 10,
-                }}
-              >
-                <select
-                  className=""
-                  placeholder="Select Brand"
-                  style={{
-                    paddingLeft: 20,
-                    fontSize: 20,
-                  }}
-                  // value={data.find((obj) => obj.value === selectedValue)} // set selected value
-                  // set list of the data
-                  onChange={handleChange} // assign onChange function
-                >
-                  <option value="0"> select Brand</option>
-                  {company.map((item) => (
-                    <option key={item._id} value={item._id}>
-                      {item.deviceName}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div
-                style={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                  padding: 10,
-                  margin: "auto",
-                  backgroundColor: "rgb(245, 245, 247)",
-                  borderRadius: "15px",
-                }}
-              >
-                <select
-                  placeholder="Select Model"
-                  style={{
-                    paddingLeft: 20,
-                    fontSize: 20,
-                  }}
-                  // value={data.find((obj) => obj.value === selectedValue)} // set selected value
-                  // set list of the data
-                  onChange={modelChange} // assign onChange function
-                >
-                  <option value="0"> select Model</option>
-                  {modelno.map((item) => (
-                    <option key={item._id} value={item._id}>
-                      {item.modelno}
-                    </option>
-                  ))}
-                </select>
-              </div>
+            <div className="col-md-6">
+              <div style={{ marginLeft: 20, marginRight: 20 }}>
+                {loading ? (
+                  <div style={{ padding: 10, marginTop: 20 }}>
+                    <Skeleton
+                      variant="h1"
+                      hieght={40}
+                      style={{ borderRadius: 10, width: 100, marginBottom: 8 }}
+                      animation="wave"
+                    />
+                    <Skeleton
+                      hieght={40}
+                      variant="h1"
+                      style={{ borderRadius: 10, width: 60, marginBottom: 8 }}
+                      animation="wave"
+                    />
+                    <Skeleton
+                      hieght={40}
+                      variant="h1"
+                      style={{ borderRadius: 10, width: 170, marginBottom: 8 }}
+                      animation="wave"
+                    />
+                  </div>
+                ) : (
+                  <div style={{ padding: 10, marginTop: 20 }}>
+                    <h1>{dogObject.name}</h1> <h1>Get your </h1>
+                    <h1>device service</h1>
+                  </div>
+                )}
+                {loading === true ? (
+                  <div
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                      padding: 10,
+                      margin: "auto",
 
-              {devicedata.length !== 0 ? (
-                <Link
-                  style={{ padding: 18 }}
-                  to={{
-                    pathname: "/problem",
-                    search: `routeName=${JSON.stringify(
-                      devicedata
-                    )}&devicename=${devicename} ${model}`, //dog is the object to pass along
-                  }}
-                  class="app-btn blu flex vert  "
-                >
-                  <span class="big-txt">Service</span>
-                </Link>
-              ) : null}
+                      borderRadius: "15px",
+                      marginBottom: 10,
+                    }}
+                  >
+                    <Skeleton
+                      style={{ borderRadius: 10, height: 80 }}
+                      animation="wave"
+                    />
+                    <Skeleton
+                      style={{ borderRadius: 10, height: 80 }}
+                      animation="wave"
+                    />
+                  </div>
+                ) : (
+                  <div>
+                    <div
+                      style={{
+                        justifyContent: "center",
+                        alignItems: "center",
+                        padding: 10,
+                        margin: "auto",
+                        backgroundColor: "rgb(245, 245, 247)",
+                        borderRadius: "15px",
+                        marginBottom: 10,
+                      }}
+                    >
+                      <select
+                        className=""
+                        placeholder="Select Brand"
+                        style={{
+                          paddingLeft: 20,
+                          fontSize: 20,
+                        }}
+                        // value={data.find((obj) => obj.value === selectedValue)} // set selected value
+                        // set list of the data
+                        onChange={handleChange} // assign onChange function
+                      >
+                        <option value="0"> select Brand</option>
+                        {company.map((item) => (
+                          <option key={item._id} value={item._id}>
+                            {item.deviceName}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div
+                      style={{
+                        justifyContent: "center",
+                        alignItems: "center",
+                        padding: 10,
+                        margin: "auto",
+                        backgroundColor: "rgb(245, 245, 247)",
+                        borderRadius: "15px",
+                      }}
+                    >
+                      <select
+                        placeholder="Select Model"
+                        style={{
+                          paddingLeft: 20,
+                          fontSize: 20,
+                        }}
+                        // value={data.find((obj) => obj.value === selectedValue)} // set selected value
+                        // set list of the data
+                        onChange={modelChange} // assign onChange function
+                      >
+                        <option value="0"> select Model</option>
+                        {modelno.map((item) => (
+                          <option key={item._id} value={item._id}>
+                            {item.modelno}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                )}
+                {devicedata.length !== 0 ? (
+                  <Link
+                    style={{ padding: 18 }}
+                    to={{
+                      pathname: "/problem",
+                      search: `routeName=${JSON.stringify(
+                        devicedata
+                      )}&devicename=${devicename} ${model}`, //dog is the object to pass along
+                    }}
+                    class="app-btn blu flex vert  "
+                  >
+                    <span class="big-txt">Service</span>
+                  </Link>
+                ) : null}
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* <div className="container">
+        {/* <div className="container">
         <div className="row">
           <div className="col-md-6">
             {devicedata && devicedata !== undefined ? (
@@ -248,9 +310,9 @@ return (
           <div className="col-md-6"></div>
         </div>
       </div> */}
-    </section>
-  </div>
-);
+      </section>
+    </div>
+  );
 }
 
 export default Device;

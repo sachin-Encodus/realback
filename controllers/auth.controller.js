@@ -1294,6 +1294,42 @@ exports.adminMiddleware = (req, res, next) => {
 
 // };
 
+
+exports.updatestatus = async function (req, res) {
+  console.log(req.body.userId, req.body.value);
+  try {
+    Device.findOneAndUpdate(
+      {
+        _id: req.body.userId,
+      },
+      {
+        status: req.body.value,
+      },
+      { new: true },
+      function (err, result) {
+        //Error handling
+        if (err) {
+          return res.status(500).send("Something broke!");
+        }
+
+        //Send response based on the required
+        else {
+          const EventEmitter = req.app.get("eventemitter");
+          EventEmitter.emit("orderUpdated", {
+            _id: req.body.userId,
+            status: req.body.value,
+            email: req.body.email,
+          });
+          res.status(201).send({ result });
+        }
+      }
+    );
+  } catch (error) {
+    console.log("logout error");
+    res.status(500).json(error);
+  }
+};
+
 exports.userData = async function (req, res) {
   try {
     await User.find({}, (err, user) => {
@@ -1304,7 +1340,7 @@ exports.userData = async function (req, res) {
       } else {
         console.log(err);
       }
-      console.log(user);
+      // console.log(user);
     });
   } catch (error) {
     console.log("logout error");
@@ -1322,7 +1358,7 @@ exports.orderData = async function (req, res) {
       } else {
         console.log(err);
       }
-      console.log(user);
+      // console.log(user);
     });
   } catch (error) {
     console.log("logout error");
@@ -1335,14 +1371,14 @@ exports.cart = async function (req, res) {
   try {
     await Device.find({ email: req.params.id }, (err, user) => {
       if (user) {
-        console.log(user);
+        // console.log(user);
         return res.status(201).send({
           user,
         });
       } else {
         console.log(err);
       }
-      console.log(user);
+      // console.log(user);
     });
   } catch (error) {
     console.log("logout error");
@@ -1350,24 +1386,40 @@ exports.cart = async function (req, res) {
   }
 };
 
-
-
 exports.cartid = async function (req, res) {
   try {
     await Device.findOne({ _id: req.params.id }, (err, user) => {
       if (user) {
-        console.log(user);
+        // console.log(user);
         return res.status(201).send({
           user,
         });
       } else {
         console.log(err);
       }
-      console.log(user);
+      // console.log(user);
     });
   } catch (error) {
     console.log("logout error");
     res.status(500).json({ message: "you have already logged out sir !" });
+  }
+};
+
+exports.cartotp = async function (req, res) {
+  try {
+    await Device.findOne({ orderOtp: req.params.id }, (err, user) => {
+      if (user) {
+        // console.log(user);
+        return res.status(201).send({
+          user,
+        });
+      } else {
+        console.log(err);
+      }
+      // console.log(user);
+    });
+  } catch (error) {
+    res.status(500).json({ err: "Please  enter valid Otp !" });
   }
 };
 
@@ -1815,6 +1867,8 @@ https://i.pinimg.com/originals/a3/84/3e/a3843e404a271edb47b1908dd2a6230b.gif -->
       });
 
       console.log("email sent");
+      const EventEmitter = req.app.get("eventemitter");
+      EventEmitter.emit("orderPlaced", deviceData);
       return res.status(201).json({ _id });
     } else {
       console.log("!email ");

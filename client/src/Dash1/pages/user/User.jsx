@@ -38,6 +38,8 @@ export default function User() {
   const [open, setOpen] = React.useState(false);
   const handleChange = (event) => {
     setAge(event.target.value);
+
+    statusUpdate(event.target.value);
   };
 
   const handleClose = () => {
@@ -63,10 +65,23 @@ export default function User() {
     mode,
     message,
     company,
+    status,
   } = userdata;
   console.log("=====================xxxx", userdata);
 
   console.log("====================================", userdata);
+
+  const statusUpdate = async (value) => {
+    console.log("===>>>>>>>>>>>>yyy", value);
+
+    const res = await axios.post("/api/status", {
+      userId,
+      value,
+      email,
+    });
+
+    console.log("oppp==========", res);
+  };
 
   useEffect(() => {
     cartdata();
@@ -154,7 +169,7 @@ export default function User() {
             </div>
             <div className="userShowInfo">
               <LocationSearching className="userShowIcon" />
-              <span className="userShowInfoTitle">{age}</span>
+              <span className="userShowInfoTitle">{status}</span>
             </div>
             <div className="userShowInfo">
               <LocationSearching className="userShowIcon" />

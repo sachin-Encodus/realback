@@ -51,17 +51,17 @@ const Menu = () => {
   };
   // console.log("====================================", userdata);
   function notify(user) {
-    console.log("====================================<<<<<<<<<<<<<<", user);
+    // console.log("====================================<<<<<<<<<<<<<<", user);
     setCount(user.length);
     user.map((item) => {
-      console.log("====================================", item.mode);
+      // console.log("====================================", item.mode);
 
       return item.mode !== "success"
         ? setNotification(true)
         : setNotification(false);
     });
   }
-  console.log("====================================>>>>>>>>>>>", notification);
+  // console.log("====================================>>>>>>>>>>>", notification);
 
   //    https://codepen.io/GA-MO/pen/yJzERy?editors=0110
 
@@ -446,7 +446,7 @@ mobile menu */}
       </div>
     </>
   );
-};
+};;
 
 
 export default Menu;

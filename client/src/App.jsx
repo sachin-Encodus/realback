@@ -27,6 +27,8 @@ import Device from "./models/components/Device.js";
 import Problem from "./models/components/Problem";
 import Feedback from "./screens/Feedback";
 import Order from "./models/components/Order";
+import OrderUpdate from "./screens/OrderUpdate";
+import Facebook from "./screens/Skelaton.jsx";
 
 function App() {
   return (
@@ -65,6 +67,16 @@ function App() {
           <Route path="/ipad" exact render={(props) => <Ipad {...props} />} />
           <Route path="/watch" exact render={(props) => <Watch {...props} />} /> */}
           <Route path="/cart" exact render={(props) => <Cart {...props} />} />
+          <Route
+            path="/skeloton"
+            exact
+            render={(props) => <Facebook {...props} />}
+          />
+          <Route
+            path="/orderupdate"
+            exact
+            render={(props) => <OrderUpdate {...props} />}
+          />
           <Route path="/terms" exact render={(props) => <Terms {...props} />} />
           <Route
             path="/forget"
