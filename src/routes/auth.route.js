@@ -32,6 +32,7 @@ const {
   cartid,
   updatestatus,
   cartotp,
+  subscriber,
 } = require("../../controllers/auth.controller");
 
 router.post("/register", register);
@@ -42,8 +43,9 @@ router.get("/cartid/:id", cartid);
 router.get("/cartotp/:id", cartotp);
 
 router.post("/status", updatestatus);
+router.post("/subscriber", subscriber);
 router.get("/order", orderData);
-router.get("/user", userData);
+router.get("/user/:id", userData);
 router.post("/otp", otp);
 router.post("/Verifyotp", Verifyotp);
 

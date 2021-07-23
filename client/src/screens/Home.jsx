@@ -1,44 +1,68 @@
-import React ,{useEffect}from 'react';
+import React, { useEffect, useState } from "react";
 
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
+import axios from "axios";
 // import Watch from '../images/large.mp4'
 
-import Footer from './Footer'
-import { ToastContainer, toast } from 'react-toastify';
-import Menu from './Menu';
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
-import Service from './Service';
+import Footer from "./Footer";
+import { ToastContainer, toast } from "react-toastify";
+import Menu from "./Menu";
+import AOS from "aos";
+import "aos/dist/aos.css"; // You can also use <link> for styles
+import Service from "./Service";
 import App from "../images/airpods.png";
 import myvideo from "../images/App2.mp4";
 import { FiAlertCircle } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
+import Logo from "../images/realback.png";
+import Card from "../images/card.webp";
+
 // import Pod from '../images/.png'
 const Home = () => {
-  const [closed, setClosed] = React.useState(false);
+  const [closed, setClosed] = useState(false);
+  const [prouser, setProuser] = useState(false);
+  const [date, setDate] = useState("");
+
   // const name = "sachin"
   // const price = "500"
   // const number ="9147203189"
-  const payds = {
-    //  _id,
-    totalPrice: "500",
-    name: "sachin",
-    email: "schin1245e@gmail.com",
-    number: "9174203189",
-  };
-  const Data = JSON.stringify({ payds });
+  // var dt = new Date();
+  // var subscribe = 3;
+  // var month = dt.getMonth() + 1 + subscribe;
+  // var year = dt.getUTCFullYear();
+  // dt.setMonth(dt.getMonth() + 1);
+  // console.log(month + "/" + year);
   // const qs = new URLSearchParams(payds);
   // console.log('====================================',payds);
 
   useEffect(() => {
+    let loggedIn = JSON.parse(localStorage.getItem("user"));
+    if (loggedIn !== null) {
+      cheackbadge(loggedIn.email);
+    } else {
+      console.log("====================================");
+    }
     AOS.init({
       offset: 300, // offset (in px) from the original trigger point
       delay: 10, // values from 0 to 3000, with step 50ms
       duration: 1400, // values from 0 to 3000, with step 50ms
     });
   }, []);
-
+  const cheackbadge = (email) => {
+    axios
+      .get(`/api/user/${email}`)
+      .then(({ data }) => {
+        // setUserdata(data.user);
+        // notify(data.user[0]);
+        if (data.user.subscriber[0].status === true) {
+          setProuser(true);
+          setDate(data.user.subscriber[0].expiredate);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <>
       <Menu />
@@ -276,25 +300,52 @@ const Home = () => {
 <Service/>
 </section> */}
 
-        {/* 
-<section>
+        <section className="mt-5">
+          <div class="container">
+            <div class="row">
+              <div className="col-md-6 col-xl-4  ">
+                <div style={{ margin: "auto" }}>
+                  <div class="cardd ">
+                    <img
+                      src={Logo}
+                      alt="logo"
+                      style={{ width: 50, height: 50 }}
+                    />
+                    <p style={{ float: "right" }}>{date}</p>
+                    <h2 class="card_title"></h2>
+                    <p class="pricing">
+                      1.32$<span class="small">/3 month</span>
+                    </p>
 
-
-  <div className="container-fluid  text-center">
-               
-
-      
-    <div className="row text-center ">
-
-     
- <figure data-aos="fade-in"  >
-
-<img   src={process.env.PUBLIC_URL+"images/mi.jpeg"} alt="" className="img-fluid"/>
-
-   </figure>     
+                    <ul class="features">
+                      <li>10% 0ff</li>
+                      <li>Free delivery</li>
+                      <li>Gift and rewards</li>
+                      <li>Pay later amount below 4000</li>
+                    </ul>
+                    {prouser ? (
+                      <Link to="/" class="cta_btn">
+                        Realback Member
+                      </Link>
+                    ) : (
+                      <Link to="/pro" class="cta_btn">
+                        Buy Now
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div>
+                  <img src={Card} alt="23" className="img-fluid" />
+                </div>
+              </div>
+            </div>
           </div>
-  </div>
-</section> */}
+          {/* <a href="https://youtu.be/RLReK22LWTo" target="_blank" class="link">
+            Watch on youtube <i class="fab fa-youtube"></i>
+          </a> */}
+        </section>
         {/* <figure data-aos="fade-in"  >
 
 <img   src={Pod} alt="" className="img-fluid"/>
@@ -496,13 +547,6 @@ const Home = () => {
 };
 
 export default Home;
-
-
-
-
-
-
-
 
 // background: rgba(255, 255, 255, 0.1);
 // box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);

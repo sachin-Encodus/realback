@@ -1331,9 +1331,11 @@ exports.updatestatus = async function (req, res) {
 };
 
 exports.userData = async function (req, res) {
+
   try {
-    await User.find({}, (err, user) => {
+    await User.findOne({email:req.params.id}, (err, user) => {
       if (user) {
+        console.log(user);
         return res.status(201).send({
           user,
         });
@@ -1385,7 +1387,61 @@ exports.cart = async function (req, res) {
     res.status(500).json({ message: "you have already logged out sir !" });
   }
 };
+//! prouser
+exports.subscriber = async function (req, res) {
+const {
+  email,
+  name,
+  adhar,
+  pancard,
+ 
+  number,
+  status,
 
+  country,
+  state,
+  city,
+  pincode,
+  Address,
+  expiredate,
+} = req.body;
+
+
+  try {
+    
+
+
+  const prouser =  await User.findOne({ email});
+
+
+if(prouser){
+  const subscribe = await prouser.addPro(
+    email,
+    name,
+    adhar,
+    pancard,
+   
+    number,
+    status,
+
+    country,
+    state,
+    city,
+    pincode,
+    Address,
+    expiredate
+  );
+
+  await prouser.save();
+
+  res.status(201).json({message : "ProUser enabled"})
+}
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "you have already logged out sir !" });
+  }
+};
 exports.cartid = async function (req, res) {
   try {
     await Device.findOne({ _id: req.params.id }, (err, user) => {
@@ -1940,11 +1996,28 @@ exports.personal = async function (req, res) {
 
 const accountSid = Account_Sid;
 const authToken = Auth_Token;
-// const client = require("twilio")(accountSid, authToken);
+// Set environment variables for your Account Sid and Auth Token!
+// These can be found at twilio.com/console
+
+
+
+const client = require("twilio")(accountSid, authToken);
 
 // const accountSid = "AC9627beb94cd72e5dea9f3f626e09db90";
 // const authToken = "f4dbd2ff58c356d09332af72a519e863";
-const client = require("twilio")(accountSid, authToken);
+// const client = require("twilio")(accountSid, authToken);
+// const number = "9000000000"
+// client.lookups
+//   .phoneNumbers("+91" + number)
+//   .fetch({ type: ["carrier"] })
+//   .then((phone_number) => {
+//     console.log(phone_number.carrier); // All of the carrier info.
+//     console.log(phone_number.carrier.name);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   }); // Just the carrier name.
+
 
 exports.otp = (req, res) => {
   const { number } = req.body;

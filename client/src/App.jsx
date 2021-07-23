@@ -29,7 +29,7 @@ import Feedback from "./screens/Feedback";
 import Order from "./models/components/Order";
 import OrderUpdate from "./screens/OrderUpdate";
 import Facebook from "./screens/Skelaton.jsx";
-
+import Pro from "./models/components/Pro";
 function App() {
   return (
     <>
@@ -67,6 +67,8 @@ function App() {
           <Route path="/ipad" exact render={(props) => <Ipad {...props} />} />
           <Route path="/watch" exact render={(props) => <Watch {...props} />} /> */}
           <Route path="/cart" exact render={(props) => <Cart {...props} />} />
+          <Route path="/pro" exact render={(props) => <Pro {...props} />} />
+
           <Route
             path="/skeloton"
             exact

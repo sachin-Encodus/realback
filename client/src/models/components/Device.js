@@ -125,7 +125,6 @@ function Device() {
                       variant="h1"
                       hieght={40}
                       style={{
-                        borderRadius: 10,
                         width: "70%",
                         marginBottom: 8,
                       }}
@@ -135,7 +134,6 @@ function Device() {
                       hieght={40}
                       variant="h1"
                       style={{
-                        borderRadius: 10,
                         width: "60%",
                         marginBottom: 8,
                       }}
@@ -145,7 +143,6 @@ function Device() {
                       hieght={40}
                       variant="h1"
                       style={{
-                        borderRadius: 10,
                         width: "40%",
                         marginBottom: 8,
                       }}

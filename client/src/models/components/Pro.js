@@ -15,8 +15,7 @@ const Order = () => {
   const cartItems = JSON.parse(dogString);
   const status = "orderd";
   // console.log("============>>>>>>>>>>", cartItems);
-  const [prouser, setProuser] = useState(false);
-
+  const [pro, setPro] = useState(false);
   const [payments, setPayments] = useState(false);
   const [orderId, setOrderId] = useState("");
   const [signature, setSignature] = useState("");
@@ -29,11 +28,9 @@ const Order = () => {
   const [formData, setFormData] = useState({
     email: "",
     name: "",
-    company: "",
-    model: "",
-    message: "",
-    products: "",
-    mode: "",
+    adhar: "",
+    pancard: "",
+
     number: "",
     country: "",
     state: "",
@@ -46,13 +43,12 @@ const Order = () => {
   const {
     email,
     name,
-    company,
-    model,
-    message,
-    mode,
+    adhar,
+    pancard,
+
     number,
     country,
-    products,
+
     state,
     city,
     pincode,
@@ -66,96 +62,11 @@ const Order = () => {
         ...formData,
         email: loggedIn.email,
       });
-      cheackbadge(loggedIn.email);
-      axios
-        .get(`/api/cart/${loggedIn.email}`)
-        .then(({ data }) => setAdds(data.user[0]))
-        .catch((err) => {
-          console.log(err);
-        });
-      // console.log("========>>>>>>>>sssssss", adds);
-      if (adds !== undefined) {
-        console.log("calling");
-        setFormData({
-          ...formData,
-          email: adds.email,
-          name: adds.name,
-          country: adds.country,
-          number: adds.number,
-          city: adds.city,
-          state: adds.state,
-          pincode: parseInt(adds.pincode),
-          Address: adds.Address,
-        });
-      }
-      console.log("my email", loggedIn.email);
-      console.log("my email", loggedIn.name);
-      // setFormData({
-      //   ...formData,
-      //   name: loggedIn.name,
-      //   email: loggedIn.email,
-      // });
     } else {
       setFormData({ email: "noreply@gmai.com" });
     }
   }, [adds]);
-  const cheackbadge = (email) => {
-    axios
-      .get(`/api/user/${email}`)
-      .then(({ data }) => {
-        // setUserdata(data.user);
-        // notify(data.user[0]);
-        if (data.user.subscriber[0].status === true) {
-          setProuser(true);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
-  // useEffect(() => {
-  //   let isMounted = true;
-  //   addsdata();
-  //   return () => {
-  //     isMounted = false;
-  //   };
-  // }, [adds]);
-
-  // const addsdata = () => {
-  //   axios
-  //     .get(`/api/cart/${email}`)
-  //     .then(({ data }) => setAdds(data.user[0]))
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //   // console.log("========>>>>>>>>sssssss", adds);
-  //   if (adds !== undefined) {
-  //     setFormData({
-  //       ...formData,
-  //       name: adds.name,
-  //       country: adds.country,
-  //       number: adds.number,
-  //       city: adds.city,
-  //       state: adds.state,
-  //       pincode: parseInt(adds.pincode),
-  //       Address: adds.Address,
-  //     });
-  //   }
-  // };
-
-  function generateOTP() {
-    // Declare a digits variable
-    // which stores all digits
-    var digits = "0123456789";
-    let OTP = "";
-    for (let i = 0; i < 4; i++) {
-      OTP += digits[Math.floor(Math.random() * 10)];
-    }
-    return OTP;
-  }
-
-  const orderOtp = generateOTP();
   const payment = async (_id) => {
     console.log(">>>>>>> id for payment update", _id);
     const res = await axios.get(`/api/payment/${totalPrice}/`);
@@ -211,15 +122,20 @@ const Order = () => {
     });
   };
 
+  var dt = new Date();
+  var subscribe = 3;
+  var month = dt.getMonth() + 1 + subscribe;
+  var year = dt.getUTCFullYear();
+  var day = dt.getUTCDate();
+
+  const expiredate = day + "/" + month + "/" + year;
   const handleChange = (text) => (e) => {
     setFormData({
       ...formData,
       [text]: e.target.value,
-      products: cartItems,
-      company: deive,
     });
   };
-  console.log("===>", products);
+
   // sachin1245e@gmail.com
 
   const onSubmits = (event) => {
@@ -227,10 +143,9 @@ const Order = () => {
 
     if (
       email &&
-      //   company &&
-      //   model &&
-      message &&
-      mode &&
+      adhar &&
+      pancard &&
+      name &&
       number &&
       country &&
       state &&
@@ -242,37 +157,31 @@ const Order = () => {
       setFormData({ ...formData, textChange: "Submitting" });
 
       axios
-        .post(`/api/device`, {
+        .post(`/api/subscriber`, {
           email,
           name,
-          company,
-          model,
-          message,
-          products,
-          mode,
-          orderOtp,
-          status,
+          adhar,
+          pancard,
+
           //   date,
           number,
-          totalPrice,
+          status: true,
           //   screen,
           country,
           state,
           city,
           pincode,
           Address,
+          expiredate,
         })
         .then((res) => {
           setFormData({
             ...formData,
             //  email: '',
             name: "",
-            company: "",
-            model: "",
-            message: "",
-            products: "",
-            mode: "",
-            otp: "",
+            adhar: "",
+            pancard: "",
+
             number: "",
             country: "",
             state: "",
@@ -283,21 +192,15 @@ const Order = () => {
           });
 
           toast.dark(`Order OTP has been sent to ${res.data._id}`);
-          setPayid(res.data._id);
-          if (mode === "online") {
-            payment(res.data._id);
-          }
         })
         .catch((err) => {
           setFormData({
             ...formData,
             //  email: '',
             name: "",
-            company: "",
-            model: "",
-            message: "",
-            products: "",
-            mode: "",
+            adhar: "",
+            pancard: "",
+
             number: "",
             country: "",
             state: "",
@@ -365,18 +268,28 @@ const Order = () => {
                   />
                 </div>
 
-                <div className="form-field col-xl-9">
+                <div className="form-field col-xl-6">
                   <input
-                    id="Address"
+                    id="adhar"
                     className="input-text js-input"
-                    name="message"
-                    onChange={handleChange("message")}
-                    value={message}
-                    placeholder="Please type here if your problem is not mentioned in the above section."
+                    name="adhar"
+                    onChange={handleChange("adhar")}
+                    value={adhar}
+                    placeholder="adhar"
                     type="text"
                   />
                 </div>
-
+                <div className="form-field col-xl-3">
+                  <input
+                    id="pancard"
+                    className="input-text js-input"
+                    name="adhar"
+                    onChange={handleChange("pancard")}
+                    value={pancard}
+                    placeholder="PAN"
+                    type="text"
+                  />
+                </div>
                 <div class="form-field col-xl-3">
                   <input
                     onChange={handleChange("state")}
@@ -422,50 +335,9 @@ const Order = () => {
                   <button
                     style={{ padding: 20 }}
                     class="app-btn blu flex vert  "
-                    onClick={() =>
-                      setFormData({
-                        ...formData,
-                        mode: "COD",
-                      })
-                    }
                   >
                     <span class="big-txt">{textChange}</span>
                   </button>
-
-                  <button
-                    style={{ padding: 20 }}
-                    class="app-btn blu flex vert  "
-                    onClick={() =>
-                      setFormData({
-                        ...formData,
-                        mode: "online",
-                      })
-                    }
-                  >
-                    <span class="big-txt"> Payment Now</span>
-                  </button>
-                  {prouser ? (
-                    <button
-                      style={{ padding: 20 }}
-                      class="app-btn blu flex vert  "
-                      onClick={() =>
-                        setFormData({
-                          ...formData,
-                          mode: "pay later",
-                        })
-                      }
-                    >
-                      <span class="big-txt">Pay later</span>
-                    </button>
-                  ) : (
-                    <Link
-                      style={{ padding: 20 }}
-                      class="app-btn blu flex vert  "
-                      onClick={() => toast.dark("you are not pro user")}
-                    >
-                      <span class="big-txt">Pay later</span>
-                    </Link>
-                  )}
                 </div>
               </div>
             </form>
@@ -474,6 +346,6 @@ const Order = () => {
       </section>
     </div>
   );
-};;
+};
 
 export default Order;
