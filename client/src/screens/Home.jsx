@@ -93,7 +93,7 @@ const Home = () => {
             <div className="row  ">
               {closed === false ? (
                 <div
-                  className="notification"
+                  className="col-md-12"
                   style={{
                     backgroundColor: "rgb(16 16 16 / 81%)",
                     fontFamily: "sans-serif",

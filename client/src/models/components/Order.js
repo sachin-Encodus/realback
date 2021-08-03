@@ -2,30 +2,89 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import "../../realback work/css/style.css";
 import useQuery from "../../screens/Query";
 import logo from "../../images/realback.png";
 import Menu from "../../screens/Menu";
 import Footer from "./../../screens/Footer";
+import Box from "@material-ui/core/Box";
+
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+import Logo from "../../images/realback.png";
+import { BiArrowBack } from "react-icons/bi";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  height: "100%",
+  width: "100%",
+  bgcolor: "background.paper",
+  border: "none",
+  outline: "none",
+  boxShadow: 24,
+  overflow: "scroll",
+  p: 4,
+};
 
 const Order = () => {
   const query = useQuery();
   const dogString = query.get("routeName");
   const Price = query.get("price");
-  const deive = query.get("device");
+  const device = query.get("device");
   const cartItems = JSON.parse(dogString);
   const status = "orderd";
-  // console.log("============>>>>>>>>>>", cartItems);
+  console.log("============>>>>>>>>>>", Price, device);
   const [prouser, setProuser] = useState(false);
 
   const [payments, setPayments] = useState(false);
   const [orderId, setOrderId] = useState("");
   const [signature, setSignature] = useState("");
   const [paymentID, setPaymentID] = useState("");
-  const [payid, setPayid] = useState("helloooox636d7d");
+  const [agreemnet, setAgreemnet] = useState(false);
   const totalPrice = Price;
   const [adds, setAdds] = React.useState([]);
   // console.log("=====xxxxx",adds);
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  var dt = new Date();
+  var subscribe = 15;
+  var month = dt.getMonth() + 1;
+  var year = dt.getUTCFullYear();
+  var day = dt.getUTCDate();
 
+  const date = day + " " + monthNames[dt.getMonth()] + ", " + year;
+  const expiredate =
+    day + subscribe + " " + monthNames[dt.getMonth()] + ", " + year;
+  // const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const paylater = () => {
+    setProuser(true);
+  };
+  const handleOpen = () => {
+    console.log("call open ");
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   const [formData, setFormData] = useState({
     email: "",
     name: "",
@@ -66,7 +125,7 @@ const Order = () => {
         ...formData,
         email: loggedIn.email,
       });
-      cheackbadge(loggedIn.email);
+
       axios
         .get(`/api/cart/${loggedIn.email}`)
         .then(({ data }) => setAdds(data.user[0]))
@@ -75,7 +134,7 @@ const Order = () => {
         });
       // console.log("========>>>>>>>>sssssss", adds);
       if (adds !== undefined) {
-        console.log("calling");
+        // console.log("calling");
         setFormData({
           ...formData,
           email: adds.email,
@@ -88,8 +147,7 @@ const Order = () => {
           Address: adds.Address,
         });
       }
-      console.log("my email", loggedIn.email);
-      console.log("my email", loggedIn.name);
+
       // setFormData({
       //   ...formData,
       //   name: loggedIn.name,
@@ -99,20 +157,6 @@ const Order = () => {
       setFormData({ email: "noreply@gmai.com" });
     }
   }, [adds]);
-  const cheackbadge = (email) => {
-    axios
-      .get(`/api/user/${email}`)
-      .then(({ data }) => {
-        // setUserdata(data.user);
-        // notify(data.user[0]);
-        if (data.user.subscriber[0].status === true) {
-          setProuser(true);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   // useEffect(() => {
   //   let isMounted = true;
@@ -216,10 +260,10 @@ const Order = () => {
       ...formData,
       [text]: e.target.value,
       products: cartItems,
-      company: deive,
+      company: device,
     });
   };
-  console.log("===>", products);
+  // console.log("===>", products);
   // sachin1245e@gmail.com
 
   const onSubmits = (event) => {
@@ -227,7 +271,7 @@ const Order = () => {
 
     if (
       email &&
-      //   company &&
+      company &&
       //   model &&
       message &&
       mode &&
@@ -252,10 +296,10 @@ const Order = () => {
           mode,
           orderOtp,
           status,
-          //   date,
+          date,
           number,
           totalPrice,
-          //   screen,
+          expiredate,
           country,
           state,
           city,
@@ -283,7 +327,7 @@ const Order = () => {
           });
 
           toast.dark(`Order OTP has been sent to ${res.data._id}`);
-          setPayid(res.data._id);
+          // setPayid(res.data._id);
           if (mode === "online") {
             payment(res.data._id);
           }
@@ -316,12 +360,157 @@ const Order = () => {
 
   return (
     <div>
-      <Menu />
+      <Menu paylater={paylater} />
       <section>
         <div className="container ">
           <ToastContainer />
           <div className="row   ">
             <form onSubmit={onSubmits} className="contact-form ">
+              <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                open={open}
+                onClose={handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                  timeout: 500,
+                }}
+              >
+                <Box sx={style}>
+                  <div className={style}>
+                    <BiArrowBack
+                      onClick={handleClose}
+                      color="black"
+                      size={25}
+                    />
+                    <div class="agreement">
+                      <div class="realback-logo">
+                        <img src={Logo} alt="7" />
+                      </div>
+
+                      <div class="personal-info">
+                        <p>Pay later Date: {date}</p>
+                        <p>Money Deposit date: {expiredate}</p>
+                        <br />
+                        <span>
+                          {name}{" "}
+                          <img
+                            style={{ width: 18, height: 18 }}
+                            src="https://res.cloudinary.com/realback/image/upload/v1627900773/b1_x8lghx.png"
+                            alt="b"
+                          />{" "}
+                          <br />
+                          <br />
+                          {Address} , {pincode} , {city} , {state} , {country}
+                        </span>
+                      </div>
+                      <br />
+                      <div class="subject-msg">
+                        <p>Dear Sir/Madam,</p>
+                        <h4>
+                          Sub: Sanction of Pay later method of Rs. {Price}
+                        </h4>
+                        <p class="details">
+                          with refrence to your application dated on {date} for
+                          availing the pay later amount of
+                          {Price}
+                          we are pleased to sanction same subject to the term
+                          and condition as metioned below and in the pay later
+                          agreement to be executed.
+                        </p>
+                      </div>
+                      <div class="loan-desc">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td data-column="First Name">Company Name</td>
+                              <td data-column="Last Name">{device}</td>
+                            </tr>
+                            <tr>
+                              <td data-column="First Name">Device service</td>
+                              <td data-column="Last Name">
+                                {cartItems.map((item) => {
+                                  return item.name;
+                                })}
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td data-column="First Name">Total amount</td>
+                              <td data-column="Last Name">{Price}</td>
+                            </tr>
+                            <tr>
+                              <td data-column="First Name">Duration of loan</td>
+                              <td data-column="Last Name">15 Days</td>
+                            </tr>
+                            <tr>
+                              <td data-column="First Name">
+                                Last date of paymnet
+                              </td>
+                              <td data-column="Last Name">{expiredate}</td>
+                            </tr>
+                            <tr>
+                              <td data-column="First Name">
+                                intrest after payment date
+                              </td>
+                              <td data-column="Last Name">
+                                Rs. 16 per day on delayed/non-payment of pay
+                                later service
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="other-desc">
+                        <p>
+                          * payable in the manner as mentioned in the agreement
+                          to be executed
+                        </p>
+                        <p class="long_desc">
+                          You can only have the advantage of pay later service
+                          if you pay on time However if you fail to pay there
+                          will a due of Rs. 16 per day and you can't have the
+                          pay later service till you repay the amount.
+                        </p>
+                        <h1>
+                          We look forward to availing of the sanctioned loan and
+                          assure you our best service.
+                          <br />
+                          <br />
+                          Thanking You,
+                        </h1>
+                      </div>
+                      <div class="company-details">
+                        <h2>For Realback Financial services private limited</h2>
+                        <img
+                          src="https://res.cloudinary.com/realback/image/upload/v1627907057/9a4b5115e7fe50553de4db605d0889ef_c8oktg.png"
+                          alt="3"
+                          class="sign-img"
+                        />
+                        <p>Authorized Signatory</p>
+                      </div>
+                      <div class="contact">
+                        <h3>Contact Us</h3>
+                        <p>
+                          Mobile No. +9174203189 ,+919340421225, +917747882423
+                        </p>
+                        <p>Email: realback4c@gmail.com</p>
+                      </div>
+                      <button
+                        style={{ padding: 18, marginBottom: 60 }}
+                        class="app-btn blu flex vert col-md-4 "
+                        onClick={() => {
+                          setAgreemnet(true);
+                          handleClose();
+                        }}
+                      >
+                        <span class="big-txt">Agree</span>
+                      </button>
+                    </div>
+                  </div>
+                </Box>
+              </Modal>
               <div>
                 <h1>Give your details </h1>
                 <div className="form-field  col-xl-3">
@@ -445,27 +634,30 @@ const Order = () => {
                     <span class="big-txt"> Payment Now</span>
                   </button>
                   {prouser ? (
-                    <button
-                      style={{ padding: 20 }}
-                      class="app-btn blu flex vert  "
-                      onClick={() =>
-                        setFormData({
-                          ...formData,
-                          mode: "pay later",
-                        })
-                      }
-                    >
-                      <span class="big-txt">Pay later</span>
-                    </button>
-                  ) : (
-                    <Link
-                      style={{ padding: 20 }}
-                      class="app-btn blu flex vert  "
-                      onClick={() => toast.dark("you are not pro user")}
-                    >
-                      <span class="big-txt">Pay later</span>
-                    </Link>
-                  )}
+                    agreemnet ? (
+                      <button
+                        style={{ padding: 20 }}
+                        class="app-btn blu flex vert  "
+                        onClick={() =>
+                          setFormData({
+                            ...formData,
+                            mode: "paylater",
+                          })
+                        }
+                      >
+                        <span class="big-txt">Pay later</span>
+                      </button>
+                    ) : (
+                      <div
+                        to=""
+                        style={{ padding: 20 }}
+                        class="app-btn blu flex vert  "
+                        onClick={handleOpen}
+                      >
+                        <span class="big-txt">Agree term</span>
+                      </div>
+                    )
+                  ) : null}
                 </div>
               </div>
             </form>

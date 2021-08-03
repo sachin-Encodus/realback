@@ -4,14 +4,10 @@ import useQuery from "../../screens/Query";
 import Menu from "../../screens/Menu";
 import { Link } from "react-router-dom";
 import Footer from "../../screens/Footer";
-import Skeleton from "@material-ui/lab/Skeleton";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles({
-  root: {},
-});
+import Skeleton from "@material-ui/core/Skeleton";
+import Box from "@material-ui/core/Box";
+import TextField from "@material-ui/core/TextField";
 function Device() {
-  const classes = useStyles();
   const query = useQuery();
   const dogString = query.get("routeName");
   const dogObject = JSON.parse(dogString);

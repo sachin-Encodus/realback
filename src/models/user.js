@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 // personal detailes  schema
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { SECRET_KEY} = require('../../config/keys')
+const { SECRET_KEY } = require("../../config/keys");
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -39,7 +39,7 @@ const UserSchema = new mongoose.Schema({
         required: true,
       },
       status: {
-        type: Boolean,
+        type: String,
         required: true,
       },
 
@@ -136,24 +136,6 @@ UserSchema.methods.addPro = async function (
   Address,
   expiredate
 ) {
-  console.log(
-    "==================>>>>>>>>>>",
-    email,
-    name,
-    adhar,
-    pancard,
-
-    number,
-    status,
-
-    country,
-    state,
-    city,
-    pincode,
-    Address,
-    expiredate
-  );
-
   try {
     this.subscriber = this.subscriber.concat({
       email,
@@ -178,19 +160,15 @@ UserSchema.methods.addPro = async function (
   }
 };
 
-   // bcrypt passwordHash secure]
-UserSchema.pre("save", async function(next){
-
-        if(this.isModified("password")){
-        
-           this.password  = await bcrypt.hash( this.password, 10);  
-   }
-next();
-})
-
-
+// bcrypt passwordHash secure]
+UserSchema.pre("save", async function (next) {
+  if (this.isModified("password")) {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
+  next();
+});
 
 // now we create to a Collection
- const User = new mongoose.model("User",  UserSchema);
+const User = new mongoose.model("User", UserSchema);
 
 module.exports = User;

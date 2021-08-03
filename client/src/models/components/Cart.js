@@ -10,7 +10,7 @@ import { IoBagCheck } from "react-icons/io5";
 import logo from "../../images/realback.png";
 import io from "socket.io-client";
 import Skeleton from "@material-ui/lab/Skeleton";
-import { makeStyles } from "@material-ui/core/styles";
+
 export default function Cart(props) {
   const [userdata, setUserdata] = useState([]);
   const [email, setEmail] = useState("");

@@ -78,6 +78,9 @@ const DeviceSchema = new mongoose.Schema(
     date: {
       type: String,
     },
+    expiredate: {
+      type: String,
+    },
     paymentid: {
       type: String,
     },

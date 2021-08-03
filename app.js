@@ -58,6 +58,25 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+// var request = require("request");
+// var options = {
+//   method: "POST",
+//   url: "https://prod.aadhaarapi.com/pan-lite",
+//   headers: {
+//     "Content-Type": "application/json",
+//     qt_api_key: "{{qt_api_key_value}}",
+//     qt_agency_id: "{{qt_agency_id}}",
+//   },
+//   body: JSON.stringify({
+//     pan: "<<pan number>>",
+//     consent: "Y",
+//     consent_text: "<<consent text>>",
+//   }),
+// };
+// request(options, function (error, response) {
+//   if (error) throw new Error(error);
+//   console.log(response.body);
+// });
 // // Serve static assets if in production
 // if (process.env.NODE_ENV === 'production') {
 //   // Set static folder

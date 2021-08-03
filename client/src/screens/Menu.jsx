@@ -12,7 +12,10 @@ import { RiFeedbackLine } from "react-icons/ri";
 import { FiSmartphone } from "react-icons/fi";
 import { AiOutlineUser } from "react-icons/ai";
 import Badge from "../images/b1.png";
-const Menu = () => {
+const Menu = (props) => {
+  const { handleOpen, ProfileAprooved , paylater} =
+    props === undefined ? "realback" : props;
+
   const [login, setLogin] = useState("");
   const [notification, setNotification] = useState(false);
   const [logout, setLogout] = useState("logout");
@@ -36,7 +39,7 @@ const Menu = () => {
       console.log(loggedIn.name);
       setLogin(loggedIn.name);
       cartdata(loggedIn.email);
-      cheackbadge(loggedIn.email);
+      cheackbadge(loggedIn._id);
     } else {
       setLogin("");
     }
@@ -53,16 +56,20 @@ const Menu = () => {
         console.log(err);
       });
   };
-  const cheackbadge = (email) => {
+  const cheackbadge = (_id) => {
     axios
-      .get(`/api/user/${email}`)
+      .get(`/api/user/${_id}`)
       .then(({ data }) => {
         // setUserdata(data.user);
         // notify(data.user[0]);
-        console.log("====================================", data.user);
 
-        if (data.user.subscriber[0].status === true) {
+        if (data.user.subscriber[0].status === "approved") {
+          ProfileAprooved(data.user.subscriber[0]);
+        } else if (data.user.subscriber[0].status === "member") {
           setProuser(true);
+          paylater();
+        } else {
+          handleOpen();
         }
       })
       .catch((err) => {

@@ -11,6 +11,9 @@ const uniquId = require("uniqid");
 const Formidable = require("formidable");
 const request = require("request");
 let orderId;
+const handlebars = require("handlebars");
+const fs = require("fs");
+
 // const cookieParser = require('cookie-parser');
 const bcrypt = require("bcryptjs");
 const express = require("express");
@@ -546,9 +549,7 @@ exports.activate = async function (req, res) {
               return res.status(201).json({
                 message: "success",
               });
-
             });
-            
           });
         }
       );
@@ -1294,7 +1295,6 @@ exports.adminMiddleware = (req, res, next) => {
 
 // };
 
-
 exports.updatestatus = async function (req, res) {
   console.log(req.body.userId, req.body.value);
   try {
@@ -1330,10 +1330,63 @@ exports.updatestatus = async function (req, res) {
   }
 };
 
-exports.userData = async function (req, res) {
-
+exports.approveStatus = async function (req, res) {
+  console.log(req.body.userId, req.body.value);
   try {
-    await User.findOne({email:req.params.id}, (err, user) => {
+    User.findOneAndUpdate(
+      {
+        _id: req.body.userId,
+        "subscriber._id": req.body.subID,
+      },
+
+      { $set: { "subscriber.$.status": req.body.value } },
+      { new: true },
+      function (err, result) {
+        //Error handling
+        if (err) {
+          return res.status(500).send("Something broke!");
+        }
+
+        //Send response based on the required
+        else {
+          // const EventEmitter = req.app.get("eventemitter");
+          // EventEmitter.emit("orderUpdated", {
+          //   _id: req.body.userId,
+          //   status: req.body.value,
+          //   email: req.body.email,
+          // });
+          res.status(201).send({ result });
+        }
+      }
+    );
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+};
+
+exports.userData = async function (req, res) {
+  try {
+    await User.findOne({ _id: req.params.id }, (err, user) => {
+      if (user) {
+        console.log("==================>>>>>>>>>>>", user);
+        return res.status(201).send({
+          user,
+        });
+      } else {
+        console.log(err);
+      }
+      // console.log(user);
+    });
+  } catch (error) {
+    console.log("logout error");
+    res.status(500).json({ message: "you have already logged out sir !" });
+  }
+};
+// !all userdata
+exports.alluser = async function (req, res) {
+  try {
+    await User.find({}, (err, user) => {
       if (user) {
         console.log(user);
         return res.status(201).send({
@@ -1349,7 +1402,6 @@ exports.userData = async function (req, res) {
     res.status(500).json({ message: "you have already logged out sir !" });
   }
 };
-
 exports.orderData = async function (req, res) {
   try {
     await Device.find({}, (err, user) => {
@@ -1389,38 +1441,12 @@ exports.cart = async function (req, res) {
 };
 //! prouser
 exports.subscriber = async function (req, res) {
-const {
-  email,
-  name,
-  adhar,
-  pancard,
- 
-  number,
-  status,
-
-  country,
-  state,
-  city,
-  pincode,
-  Address,
-  expiredate,
-} = req.body;
-
-
-  try {
-    
-
-
-  const prouser =  await User.findOne({ email});
-
-
-if(prouser){
-  const subscribe = await prouser.addPro(
+  const {
     email,
     name,
     adhar,
     pancard,
-   
+
     number,
     status,
 
@@ -1429,14 +1455,34 @@ if(prouser){
     city,
     pincode,
     Address,
-    expiredate
-  );
+    expiredate,
+  } = req.body;
 
-  await prouser.save();
+  try {
+    const prouser = await User.findOne({ email });
 
-  res.status(201).json({message : "ProUser enabled"})
-}
+    if (prouser) {
+      const subscribe = await prouser.addPro(
+        email,
+        name,
+        adhar,
+        pancard,
 
+        number,
+        status,
+
+        country,
+        state,
+        city,
+        pincode,
+        Address,
+        expiredate
+      );
+
+      await prouser.save();
+
+      res.status(201).json({ message: "ProUser enabled" });
+    }
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "you have already logged out sir !" });
@@ -1552,366 +1598,56 @@ exports.device = async function (req, res) {
         company,
         model,
         mode,
+        city,
+        pincode,
+        Address,
+        state,
+        country,
+        date,
+        expiredate,
       } = deviceData;
-
+      console.log("========>>>>>>>>", mode);
       const data = products.map((item) => {
         return item.name;
       });
+      const emailWithPaylater = fs.readFileSync(
+        path.join(__dirname, "../template/paylater.hbs"),
+        "utf8"
+      );
+      const emailWithoutPaylater = fs.readFileSync(
+        path.join(__dirname, "../template/order.hbs"),
+        "utf8"
+      );
+      const template = handlebars.compile(
+        mode === "paylater" ? emailWithPaylater : emailWithoutPaylater
+      );
 
-      //     if(deviceData){
-      //  return res.status(201).json({ _id });
-      //     }
+      const htmlToSend = template({
+        name,
+        Address,
+        totalPrice,
+        company,
+        city,
+        pincode,
+        orderOtp,
+        state,
+        country,
+        date,
+        expiredate,
+        data,
+        mode,
+      });
 
       console.log("=======>>>>>>>>", deviceData, orderOtp, email, name);
       console.log("===>>..", email);
+      const arrayUsersMail = ["realback4c@gmail.com", email];
 
+      const stringUsersMail = arrayUsersMail.join(", ");
       const mailOptions = {
         from: EMAIL,
-        to: EMAIL,
-        subject: "Team Realback",
-        html: `<head>
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style type="text/css">
-    body {
-      margin: 0;
-      background: #FEFEFE;
-      color: #585858;
-    }
-
-    table {
-      font-size: 15px;
-      line-height: 23px;
-      max-width: 500px;
-      min-width: 460px;
-      text-align: center;
-    }
-    .table_inner { min-width: 100% !important; }
-    td {
-      font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-      vertical-align: top;
-    }
-    
-    .carpool_logo { margin: 30px auto; }
-
-    .dummy_row { padding-top: 20px !important; }
-    .section,
-    .sectionlike { background: #C9F9E9; }
-    .section { padding: 0 20px;  }
-    .sectionlike { padding-bottom: 10px; }
-    .section_content {
-      width: 100%;
-      background: #fff;
-    }
-    .section_content_padded { padding: 0 35px 40px; }
-    .section_zag { background: #F4FBF9; }
-    .imageless_section { padding-bottom: 20px; }
-
-    img {
-      display: block;
-      margin: 0 auto;
-    }
-    .img_section {
-      width: 100%;
-      max-width: 500px;
-    }
-    .img_section_side_table { width: 100% !important; }
-
-    h1 {
-      font-size: 20px;
-      font-weight: 500;
-      margin-top: 40px;
-      margin-bottom: 0;
-    }
-    .near_title { margin-top: 10px; }
-    .last { margin-bottom: 0; }
-
-    a {
-      color: #63D3CD;
-      font-weight: 500;
-      word-break: break-word; /* Footer has long unsubscribe link */
-    }
-
-    .button {
-      display: block;
-      width: 100%;
-      max-width: 300px;
-      background: #04f5a5;
-      border-radius: 8px;
-      color: #fff;
-      font-size: 18px;
-      font-weight: normal; /* Resetting from a */
-      padding: 12px 0;
-      margin: 30px auto 0;
-      text-decoration: none;
-    }
-
-    small {
-      display: block;
-      width: 100%;
-      max-width: 330px;
-      margin: 14px auto 0;
-      font-size: 14px;
-    }
-    .signature { padding: 20px; }
-
-    .footer,
-    .footer_like { background: #1FD99A; }
-    .footer { padding: 0 20px 30px; }
-    .footer_content {
-      width: 100%;
-      text-align: center;
-      font-size: 12px;
-      line-height: initial;
-      color: #005750;
-    }
-    .footer_content a {
-      color: #005750;
-    }
-    .footer_item_image { margin: 0 auto 10px; }
-    .footer_item_caption { margin: 0 auto; }
-
-    .footer_legal {
-      padding: 20px 0 40px;
-      margin: 0;
-      font-size: 12px;
-      color: #A5A5A5;
-      line-height: 1.5;
-    }
-
-    .text_left { text-align: left; }
-    .text_right { text-align: right; }
-    .va { vertical-align: middle;  }
-    
-    .stats {
-      min-width: auto !important;
-      max-width: 370px;
-      margin: 30px auto 0;
-    }
-    .counter { font-size: 22px; }
-    .stats_counter { width: 23%; }
-    .stats_image {
-      width: 18%;
-      padding: 0 10px;
-    }
-    .stats_meta { width: 59%; }
-    .stats_spaced { padding-top: 16px; }
-    .walkthrough_spaced { padding-top: 24px; }
-
-    .walkthrough { max-width: none;  }
-    .walkthrough_meta { padding-left: 20px; }
-
-    .table_checkmark { padding-top: 30px;  }
-    .table_checkmark_item { font-size: 15px; }
-    .td_checkmark {
-      width: 24px;
-      padding: 7px 12px 0 0;
-    }
-
-    .padded_bottom { padding-bottom: 40px; }
-    .marginless { margin: 0; }
-
-    /* Restricting responsive for iOS Mail app only as Inbox/Gmail have render bugs */
-    @media only screen and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
-      table { min-width: auto !important; }
-
-      .section_content_padded {
-        padding-right: 25px !important;
-        padding-left: 25px !important;
-      }
-
-      .counter { font-size: 18px !important; }
-    }
-  </style>
-</head>
-<body style=" margin: 0;
-  background: #eef7fa;
-  color: #383838;
-">
-  <!-- Preivew text -->
-  <span class="preheader" style="display: none !important; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;border-collapse: collapse;border: 0px;"></span> 
-  <!-- Carpool logo -->
-  <table align="center" border="0" cellspacing="0" cellpadding="0" style="  font-size: 15px;
-  line-height: 23px;
-  max-width: 500px;
-  min-width: 460px;
-  text-align: center;
-">
-    <tbody>
-        <br><br>
-    <!-- Header -->
-    <tr>
-      <td class="sectionlike imageless_section" style=" font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  vertical-align: top;
-    border: none !important;
-  background: #ffffff;
-  padding-bottom: 10px;
-padding-bottom: 20px;"></td>
-    </tr>
-    <!-- Content -->
-    <tr>
-      <td class="section" style=" font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  vertical-align: top;
-    border: none !important;
-  background: #ffffff;
-  padding: 0 20px;
-">
-        <table border="0" cellspacing="0" cellpadding="0" class="section_content" style=" font-size: 15px;
-  line-height: 23px;
-  max-width: 500px;
-  min-width: 460px;
-  text-align: center;
-  width: 100%;
-  background: #fff;
-">
-          <tbody><tr>
-            <td class="section_content_padded" style="  font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  vertical-align: top;
-    border: none !important;
-padding: 0 35px 40px;">
-              <h1 style=" font-size: 25px;
-  font-weight: 500;
-  color: #171717;
-  margin-top: 20px;
-  margin-bottom: 0;
-">Realback Services</h1>
-<br>
-<h1   style="color: #171717;  font-size: 30px;" >New order from ${name}</h1><br>
-              <h1 class=" margin-top: 10px; font-size: 20px;  color: #171717; " style="margin-top: 10px;margin-bottom: 0;"> ${email} order successfully submitted </h1>
-                <h1 class=" margin-top: 10px; font-size: 20px;  color: #171717; " style="margin-top: 10px;margin-bottom: 0;"> _id : ${_id} </h1>
-               <h1 class=" margin-top: 10px; font-size: 20px;  color: #171717; " style="margin-top: 10px;margin-bottom: 0;"> name : ${name} </h1>
-
-                <h1 class=" margin-top: 10px; font-size: 20px;  color: #171717; " style="margin-top: 10px;margin-bottom: 0;"> number : ${number} </h1>
-                <h1 class=" margin-top: 10px; font-size: 20px;  color: #171717; " style="margin-top: 10px;margin-bottom: 0;"> Device : ${company} ${model} </h1>
-                 <h1 class=" margin-top: 10px; font-size: 20px;  color: #171717; " style="margin-top: 10px;margin-bottom: 0;">Price : ${totalPrice} </h1>
-
-                 <h1 class=" margin-top: 10px; font-size: 20px;  color: #171717; " style="margin-top: 10px;margin-bottom: 0;">Service : ${data} </h1>
-
-                 <h1 class=" margin-top: 10px; font-size: 20px;  color: #171717; " style="margin-top: 10px;margin-bottom: 0;"> Otp : ${orderOtp} </h1>
- 
-               
-           
-              
-            </td>
-          </tr>
-        </tbody></table>
-      </td>
-    </tr>
-    <!-- Signature -->
- 
-    <!-- Footer -->
-   
-    <tr>
-      <td style=" font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  vertical-align: top;
-    border: none !important;
-">
-        <table border="0" cellspacing="0" cellpadding="0" class="section_content" style=" font-size: 15px;
-  line-height: 23px;
-  max-width: 500px;
-  min-width: 460px;
-  text-align: center;
-  width: 100%;
-  background: #fff;
-">
-          <tbody><tr>
-            <td class="footer_like" style=" font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  vertical-align: top;
-    border: none !important;
-background: #ffffff; "><img src="https://cdn.dribbble.com/users/1247188/screenshots/8699871/media/4676a06d00a58fe9678d80fe1f8bd776.jpg" alt="" width="500" class="img_section" style=" display: block;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 500px;
-"></td>
-          </tr>
-          <tr>
-            <td class="footer" style="  font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  vertical-align: top;
-    border: none !important;
-  padding: 0 20px 30px;
-  background: #ffffff;
-">
-              <table border="0" cellspacing="0" cellpadding="0" class="footer_content" style="  font-size: 15px;
-  line-height: 23px;
-  max-width: 500px;
-  min-width: 460px;
-  text-align: center;
-  width: 100%;
-  font-size: 12px;
-  line-height: initial;
-  color: #005750;
-">
-                <tbody><tr>
-                  <td width="33%" style=" font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  vertical-align: top;
-    border: none !important;
-">
-                    <img src="https://carpool-email-assets.s3.amazonaws.com/shared/footer-learn@2x.png" width="24" class="footer_item_image" style="  display: block;
-  margin: 0 auto;
-margin: 0 auto 10px;">
-                    <p class="footer_item_caption" style="margin: 0 auto;">More about <br><a href="https://www.instagram.com/realbackindia?r=nametag" style="  color: #0786fd;
-" target="_blank">Realback</a></p>
-                  </td>
-                  <td width="33%" style=" font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  vertical-align: top;
-    border: none !important;
-">
-                    <img src="https://carpool-email-assets.s3.amazonaws.com/shared/footer-support@2x.png" width="24" class="footer_item_image" style="  display: block;
-  margin: 0 auto;
-margin: 0 auto 10px;">
-                    <p class="footer_item_caption" style="margin: 0 auto;">Questions? <br><a href="https://support.google.com/waze/carpool" style=" color: #0786fd;
-" target="_blank">We're here</a>
-                  </p></td>
-                  <td width="33%" style=" font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  vertical-align: top;
-    border: none !important;
-">
-                    <img src="https://carpool-email-assets.s3.amazonaws.com/shared/footer-fb@2x.png" width="24" class="footer_item_image" style=" display: block;
-  margin: 0 auto;
-margin: 0 auto 10px;">
-                    <p class="footer_item_caption" style="margin: 0 auto;">Join the community <br><a href="https://www.facebook.com/groups/wazecarpoolers" style="  color: #0786fd;
-" target="_blank">on Facebook</a></p>
-                  </td>
-                </tr>
-              </tbody></table>
-            </td>
-          </tr>
-        </tbody></table>
-      </td>
-    </tr>
-    <!-- Legal footer -->
-    <tr>
-      <td style=" font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  vertical-align: top;
-    border: none !important;
-">
-        <p class="footer_legal" style=" padding: 20px 0 40px;
-  margin: 0;
-  font-size: 15px;
-  color: #171717;
-  line-height: 1.5;
-">
-        If you did not enter this email address when signing up for Realback service, disregard this message.<br>
-        © 2021 Google Inc. 1600 Amphitheatre Parkway, Mountain View, CA 94043
-<br><br>
-
-This is a mandatory service email from Realback.
-</p>
-      </td>
-    </tr>
-  </tbody></table>
-
-</body>
-
-
-
-
-<!-- 
-https://i.pinimg.com/originals/a4/51/39/a451393c169a91586312551109361064.gif
-
-
-https://i.pinimg.com/originals/a3/84/3e/a3843e404a271edb47b1908dd2a6230b.gif -->
-            `,
+        to: stringUsersMail,
+        subject: "Team Realbek",
+        html: htmlToSend,
       };
 
       transporter.sendMail(mailOptions, function (err, info) {

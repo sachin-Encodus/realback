@@ -19,7 +19,7 @@ import Private from "./screens/Private.jsx";
 import Cart from "./models/components/Cart";
 // import Payments from './models/components/Payments'
 import PaymentStatus from "./comps/PaymentStatus";
-import HomePage from "./Dash1/Homepage";
+// import HomePage from "./Dash1/Homepage";
 import "../src/index.css";
 import Terms from "./screens/Terms";
 import Payment from "./screens/Payment";
@@ -28,18 +28,20 @@ import Problem from "./models/components/Problem";
 import Feedback from "./screens/Feedback";
 import Order from "./models/components/Order";
 import OrderUpdate from "./screens/OrderUpdate";
-import Facebook from "./screens/Skelaton.jsx";
+// import Facebook from "./screens/Skelaton.jsx";
+// import BottomTab from './screens/BottomTab'
 import Pro from "./models/components/Pro";
 function App() {
   return (
     <>
+    
       <BrowserRouter>
         <Switch>
           <Route path="/" exact render={(props) => <Home {...props} />} />
-          <Route
+          {/* <Route
             path="/dashboard/"
             render={(props) => <HomePage {...props} />}
-          />
+          /> */}
           <Route path="/feedback" render={(props) => <Feedback {...props} />} />
           <Route path="/device" render={(props) => <Device {...props} />} />
           <Route path="/problem" render={(props) => <Problem {...props} />} />
@@ -69,11 +71,11 @@ function App() {
           <Route path="/cart" exact render={(props) => <Cart {...props} />} />
           <Route path="/pro" exact render={(props) => <Pro {...props} />} />
 
-          <Route
+          {/* <Route
             path="/skeloton"
             exact
             render={(props) => <Facebook {...props} />}
-          />
+          /> */}
           <Route
             path="/orderupdate"
             exact
@@ -125,6 +127,7 @@ function App() {
     appId="976657536472023"
     
   /> */}
+  
     </>
   );
 }
