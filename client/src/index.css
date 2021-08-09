@@ -10795,7 +10795,7 @@ box-shadow: 0 8px 32px 0 rgb(0 24 74 / 37%);
   font-family: "Ek Mukta", sans-serif;
   font-weight: 50;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 20px;
   line-height: 2.25;
   font-weight: 200;
   width: 100%;
@@ -11685,7 +11685,7 @@ top: 0;
 .login{
 
 position: relative;
-top: 250px;
+top: 100px;
 
 
 
@@ -11697,7 +11697,7 @@ top: 250px;
 .login{
 
 position: relative;
-top: 200px;
+top: 100px;
 
 
 
@@ -12046,7 +12046,7 @@ border-radius: 10px;
 padding: 20px;
 position: relative;
 top: 20px;
-margin-bottom: 100px;
+
 }
 
 
@@ -12590,8 +12590,24 @@ label::before {
 .imgBox{
 display: block;
 }
+
+.probox{
+margin-top: 0px;
+}
+
 @media (max-width: 768px) {
  .imgBox{
 display: none;
 }
+}
+@media (max-width: 768px) {
+.probox{
+margin-top: 70px;
+}}
+
+.upload{
+  width: 100%;
+  height: auto;
+   background-position: center center;
+  background-size: cover;
 }

@@ -1,19 +1,20 @@
-import React ,{useEffect , useState}from 'react';
-import { Link ,Redirect } from 'react-router-dom';
-import Footer from './Footer';
-import Menu from './Menu'
-import { isAuth } from '../helpers/auth';
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
+import React, { useEffect, useState, useContext } from "react";
+import { Link, Redirect } from "react-router-dom";
+import Footer from "./Footer";
+import Menu from "./Menu";
+import { isAuth } from "../helpers/auth";
+import AOS from "aos";
+import "aos/dist/aos.css"; // You can also use <link> for styles
+// import { AuthUser } from "../App";
 
 import data from "./Servicedata";
 
 const Service = () => {
+  // const UserAuth = useContext(AuthUser);
+  // console.log("=============>>>>>>>>", UserAuth);
   const { mobile } = data;
 
   useEffect(() => {
-    console.log("====================================", mobile);
-
     AOS.init({
       duration: 1000, // values from 0 to 3000, with step 50ms
     });
@@ -22,7 +23,6 @@ const Service = () => {
   return (
     <div>
       <Menu />
-      {!isAuth() ? <Redirect to="/login" /> : null}
 
       <div class="container ">
         {/* <h1 class=" mt-5 ">Get your </h1>
@@ -90,9 +90,5 @@ const Service = () => {
     </div>
   );
 };
-    
+
 export default Service;
-
-   
-
-   

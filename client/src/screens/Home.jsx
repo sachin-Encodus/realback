@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -16,9 +16,11 @@ import { FiAlertCircle } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import Logo from "../images/realback.png";
 import Card from "../images/card.webp";
-
+// import { AuthUser } from "../App";
 // import Pod from '../images/.png'
 const Home = () => {
+  // const UserAuth = useContext(AuthUser);
+  // console.log("userAuth", UserAuth);
   const [closed, setClosed] = useState(false);
   const [prouser, setProuser] = useState(false);
   const [date, setDate] = useState("");
@@ -93,7 +95,7 @@ const Home = () => {
             <div className="row  ">
               {closed === false ? (
                 <div
-                  className="col-md-12"
+                  className="notification  col-md-12 "
                   style={{
                     backgroundColor: "rgb(16 16 16 / 81%)",
                     fontFamily: "sans-serif",
@@ -163,6 +165,7 @@ const Home = () => {
                     >
                       <span class="big-txt">Service</span>
                     </Link>
+
                     {/* <Link
                     to={{
                       pathname: "/service",

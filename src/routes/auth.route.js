@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const auth = require("../middleware/auth");
 // Load Controllers
 const {
   register,
@@ -37,19 +37,53 @@ const {
   approveStatus,
 } = require("../../controllers/auth.controller");
 
+router.get("/getme", auth, (req, res) => {
+  res.status(200).json(req.rootUser);
+});
+
+router.get("/logoutall", auth, async (req, res) => {
+  try {
+    req.rootUser.tokens = [];
+
+    res.clearCookie("jwtoken");
+
+    await req.rootUser.save();
+    return res.status(200).json(req.rootUser);
+  } catch (error) {
+    res.status(500).send("you have already logged out sir !");
+  }
+});
+router.get("/logout", auth, async (req, res) => {
+  try {
+    req.rootUser.tokens = req.rootUser.tokens.filter((currElement) => {
+      return currElement.token !== req.token;
+    });
+
+    res.clearCookie("jwtoken");
+
+    // console.log( req.user.tokens);
+
+    await req.rootUser.save();
+    console.log("============================ aya hai yha tak");
+  } catch (error) {
+    res.status(500).send("you have already logged out sir !");
+  }
+
+  res.status(200).json(req.rootUser);
+});
 router.post("/register", register);
 router.post("/signin", signin);
 router.post("/device", device);
-router.get("/cart/:id", cart);
+router.get("/cart", auth, cart);
 router.get("/cartid/:id", cartid);
 router.get("/cartotp/:id", cartotp);
 
 router.post("/status", updatestatus);
 router.post("/approved", approveStatus);
-router.post("/subscriber", subscriber);
-router.get("/order", orderData);
+router.post("/subscriber", auth, subscriber);
+router.get("/order", auth, orderData);
 router.get("/user/:id", userData);
-router.get("/userdata", alluser);
+router.get("/userdata", auth, alluser);
 router.post("/otp", otp);
 router.post("/Verifyotp", Verifyotp);
 
@@ -65,9 +99,9 @@ router.post("/personal", personal);
 router.post("/googlesignUp", googlesignUp);
 router.post("/upi", upi);
 router.post("/googlelogin", googlelogin);
-router.post("/product" , product)
+router.post("/product", product);
 
-router.get("/getCompany/:Dtype", getCompany);
+router.get("/getCompany/:Dtype", auth, getCompany);
 router.get("/getmodel/:itemValue", getmodel);
 router.get("/getmodedata/:itemValue", getmodedata);
 // forgot reset password

@@ -47,12 +47,12 @@ export const removeLocalStorage = key => {
 };
 
 // Authenticate user by passing data to cookie and localstorage during signin
-export const authenticate = (response, next) => {
-    // console.log('AUTHENTICATE HELPER ON SIGNIN RESPONSE', response);
-    setCookie('jwt', response.data.token);
-    setLocalStorage('user', response.data.useremail);
-    next();
-};
+// export const authenticate = (response, next) => {
+//     // console.log('AUTHENTICATE HELPER ON SIGNIN RESPONSE', response);
+//     setCookie('jwt', response.data.token);
+//     setLocalStorage('user', response.data.useremail);
+//     next();
+// };
 
 export const saveCartData = (response, next) => {
     // console.log('AUTHENTICATE HELPER ON SIGNIN RESPONSE', response);

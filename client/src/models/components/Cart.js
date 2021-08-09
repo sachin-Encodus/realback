@@ -4,7 +4,7 @@ import Menu from '../../screens/Menu';
 import axios from 'axios';
 import { ToastContainer, toast } from "react-toastify";
 
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { MdLocationOn } from "react-icons/md";
 import { IoBagCheck } from "react-icons/io5";
 import logo from "../../images/realback.png";
@@ -13,37 +13,43 @@ import Skeleton from "@material-ui/lab/Skeleton";
 
 export default function Cart(props) {
   const [userdata, setUserdata] = useState([]);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("sachin1245e@gmail.com");
   const [payments, setPayments] = useState(false);
   const [orderId, setOrderId] = useState("");
   const [signature, setSignature] = useState("");
   const [paymentID, setPaymentID] = useState("");
   const [loading, setLoading] = useState(true);
+  const history = useHistory();
   console.log(userdata);
   useEffect(() => {
-    // setLoading(true);
-    let loggedIn = JSON.parse(localStorage.getItem("user"));
-    if (loggedIn !== null) {
-      setEmail(loggedIn.email);
-      cartdata(loggedIn.email);
-    } else {
-      setEmail({ email: "noreply@gmai.com" });
-    }
-  }, [email]);
+    // // setLoading(true);
+    // let loggedIn = JSON.parse(localStorage.getItem("user"));
+    // if (loggedIn !== null) {
+    //   setEmail(loggedIn.email);
 
-  const cartdata = (email) => {
-    try {
-      const socket = io("/api/socket");
+    // } else {
+    //   setEmail({ email: "noreply@gmai.com" });
 
-      axios.get(`/api/cart/${email}`).then(({ data }) => {
+    // }
+    cartdata();
+  }, [userdata]);
+
+  const cartdata = () => {
+    const socket = io("/api/socket");
+
+    axios
+      .get("/api/cart")
+      .then(({ data }) => {
         setUserdata(data.user);
 
         setLoading(false);
         socket.emit("join", `order_${email}`);
+      })
+      .catch((err) => {
+        history.push("/login");
+        console.log("====================================", err.response.data);
+        setLoading(false);
       });
-    } catch (error) {
-      console.log(error);
-    }
   };
   // console.log(">>>>>>>>>>", userdata);
   const socket = io("/api/socket");
@@ -78,7 +84,6 @@ export default function Cart(props) {
         g,
         ...userdata.slice(index + 1),
       ]);
-    console.log("====>>>>>yyyyyyy", userdata);
   };
 
   // let myArray = [
@@ -105,10 +110,8 @@ export default function Cart(props) {
   // }
 
   var val = Math.floor(1000 + Math.random() * 9000);
-  console.log(val);
 
   var seq = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
-  console.log(seq);
 
   const payment = async (_id) => {
     var Data = userdata.filter((hero) => {
@@ -117,7 +120,7 @@ export default function Cart(props) {
 
     const payData = Data[0];
     const { totalPrice, email, name, number } = payData;
-    console.log(totalPrice, email, name, _id, number);
+
     // const Mydata = Data.map(item => {
     //   return console.log(item.totalPrice);
     // })
@@ -174,8 +177,6 @@ export default function Cart(props) {
       alert(response.error.metadata.payment_id);
     });
   };
-
-  console.log(email);
 
   // const products = data.map( (order) => {
   //           return(`${order.productName}: ${order.name}.${order.price}.${order.qty} `
@@ -404,7 +405,7 @@ export default function Cart(props) {
       <Menu />
       <br />
       <div className="container mt-5">
-        {!isAuth() ? <Redirect to="/login" /> : null}
+        {/* {!isAuth() ? <Redirect to="/login" /> : null} */}
         <ToastContainer />
         {loading ? (
           <div>

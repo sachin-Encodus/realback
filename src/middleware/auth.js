@@ -1,34 +1,35 @@
 const jwt = require("jsonwebtoken");
 
 const User = require("../models/user"); 
+const { SECRET_KEY } = require("../../config/keys");
 
+const auth = async (req, res, next) => {
+  try {
+    // verifyUser for authentication any pages
+    const token = req.cookies.jwtoken;
 
-const auth = async(req, res , next ) => {
-    try {
-       // verifyUser for authentication any pages
-         const token = req.Cookie.jwt;
-    const verifyUser =  jwt.verify(token, process.env.SECRET_KEY);
-    console.log(verifyUser);
-     
-
+    const verifyUser = jwt.verify(token, SECRET_KEY);
 
     // verifyUser for get data any pages
-     const user = await  User.findOne({_id:verifyUser._id});
-     console.log(user.firstname);
-     
-       req.token = token;
-       req.user = user;
-
-
-    next();
-
-    } catch (error) {
-      
-       res.status(400).render('signup') ;
+    const rootUser = await User.findOne({
+      _id: verifyUser._id,
+      "tokens.token": token,
+    });
+    if (!rootUser) {
+      throw new Error("User not found");
     }
 
+    req.token = token;
+    req.rootUser = rootUser;
+    req.UserID = rootUser._id;
+    req.Email = rootUser.email;
 
-}
+    next();
+  } catch (error) {
+    res.status(400).send("Unauthorized: no token provided");
+    console.log("Unauthorized: no token provided");
+  }
+};
 
 
 module.exports = auth;

@@ -18,12 +18,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
   <BrowserRouter>
-
-   {/* <Route path='/' exact render={props => <App {...props} />} /> */}
-   {/* <Route path='/dash' exact render={props => <HomePage {...props} />} /> */}
-   <App/>
-   {/* <HomePage/> */}
-   
+    <App />
   </BrowserRouter>,
-  document.getElementById('root')
+  document.getElementById("root")
 );

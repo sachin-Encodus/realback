@@ -34,10 +34,6 @@ const UserSchema = new mongoose.Schema({
         required: true,
       },
 
-      name: {
-        type: String,
-        required: true,
-      },
       status: {
         type: String,
         required: true,
@@ -47,37 +43,16 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         required: true,
       },
-
-      country: {
+      adhaarImg: {
         type: String,
         required: true,
       },
 
-      adhar: {
-        type: Number,
-        required: true,
-      },
-
-      pancard: {
+      adhaarBackImg: {
         type: String,
         required: true,
       },
-
-      state: {
-        type: String,
-        required: true,
-      },
-      city: {
-        type: String,
-        required: true,
-      },
-
-      pincode: {
-        type: String,
-        required: true,
-      },
-
-      Address: {
+      panImg: {
         type: String,
         required: true,
       },
@@ -122,35 +97,25 @@ UserSchema.methods.generateAuthToken = async function () {
 
 UserSchema.methods.addPro = async function (
   email,
-  name,
-  adhar,
-  pancard,
 
+  adhaarImg,
+  adhaarBackImg,
+  panImg,
   number,
   status,
 
-  country,
-  state,
-  city,
-  pincode,
-  Address,
   expiredate
 ) {
   try {
     this.subscriber = this.subscriber.concat({
       email,
-      name,
-      adhar,
-      pancard,
 
+      adhaarImg,
+      adhaarBackImg,
+      panImg,
       number,
       status,
 
-      country,
-      state,
-      city,
-      pincode,
-      Address,
       expiredate,
     });
     await this.save();

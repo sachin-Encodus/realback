@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from "react";
 import { LoadingButton } from "@material-ui/lab";
 import authSvg2 from "../images/login.webp";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import Box from "@material-ui/core/Box";
 // import TextField from "@material-ui/core/TextField";
-import { authenticate, isAuth } from "../helpers/auth";
-import { NavLink, Redirect } from "react-router-dom";
+import { isAuth } from "../helpers/auth";
+import { NavLink, Redirect, useHistory } from "react-router-dom";
 import "../index.css";
+import { AuthUser } from "../App";
 // import Button from "@material-ui/core/Button";
 import { Stack, Button, TextField, Typography } from "@material-ui/core";
-const Login = ({ history }) => {
+const Login = () => {
+  const { dispatch } = useContext(AuthUser);
+  const history = useHistory();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -24,32 +27,32 @@ const Login = ({ history }) => {
   // sachin1245e@gmail.com
 
   // Google login
-  const sendGoogleToken = (tokenId) => {
-    axios
-      .post("http://localhost:5000/api/googlelogin", {
-        idToken: tokenId,
-      })
-      .then((res) => {
-        console.log(res.data);
-        informParent(res);
-        console.log("send");
-        toast.success("success");
-      })
-      .catch((error) => {
-        toast.error("send");
-        console.log("GOOGLE SIGNIN ERROR", error.response);
-      });
-  };
-  const informParent = (response) => {
-    authenticate(response, () => {
-      console.log("Done");
-    });
-  };
+  // const sendGoogleToken = (tokenId) => {
+  //   axios
+  //     .post("http://localhost:5000/api/googlelogin", {
+  //       idToken: tokenId,
+  //     })
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       informParent(res);
+  //       console.log("send");
+  //       toast.success("success");
+  //     })
+  //     .catch((error) => {
+  //       toast.error("send");
+  //       console.log("GOOGLE SIGNIN ERROR", error.response);
+  //     });
+  // };
+  // const informParent = (response) => {
+  //   authenticate(response, () => {
+  //     console.log("Done");
+  //   });
+  // };
 
-  const responseGoogle = (response) => {
-    console.log(response);
-    sendGoogleToken(response.tokenId);
-  };
+  // const responseGoogle = (response) => {
+  //   console.log(response);
+  //   sendGoogleToken(response.tokenId);
+  // };
   // end
 
   const handleSubmit = (e) => {
@@ -63,20 +66,23 @@ const Login = ({ history }) => {
           password: password,
         })
         .then((res) => {
-          authenticate(res, () => {
-            setFormData({
-              ...formData,
-              email: "",
-              password: "",
-              textChange: "Submitted",
-            });
-            isAuth() && isAuth().role === "admin"
-              ? history.push("/admin")
-              : history.push("/");
-
-            // toast.success(`Hey ${res.data.token}, Welcome back!`);
-            toast.dark(res.data.myname);
+          // authenticate(res, () => {
+          setFormData({
+            ...formData,
+            email: "",
+            password: "",
+            textChange: "Submitted",
           });
+          dispatch({ type: "AuthUser", payload: res.data });
+          console.log("loginRespons", res);
+          history.push("/");
+          // isAuth() && isAuth().role === "admin"
+          //   ? history.push("/admin")
+          //   : history.push("/");
+
+          // toast.success(`Hey ${res.data.token}, Welcome back!`);
+          toast.dark(res.data.myname);
+          // });
         })
         .catch((err) => {
           setFormData({
@@ -143,7 +149,7 @@ const Login = ({ history }) => {
                   <TextField
                     fullWidth
                     id="outlined-basic"
-                    label="Email"
+                    label="Password"
                     variant="outlined"
                     type="password"
                     onChange={handleChange("password")}

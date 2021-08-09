@@ -11,8 +11,10 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import { FcApproval } from "react-icons/fc";
 import Box from "@material-ui/core/Box";
+import { TextField, Stack } from "@material-ui/core";
+import { LoadingButton } from "@material-ui/lab";
 
-
+import CircularProgress from "@material-ui/core/CircularProgress";
 const style = {
   position: "absolute",
   top: "50%",
@@ -34,7 +36,6 @@ const style = {
   // borderRadius: 10,
 };
 
-
 const Order = () => {
   const query = useQuery();
   const dogString = query.get("routeName");
@@ -43,7 +44,7 @@ const Order = () => {
   const cartItems = JSON.parse(dogString);
   const status = "orderd";
   // console.log("============>>>>>>>>>>", cartItems);
-  const [pro, setPro] = useState(true);
+  const [pro, setPro] = useState(false);
   const [payments, setPayments] = useState("");
   const [orderId, setOrderId] = useState("");
   const [signature, setSignature] = useState("");
@@ -57,6 +58,7 @@ const Order = () => {
   const [panImg, setPanImg] = useState(
     "https://blogmedia.evbstatic.com/wp-content/uploads/engineering/2018/08/09141147/Flexible-Reusable-React-File-Uploader.png"
   );
+  const [loading, setloading] = useState(false);
   const totalPrice = "99";
   const [adds, setAdds] = React.useState([]);
   // console.log("=====xxxxx",adds);
@@ -76,20 +78,26 @@ const Order = () => {
     setOpen(false);
   };
 
-  const adhaarUpload = async (e) => {
-    const data = new FormData();
+  const adhaarUpload = (e) => {
+    const files = e.target.files;
+    const imagedata = new FormData();
+    setloading(true);
+    imagedata.append("file", files[0]);
+    imagedata.append("upload_preset", "tiklma54");
 
-    data.append("file", adhaarImg);
-    data.append("upload_preset", "lntsiwkj");
-    data.append("clouad_name", "realback");
-    const response = await axios.post(
-      "https://api.cloudinary.com/v1_1/realback/image/upload",
-      {
-        data,
-      }
-    );
+    imagedata.append("upload_preset", "tiklma54");
+    fetch("  https://api.cloudinary.com/v1_1/realback/image/upload", {
+      method: "post",
+      body: imagedata,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data.url);
+        setAdhaarImg(data.url);
+        setloading(false);
+      })
+      .catch((err) => console.log(err));
 
-    console.log(response);
     // const reader = new FileReader();
     // reader.onload = () => {
     //   if (reader.readyState === 2) {
@@ -101,43 +109,55 @@ const Order = () => {
   };
 
   const adhaarBackUpload = (e) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setAdhaarBackImg(reader.result);
-      }
-    };
-    reader.readAsDataURL(e.target.files[0]);
+    const files = e.target.files;
+    const imagedata = new FormData();
+    setloading(true);
+    imagedata.append("file", files[0]);
+    imagedata.append("upload_preset", "tiklma54");
+
+    imagedata.append("upload_preset", "tiklma54");
+    fetch("  https://api.cloudinary.com/v1_1/realback/image/upload", {
+      method: "post",
+      body: imagedata,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data.url);
+        setAdhaarBackImg(data.url);
+        setloading(false);
+      })
+      .catch((err) => console.log(err));
   };
   const panUpload = (e) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setPanImg(reader.result);
-      }
-    };
-    reader.readAsDataURL(e.target.files[0]);
+    const files = e.target.files;
+    const imagedata = new FormData();
+    setloading(true);
+    imagedata.append("file", files[0]);
+    imagedata.append("upload_preset", "tiklma54");
+
+    imagedata.append("upload_preset", "tiklma54");
+    fetch("  https://api.cloudinary.com/v1_1/realback/image/upload", {
+      method: "post",
+      body: imagedata,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data.url);
+        setPanImg(data.url);
+        setloading(false);
+      })
+      .catch((err) => console.log(err));
   };
   const [formData, setFormData] = useState({
     email: "",
-    name: "",
-    adhar: "",
-    pancard: "",
 
     number: "",
-    country: "",
-    state: "",
-    city: "",
-    pincode: "",
-    Address: "",
+
     textChange: "Submit",
   });
 
   const {
     email,
-
-    adhar,
-    pancard,
 
     number,
 
@@ -223,21 +243,22 @@ const Order = () => {
       [text]: e.target.value,
     });
   };
-  console.log(adhar[0]);
+
   // sachin1245e@gmail.com
 
   const onSubmits = (event) => {
     event.preventDefault();
 
-    if (email && adhar && pancard && number && textChange) {
+    if (email && number && textChange) {
       setFormData({ ...formData, textChange: "Submitting" });
 
       axios
         .post(`/api/subscriber`, {
           email,
 
-          adhar,
-          pancard,
+          adhaarImg,
+          adhaarBackImg,
+          panImg,
 
           //   date,
           number,
@@ -251,9 +272,6 @@ const Order = () => {
             ...formData,
             //  email: '',
 
-            adhar: "",
-            pancard: "",
-
             number: "",
 
             textChange: "Submitted",
@@ -265,9 +283,6 @@ const Order = () => {
           setFormData({
             ...formData,
             //  email: '',
-
-            adhar: "",
-            pancard: "",
 
             number: "",
 
@@ -284,95 +299,113 @@ const Order = () => {
   return (
     <div>
       <Menu handleOpen={handleOpen} ProfileAprooved={ProfileAprooved} />
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={loading}
+        // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      <div>
+        <Modal
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          // className={modal}
+          open={open}
+          // onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Box sx={style}>
+            <div className={style}>
+              <h2 id="transition-modal-title">Request Submitted</h2>
+              <p id="transition-modal-description">
+                Your profile request has been Submitted Successfully Our team
+                will contact you within next 15 minutes. for your profile
+                approval process and after that you will receive a mail from
+                Realback.
+              </p>
+              <Link
+                style={{
+                  backgroundColor: "#c3ffc3",
+                  padding: 10,
+                  borderRadius: 10,
+                  fontWeight: "bold",
+                }}
+                to="/"
+              >
+                Go back
+              </Link>
+            </div>
+          </Box>
+        </Modal>
+        <Modal
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          // className={modal}
+          open={pro}
+          // onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Box sx={style}>
+            <div className={style}>
+              <h2 id="transition-modal-title">
+                Profile Aprooved <FcApproval />
+              </h2>
+              <p id="transition-modal-description">
+                Hey! Congrates🎉🎉🎉 your profile have been approved now you can
+                buy our plan to become a Realback member.
+                <button
+                  onClick={() => payment()}
+                  style={{ padding: 15, float: "right" }}
+                  class="app-btn blu flex vert  "
+                >
+                  <span class="big-txt">{textChange}</span>
+                </button>
+              </p>
+            </div>
+          </Box>
+        </Modal>
+      </div>
       <section>
-        <div className="container ">
+        <div className="container probox">
           <ToastContainer />
-          <div>
-            <Modal
-              aria-labelledby="transition-modal-title"
-              aria-describedby="transition-modal-description"
-              // className={modal}
-              open={open}
-              // onClose={handleClose}
-              closeAfterTransition
-              BackdropComponent={Backdrop}
-              BackdropProps={{
-                timeout: 500,
-              }}
-            >
-              <Box sx={style}>
-                <div className={style}>
-                  <h2 id="transition-modal-title">Request Submitted</h2>
-                  <p id="transition-modal-description">
-                    Your profile request has been Submitted Successfully Our
-                    team will contact you within next 15 minutes. for your
-                    profile approval process and after that you will receive a
-                    mail from Realback.
-                  </p>
-                  <Link
-                    style={{
-                      backgroundColor: "#c3ffc3",
-                      padding: 10,
-                      borderRadius: 10,
-                      fontWeight: "bold",
-                    }}
-                    to="/"
-                  >
-                    Go back
-                  </Link>
-                </div>
-              </Box>
-            </Modal>
-            <Modal
-              aria-labelledby="transition-modal-title"
-              aria-describedby="transition-modal-description"
-              // className={modal}
-              open={pro}
-              // onClose={handleClose}
-              closeAfterTransition
-              BackdropComponent={Backdrop}
-              BackdropProps={{
-                timeout: 500,
-              }}
-            >
-              <Box sx={style}>
-                <div className={style}>
-                  <h2 id="transition-modal-title">
-                    Profile Aprooved <FcApproval />
-                  </h2>
-                  <p id="transition-modal-description">
-                    Hey! Congrates🎉🎉🎉 your profile have been approved now you
-                    can buy our plan to become a Realback member.
-                    <button
-                      onClick={() => payment()}
-                      style={{ padding: 15, float: "right" }}
-                      class="app-btn blu flex vert  "
-                    >
-                      <span class="big-txt">{textChange}</span>
-                    </button>
-                  </p>
-                </div>
-              </Box>
-            </Modal>
-          </div>
 
-          <div className="row   ">
+          <div style={{ marginTop: 20, marginBottom: 20 }}>
+            <h3 style={{ textAlign: "center", fontSize: 30 }}>
+              Upload your documents
+            </h3>
+          </div>
+          <div className="row">
             <div className="col-md-4">
-              <img src={adhaarImg} alt="" id="img" className="img-fluid" />
+              <img src={adhaarImg} alt="" id="img" className=" upload  mb-4" />
               <input
                 type="file"
+                id="input1"
                 accept="image/*"
                 name="image-upload"
-                id="input1"
-                onChange={(e) => setAdhaarImg(e.target.files[0])}
+                onChange={adhaarUpload}
               />
-              <button onClick={adhaarUpload}>submit</button>
-              <label className="image-upload" htmlFor="input1">
+
+              <label className="image-upload mb-4" htmlFor="input1">
                 Upload adhaar front
               </label>
             </div>
-            <div className="col-md-4">
-              <img src={adhaarBackImg} alt="" id="img" className="img-fluid" />
+
+            <div className="col-md-4 ">
+              <img
+                src={adhaarBackImg}
+                alt=""
+                id="img"
+                className="mb-4 upload"
+              />
               <input
                 type="file"
                 accept="image/*"
@@ -380,12 +413,12 @@ const Order = () => {
                 id="input2"
                 onChange={adhaarBackUpload}
               />
-              <label className="image-upload" htmlFor="input2">
+              <label className="image-upload mb-4" htmlFor="input2">
                 Upload adhaar back
               </label>
             </div>
-            <div className="col-md-4">
-              <img src={panImg} alt="" id="img" className="img-fluid" />
+            <div className="col-md-4 ">
+              <img src={panImg} alt="" id="img" className="mb-4 upload" />
               <input
                 type="file"
                 accept="image/*"
@@ -397,10 +430,21 @@ const Order = () => {
                 Upload adhaar pan
               </label>
             </div>
-
-            <form onSubmit={onSubmits} className="contact-form ">
-              <div>
-                <div class="form-field col-xl-3">
+            <div className="form-field  col-md-4 "></div>
+            <div className="form-field mt-5 mb-5 col-md-4 pl-4 pr-4">
+              <form onSubmit={onSubmits}>
+                <Stack spacing={3}>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Number"
+                    variant="outlined"
+                    type="number"
+                    onChange={handleChange("number")}
+                    value={number}
+                    maxlength={10}
+                  />
+                  {/* <div class="form-field  col-xl-3">
                   <input
                     onChange={handleChange("number")}
                     class="input-text js-input"
@@ -409,9 +453,9 @@ const Order = () => {
                     type="num"
                     maxlength="10"
                   />
-                </div>
+                </div> */}
 
-                {/* <div className="form-field col-xl-6">
+                  {/* <div className="form-field col-xl-6">
                   <input
                     id="adhar"
                     className="input-text js-input"
@@ -434,20 +478,33 @@ const Order = () => {
                   />
                 </div> */}
 
-                {/* <Link className="btn"  style={{padding:10}}  onClick={() => {showdata(); setNext(true);}} >Next</Link> */}
-                <div
+                  {/* <Link className="btn"  style={{padding:10}}  onClick={() => {showdata(); setNext(true);}} >Next</Link> */}
+                  {/* <div
                   className=" col-xl-6"
                   style={{ display: "flex", justifyContent: "space-between" }}
-                >
-                  <button
-                    style={{ padding: 20 }}
-                    class="app-btn blu flex vert  "
+                > */}
+                  <LoadingButton
+                    style={{
+                      backgroundColor: "#0070f3",
+                      padding: 10,
+                      outline: "none",
+                      boarder: "none",
+                    }}
+                    fullWidth
+                    size="large"
+                    type="submit"
+                    variant="contained"
                   >
-                    <span class="big-txt">{textChange}</span>
-                  </button>
-                </div>
-              </div>
-            </form>
+                    {textChange}
+                  </LoadingButton>
+                </Stack>
+                {/* <button style={{ padding: 20 }} class="app-btn blu flex vert  ">
+                  <span class="big-txt">{textChange}</span>
+                </button> */}
+                {/* </div> */}
+              </form>
+            </div>
+            <div className="form-field  col-md-4 "></div>
           </div>
         </div>
       </section>
