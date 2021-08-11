@@ -2,16 +2,37 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useQuery from "../../screens/Query";
 import Menu from "../../screens/Menu";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Footer from "../../screens/Footer";
 import Skeleton from "@material-ui/core/Skeleton";
-import Box from "@material-ui/core/Box";
+import { BiArrowBack } from "react-icons/bi";
+
 import TextField from "@material-ui/core/TextField";
+import Box from "@material-ui/core/Box";
+
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  height: "100%",
+  width: "100%",
+  bgcolor: "background.paper",
+  border: "none",
+  outline: "none",
+  boxShadow: 24,
+  overflow: "scroll",
+  p: 4,
+};
+
 function Device() {
+  const { id } = useParams();
   const query = useQuery();
   const dogString = query.get("routeName");
   const dogObject = JSON.parse(dogString);
-  console.log("====>>>>>>>>>>ffffff", dogObject.name);
 
   const [loading, setLoading] = useState(false);
   const [devicename, setDevicename] = useState("");
@@ -50,7 +71,7 @@ function Device() {
   const getcompany = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`/api/getCompany/${Dtype}`);
+      const res = await axios.get(`/api/getCompany/${id}`);
 
       console.log(res.data.device);
       setCompany(res.data.device);
@@ -67,6 +88,7 @@ function Device() {
       // console.log("====>>>>>>>>>>>", res.data.device.model);
       console.log("====>>>>>>>>>>>devicename", res.data.device.deviceName);
       setModelno(res.data.device.model);
+
       setDevicename(res.data.device.deviceName);
     } catch (error) {
       console.log(error);
@@ -86,7 +108,7 @@ function Device() {
   return (
     <div>
       <Menu />
-      <section>
+      {/* <section>
         <div className="container   mt-5">
           <div className="row">
             <div className="col-md-6  d-flex">
@@ -253,68 +275,71 @@ function Device() {
           </div>
         </div>
 
-        {/* <div className="container">
-        <div className="row">
-          <div className="col-md-6">
-            {devicedata && devicedata !== undefined ? (
-              devicedata.map((item) => (
-                <div
-                  key={item._id}
-                  style={{
-                    backgroundColor: !!selected.get(item._id)
-                      ? "#000"
-                      : "rgb(245, 245, 247)",
+  
+      </section> */}
+      <section>
+        <div class="container">
+          <div
+            style={{
+              boxShadow: " 0px 15px 20px rgba(63, 63, 63, 0.4)",
+              backgroundColor: "#fff",
+              fontFamily: "sans-serif",
+              padding: 20,
+              textAlign: "center",
+              borderRadius: 10,
 
-                    padding: 20,
-                    marginTop: 10,
-                    marginVertical: 8,
-                    marginHorizontal: 30,
-                    borderRadius: 15,
-                  }}
+              fontWeight: "bold",
+              fontSize: 20,
+              marginBottom: 20,
+            }}
+          >
+            Choose your device for which you are looking for services
+          </div>
+          <div class="row">
+            {company &&
+              company.map((product) => (
+                <div
+                  key={product._id}
+                  class="col-6 col-sm-6  col-md-3 col-lg-3 "
                 >
-                  <div
-                    onClick={() => {
-                      onSelect(item._id);
-                      !!selected.get(item._id) ? onRemove(item) : onAdd(item);
-                    }}
-                  >
+                  <Link to={"/devicename/" + product._id}>
                     <div
-                      key={item._id}
                       style={{
-                        justifyContent: "space-between",
+                        boxShadow: " 0px 15px 20px rgba(63, 63, 63, 0.4)",
+                        backgroundColor: "#fff",
+                        padding: 10,
                         display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        margin: 5,
+                        height: 140,
+                        borderRadius: 10,
+                        marginBottom: 20,
                       }}
                     >
-                      <h3
-                        style={{
-                          color: !!selected.get(item._id) ? "white" : "black",
-                          fontSize: 20,
-                          fontWeight: "bold",
-                        }}
-                      >
-                        {item.name}
-                      </h3>
+                      {/* <Link
+                    to={{
+                      pathname: "/device",
+                      search: `routeName=${JSON.stringify(product.data)}`, //dog is the object to pass along
+                    }}
+                  > */}
 
-                      <h3
-                        style={{
-                          color: !!selected.get(item._id) ? "white" : "black",
-                          fontSize: 20,
-                          fontWeight: "bold",
-                        }}
-                      >
-                        Rs. {item.price}
-                      </h3>
+                      <img
+                        src={product.Cimage}
+                        alt="Product"
+                        class="companyImage"
+                      />
+
+                      {/* </Link> */}
                     </div>
-                  </div>
+                    <div class="text-center">
+                      <span>{product.deviceName}</span>
+                    </div>
+                  </Link>
                 </div>
-              ))
-            ) : (
-              <h1>no data to show</h1>
-            )}
+              ))}
           </div>
-          <div className="col-md-6"></div>
         </div>
-      </div> */}
       </section>
     </div>
   );

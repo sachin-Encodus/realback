@@ -29,7 +29,7 @@ import Feedback from "./screens/Feedback";
 import Order from "./models/components/Order";
 import OrderUpdate from "./screens/OrderUpdate";
 import axios from "axios";
-
+import Model from "./models/components/Model.js";
 import Pro from "./models/components/Pro";
 import { initialState, reducer } from "./UseReducer/UseReducer";
 const AuthUser = createContext();
@@ -39,7 +39,7 @@ function Routing() {
     <Switch>
       <Route path="/" exact render={(props) => <Home {...props} />} />
       <Route path="/feedback" render={(props) => <Feedback {...props} />} />
-      <Route path="/device" render={(props) => <Device {...props} />} />
+      <Route path="/device/:id" render={(props) => <Device {...props} />} />
       <Route path="/problem" render={(props) => <Problem {...props} />} />
       <Route path="/login" exact render={(props) => <Login {...props} />} />
       <Route path="/otp" exact render={(props) => <Otp {...props} />} />
@@ -49,6 +49,11 @@ function Routing() {
       <Route path="/order" exact render={(props) => <Order {...props} />} />
       <Route path="/cart" exact render={(props) => <Cart {...props} />} />
       <Route path="/pro" exact render={(props) => <Pro {...props} />} />
+      <Route
+        path="/devicename/:id"
+        exact
+        render={(props) => <Model {...props} />}
+      />
       <Route
         path="/orderupdate"
         exact

@@ -2,9 +2,11 @@ const mongoose = require("mongoose");
 // const jwt = require("jsonwebtoken");
 const ProductSchema = new mongoose.Schema({
   deviceName: { type: String },
+  Cimage: { type: String },
   model: [
     {
       modelno: { type: String },
+      image: { type: String },
       modedata: [
         {
           productName: { type: String },

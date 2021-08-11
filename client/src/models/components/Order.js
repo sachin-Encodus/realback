@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
@@ -8,7 +8,7 @@ import logo from "../../images/realback.png";
 import Menu from "../../screens/Menu";
 import Footer from "./../../screens/Footer";
 import Box from "@material-ui/core/Box";
-
+import { AuthUser } from "../../App";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
@@ -31,14 +31,16 @@ const style = {
 };
 
 const Order = () => {
+  const { state } = useContext(AuthUser);
   const query = useQuery();
   const dogString = query.get("routeName");
   const Price = query.get("price");
   const device = query.get("device");
+  const image = query.get("image");
   const cartItems = JSON.parse(dogString);
   const status = "orderd";
   console.log("============>>>>>>>>>>", Price, device);
-  const [prouser, setProuser] = useState(false);
+  const [prouser, setProuser] = useState(true);
 
   const [payments, setPayments] = useState(false);
   const [orderId, setOrderId] = useState("");
@@ -86,7 +88,7 @@ const Order = () => {
     setOpen(false);
   };
   const [formData, setFormData] = useState({
-    email: "",
+    email: state.email,
     name: "",
     company: "",
     model: "",
@@ -95,7 +97,7 @@ const Order = () => {
     mode: "",
     number: "",
     country: "",
-    state: "",
+    State: "",
     city: "",
     pincode: "",
     Address: "",
@@ -112,50 +114,40 @@ const Order = () => {
     number,
     country,
     products,
-    state,
+    State,
     city,
     pincode,
     Address,
     textChange,
   } = formData;
   useEffect(() => {
-    let loggedIn = JSON.parse(localStorage.getItem("user"));
-    if (loggedIn !== null) {
+    axios
+      .get(`/api/cart`)
+      .then(({ data }) => setAdds(data.user[0]))
+      .catch((err) => {
+        console.log(err);
+      });
+    // console.log("========>>>>>>>>sssssss", adds);
+    if (adds !== undefined) {
+      // console.log("calling");
       setFormData({
         ...formData,
-        email: loggedIn.email,
+
+        name: adds.name,
+        country: adds.country,
+        number: adds.number,
+        city: adds.city,
+        State: adds.State,
+        pincode: parseInt(adds.pincode),
+        Address: adds.Address,
       });
-
-      axios
-        .get(`/api/cart/${loggedIn.email}`)
-        .then(({ data }) => setAdds(data.user[0]))
-        .catch((err) => {
-          console.log(err);
-        });
-      // console.log("========>>>>>>>>sssssss", adds);
-      if (adds !== undefined) {
-        // console.log("calling");
-        setFormData({
-          ...formData,
-          email: adds.email,
-          name: adds.name,
-          country: adds.country,
-          number: adds.number,
-          city: adds.city,
-          state: adds.state,
-          pincode: parseInt(adds.pincode),
-          Address: adds.Address,
-        });
-      }
-
-      // setFormData({
-      //   ...formData,
-      //   name: loggedIn.name,
-      //   email: loggedIn.email,
-      // });
-    } else {
-      setFormData({ email: "noreply@gmai.com" });
     }
+
+    // setFormData({
+    //   ...formData,
+    //   name: loggedIn.name,
+    //   email: loggedIn.email,
+    // });
   }, [adds]);
 
   // useEffect(() => {
@@ -181,7 +173,7 @@ const Order = () => {
   //       country: adds.country,
   //       number: adds.number,
   //       city: adds.city,
-  //       state: adds.state,
+  //       State: adds.State,
   //       pincode: parseInt(adds.pincode),
   //       Address: adds.Address,
   //     });
@@ -277,7 +269,7 @@ const Order = () => {
       mode &&
       number &&
       country &&
-      state &&
+      State &&
       city &&
       pincode &&
       Address &&
@@ -290,7 +282,7 @@ const Order = () => {
           email,
           name,
           company,
-          model,
+          model: image,
           message,
           products,
           mode,
@@ -301,7 +293,7 @@ const Order = () => {
           totalPrice,
           expiredate,
           country,
-          state,
+          State,
           city,
           pincode,
           Address,
@@ -319,7 +311,7 @@ const Order = () => {
             otp: "",
             number: "",
             country: "",
-            state: "",
+            State: "",
             city: "",
             pincode: "",
             Address: "",
@@ -344,7 +336,7 @@ const Order = () => {
             mode: "",
             number: "",
             country: "",
-            state: "",
+            State: "",
             city: "",
             pincode: "",
             Address: "",
@@ -402,7 +394,7 @@ const Order = () => {
                           />{" "}
                           <br />
                           <br />
-                          {Address} , {pincode} , {city} , {state} , {country}
+                          {Address} , {pincode} , {city} , {State} , {country}
                         </span>
                       </div>
                       <br />
@@ -568,10 +560,10 @@ const Order = () => {
 
                 <div class="form-field col-xl-3">
                   <input
-                    onChange={handleChange("state")}
+                    onChange={handleChange("State")}
                     class="input-text js-input"
                     placeholder="State"
-                    value={state}
+                    value={State}
                     type="text"
                   />
                 </div>
@@ -666,6 +658,6 @@ const Order = () => {
       </section>
     </div>
   );
-};;
+};
 
 export default Order;

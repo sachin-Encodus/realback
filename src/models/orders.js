@@ -56,7 +56,7 @@ const DeviceSchema = new mongoose.Schema(
       required: true,
     },
 
-    state: {
+    State: {
       type: String,
       required: true,
     },

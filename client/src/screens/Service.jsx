@@ -49,12 +49,13 @@ const Service = () => {
             {mobile.map((product) => (
               <div class="col-6 col-sm-6  col-md-3 col-lg-3 ">
                 <div class="wsk-cp-product">
-                  <Link
+                  <Link to={"/device/" + product.data.name}>
+                    {/* <Link
                     to={{
                       pathname: "/device",
                       search: `routeName=${JSON.stringify(product.data)}`, //dog is the object to pass along
                     }}
-                  >
+                  > */}
                     <div class="wsk-cp-img">
                       <img
                         src={product.image}

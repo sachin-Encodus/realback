@@ -103,7 +103,7 @@ router.post("/product", product);
 
 router.get("/getCompany/:Dtype", auth, getCompany);
 router.get("/getmodel/:itemValue", getmodel);
-router.get("/getmodedata/:itemValue", getmodedata);
+router.get("/getmodedata/:deviceId", getmodedata);
 // forgot reset password
 router.put("/forgotpassword", forgotPasswordController);
 router.put("/resetpassword", resetPasswordController);

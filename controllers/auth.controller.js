@@ -1396,21 +1396,25 @@ exports.getmodel = async function (req, res) {
 
 exports.getmodedata = async function (req, res) {
   try {
-    const { itemValue } = req.params;
-    console.log(itemValue);
-    await Product.findOne({ 'model._id' : itemValue }, (err, device) => {
-      if (device) {
+    const { deviceId } = req.params;
+    console.log(deviceId);
+    await Product.findOne(
+      { _id: deviceId },
+
+      (err, device) => {
+        if (device) {
+          console.log(device);
+          return res.status(201).send({
+            device,
+          });
+        } else {
+          console.log(err);
+        }
         console.log(device);
-        return res.status(201).send({
-          device,
-        });
-      } else {
-        console.log(err);
       }
-      console.log(device);
-    });
+    );
   } catch (error) {
-    console.log("logout error");
+    console.log(error);
     res.status(500).json(error);
   }
 };

@@ -277,18 +277,12 @@ export default function Cart(props) {
             <div className="row   ">
               <div className="col-md-2 mb-5  ">
                 <>
-                  <img
-                    src={process.env.PUBLIC_URL + `images/${item.screen}`}
-                    alt=""
-                    className="img-fluid"
-                  />
+                  <img src={item.model} alt="" className="img-fluid" />
                 </>
               </div>
               <div className="col-md-6  ">
                 <div>
-                  <h3 style={{ fontFamily: "sans-serif" }}>
-                    {item.company} {item.model}
-                  </h3>
+                  <h3 style={{ fontFamily: "sans-serif" }}>{item.company}</h3>
 
                   <p style={{ fontFamily: "sans-serif" }}> {item.message}</p>
                   <p
@@ -448,7 +442,8 @@ export default function Cart(props) {
             <br />
             <div
               style={{
-                backgroundColor: "#f5f5f7",
+                boxShadow: " 0px 15px 20px rgba(63, 63, 63, 0.4)",
+                backgroundColor: "#fff",
                 fontFamily: "sans-serif",
                 padding: 20,
                 textAlign: "center",

@@ -264,124 +264,122 @@ const Navbar = (props) => {
                   </NavLink>
                 </li>
               ) : (
-                [
-                  <li className="nav-item">
-                    <NavLink
-                      // onClick={() => {
-                      //   signout(() => {
-                      //     Hello();
-                      //   });
-                      // }}
-                      className="nav-link js-scroll-trigger"
-                      to="/logout"
-                    >
-                      <p className="logouts" data-type="warning">
-                        <span> {state.name}</span>
-                      </p>
-                    </NavLink>
-                  </li>,
-                  <li className="nav-item">
-                    {/* <NavLink className="nav-link js-scroll-trigger  " to="/"> */}
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        textAlign: "center",
-                      }}
-                    >
-                      {/* <Typography sx={{ minWidth: 100 }}>Contact</Typography>
+                // <li className="nav-item">
+                //   <NavLink
+                //     // onClick={() => {
+                //     //   signout(() => {
+                //     //     Hello();
+                //     //   });
+                //     // }}
+                //     className="nav-link js-scroll-trigger"
+                //     to="/logout"
+                //   >
+                //     <p className="logouts" data-type="warning">
+                //       <span> {state.name}</span>
+                //     </p>
+                //   </NavLink>
+                // </li>,
+                <li className="nav-item">
+                  {/* <NavLink className="nav-link js-scroll-trigger  " to="/"> */}
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      textAlign: "center",
+                    }}
+                  >
+                    {/* <Typography sx={{ minWidth: 100 }}>Contact</Typography>
                         <Typography sx={{ minWidth: 100 }}>Profile</Typography> */}
-                      <Tooltip title="Account settings">
-                        <IconButton
-                          style={{ outline: "none", boarder: "none" }}
-                          onClick={handleClick}
-                          size="small"
-                          sx={{ ml: 2 }}
-                        >
-                          <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
-                        </IconButton>
-                      </Tooltip>
-                    </Box>
-                    <Menu
-                      anchorEl={anchorEl}
-                      open={open}
-                      onClose={handleClose}
-                      onClick={handleClose}
-                      PaperProps={{
-                        elevation: 0,
-                        sx: {
-                          overflow: "visible",
-                          filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                          mt: 1.5,
-                          "& .MuiAvatar-root": {
-                            width: 32,
-                            height: 32,
-                            ml: -0.5,
-                            mr: 1,
-                          },
-                          "&:before": {
-                            content: '""',
-                            display: "block",
-                            position: "absolute",
-                            top: 0,
-                            right: 14,
-                            width: 10,
-                            height: 10,
-                            bgcolor: "background.paper",
-                            transform: "translateY(-50%) rotate(45deg)",
-                            zIndex: 0,
-                          },
+                    <Tooltip title="Account settings">
+                      <IconButton
+                        style={{ outline: "none", boarder: "none" }}
+                        onClick={handleClick}
+                        size="small"
+                        sx={{ ml: 2 }}
+                      >
+                        <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                      </IconButton>
+                    </Tooltip>
+                  </Box>
+                  <Menu
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    onClick={handleClose}
+                    PaperProps={{
+                      elevation: 0,
+                      sx: {
+                        overflow: "visible",
+                        filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                        mt: 1.5,
+                        "& .MuiAvatar-root": {
+                          width: 32,
+                          height: 32,
+                          ml: -0.5,
+                          mr: 1,
                         },
-                      }}
-                      transformOrigin={{
-                        horizontal: "right",
-                        vertical: "top",
-                      }}
-                      anchorOrigin={{
-                        horizontal: "right",
-                        vertical: "bottom",
-                      }}
-                    >
-                      <MenuItem>
-                        <Avatar /> Profile
-                      </MenuItem>
-                      <MenuItem>
-                        <Avatar /> My account
-                      </MenuItem>
-                      <Divider />
-                      <MenuItem>
-                        <ListItemIcon>
-                          <PersonAdd fontSize="small" />
-                        </ListItemIcon>
-                        Add another account
-                      </MenuItem>
-                      <MenuItem>
-                        <ListItemIcon>
-                          <Settings fontSize="small" />
-                        </ListItemIcon>
-                        Settings
-                      </MenuItem>
-                      <MenuItem onClick={() => logout()}>
-                        <ListItemIcon>
-                          <Logout fontSize="small" />
-                        </ListItemIcon>
-                        Logout
-                      </MenuItem>
-                      <MenuItem onClick={() => logoutall()}>
-                        <ListItemIcon>
-                          <Logout fontSize="small" />
-                        </ListItemIcon>
-                        Logout from all device
-                      </MenuItem>
-                    </Menu>
+                        "&:before": {
+                          content: '""',
+                          display: "block",
+                          position: "absolute",
+                          top: 0,
+                          right: 14,
+                          width: 10,
+                          height: 10,
+                          bgcolor: "background.paper",
+                          transform: "translateY(-50%) rotate(45deg)",
+                          zIndex: 0,
+                        },
+                      },
+                    }}
+                    transformOrigin={{
+                      horizontal: "right",
+                      vertical: "top",
+                    }}
+                    anchorOrigin={{
+                      horizontal: "right",
+                      vertical: "bottom",
+                    }}
+                  >
+                    <MenuItem>
+                      <Avatar /> {state.name}
+                    </MenuItem>
+                    <MenuItem>
+                      <Avatar /> {state.email}
+                    </MenuItem>
+                    <Divider />
+                    <MenuItem>
+                      <ListItemIcon>
+                        <PersonAdd fontSize="small" />
+                      </ListItemIcon>
+                      Add another account
+                    </MenuItem>
+                    <MenuItem>
+                      <ListItemIcon>
+                        <Settings fontSize="small" />
+                      </ListItemIcon>
+                      Settings
+                    </MenuItem>
+                    <MenuItem onClick={() => logout()}>
+                      <ListItemIcon>
+                        <Logout fontSize="small" />
+                      </ListItemIcon>
+                      Logout
+                    </MenuItem>
+                    <MenuItem onClick={() => logoutall()}>
+                      <ListItemIcon>
+                        <Logout fontSize="small" />
+                      </ListItemIcon>
+                      Logout from all device
+                    </MenuItem>
+                  </Menu>
 
-                    {/* <img
+                  {/* <img
                         src={Badge}
                         alt="badge"
                         style={{ width: 20, height: 20 }}
                       /> */}
-                  </li>,
-                ]
+                </li>
               )}
 
               {/* <li className="nav-item"><NavLink onClick={mylogin} className="nav-link js-scroll-trigger" to="/">check</NavLink></li> */}
@@ -569,21 +567,26 @@ mobile menu */}
 
                   <NavLink
                     style={{ marginLeft: 10 }}
-                    // onClick={() => {
-                    //   signout(() => {
-                    //     Hello();
-                    //   });
-                    // }}
-                    to="/logout"
+                    to=""
+                    onClick={() => logout()}
                   >
                     {state.name}
                   </NavLink>
+                  <li className="menu-item">
+                    <NavLink
+                      style={{ marginLeft: 10 }}
+                      to=""
+                      onClick={() => logout()}
+                    >
+                      Logout from all device
+                    </NavLink>
+                  </li>
                 </li>
               )}
             </ul>
 
             <div className="shop icon icon-bag">
-              {login === "" ? (
+              {state === null ? (
                 <NavLink to="/login">
                   <i className="fas fa-user " style={{ color: "white" }}></i>
                 </NavLink>

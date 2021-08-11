@@ -12611,3 +12611,21 @@ margin-top: 70px;
    background-position: center center;
   background-size: cover;
 }
+.companyImage{
+ 
+    width: 50px;
+  height: auto;
+   background-position: center center;
+  background-size: cover;
+}
+.modelImage{
+    width: 70px;
+  height: auto;
+   background-position: center center;
+  background-size: cover;
+}
+.boxcolor{
+  background-color: #130f40;
+background-image: linear-gradient(315deg, #130f40 0%, #000000 74%);
+
+}
